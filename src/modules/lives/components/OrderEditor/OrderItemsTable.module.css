@@ -1,0 +1,19 @@
+/* Switch between cards and table by the panel width, not the viewport:
+   the editor column is narrow on some desktop layouts. */
+.root {
+  container-type: inline-size;
+}
+
+.table {
+  display: none;
+}
+
+@container (min-width: 640px) {
+  .cards {
+    display: none;
+  }
+
+  .table {
+    display: block;
+  }
+}

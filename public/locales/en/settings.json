@@ -1,0 +1,40 @@
+{
+  "title": "Settings",
+  "description": "Store and account details.",
+  "save": "Save",
+  "store": {
+    "title": "Store",
+    "description": "The name is shown in the sidebar.",
+    "fields": {
+      "storeName": "Store name",
+      "storeNamePlaceholder": "E.g.: Lucia Boutique"
+    },
+    "success": "Store name updated",
+    "errors": {
+      "required": "Enter the store name",
+      "max": "60 characters max",
+      "save": "Could not save the store name"
+    }
+  },
+  "password": {
+    "title": "Password",
+    "description": "Enter your current password to change it. You will need to sign in again afterwards.",
+    "fields": {
+      "current": "Current password",
+      "new": "New password",
+      "newHint": "At least {{min}} characters",
+      "confirm": "Repeat the new password"
+    },
+    "success": "Password updated. Sign in with your new password.",
+    "errors": {
+      "currentRequired": "Enter your current password",
+      "currentInvalid": "The current password is wrong",
+      "newRequired": "Enter the new password",
+      "min": "Must be at least {{min}} characters",
+      "max": "Must be at most {{max}} characters",
+      "confirmRequired": "Repeat the new password",
+      "mismatch": "Passwords don't match",
+      "save": "Could not change the password"
+    }
+  }
+}

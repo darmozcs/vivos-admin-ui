@@ -1,0 +1,26 @@
+.mantine-datatable-header-cell-filter-action-icon {
+  background: transparent;
+  border: none;
+  color: white;
+}
+.mantine-datatable-header-cell-filter-action-icon:hover {
+  color: var(--mantine-color-blossom-3);
+  background: transparent;
+}
+.mantine-datatable-header-cell-filter-action-icon[data-active="true"] {
+  color: var(--mantine-color-red-6);
+}
+.mantine-datatable-header-cell-filter-action-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.mantine-datatable-header-cell-sortable-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.mantine-datatable-header-cell-sortable-unsorted-icon svg {
+  width: 18px;
+  height: 18px;
+}

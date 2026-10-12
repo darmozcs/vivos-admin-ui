@@ -1,0 +1,34 @@
+{
+  "title": "Vivos",
+  "description": "Todos los vivos de la tienda. Elegí uno para ver su detalle.",
+  "columns": {
+    "title": "Vivo",
+    "status": "Estado",
+    "date": "Fecha",
+    "duration": "Duración",
+    "buyers": "Clientas",
+    "units": "Prendas",
+    "total": "Total vendido"
+  },
+  "filters": {
+    "dateRange": "Fecha",
+    "dateRangePlaceholder": "Desde – hasta",
+    "title": "Vivo",
+    "titlePlaceholder": "Buscar por nombre",
+    "duration": "Duración (min)",
+    "buyers": "Clientas",
+    "units": "Prendas",
+    "total": "Total vendido",
+    "min": "Mín",
+    "max": "Máx",
+    "rangeError": "El mínimo no puede ser mayor que el máximo",
+    "clear": "Limpiar filtros",
+    "noResults": "No hay vivos para estos filtros"
+  },
+  "summary": {
+    "lives": "Vivos encontrados",
+    "buyers": "Total clientas",
+    "units": "Total prendas",
+    "total": "Total ventas"
+  }
+}

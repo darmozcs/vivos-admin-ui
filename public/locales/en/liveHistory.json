@@ -1,0 +1,34 @@
+{
+  "title": "Lives",
+  "description": "Every store live. Pick one to see its detail.",
+  "columns": {
+    "title": "Live",
+    "status": "Status",
+    "date": "Date",
+    "duration": "Duration",
+    "buyers": "Clients",
+    "units": "Items",
+    "total": "Total sold"
+  },
+  "filters": {
+    "dateRange": "Date",
+    "dateRangePlaceholder": "From – to",
+    "title": "Live",
+    "titlePlaceholder": "Search by name",
+    "duration": "Duration (min)",
+    "buyers": "Clients",
+    "units": "Items",
+    "total": "Total sold",
+    "min": "Min",
+    "max": "Max",
+    "rangeError": "Min can't be greater than max",
+    "clear": "Clear filters",
+    "noResults": "No lives match these filters"
+  },
+  "summary": {
+    "lives": "Lives found",
+    "buyers": "Total clients",
+    "units": "Total items",
+    "total": "Total sales"
+  }
+}

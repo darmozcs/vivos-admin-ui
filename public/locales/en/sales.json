@@ -1,0 +1,39 @@
+{
+  "title": "Sales",
+  "description": "Every sale from the lives. Change the sale or package status right from the table.",
+  "columns": {
+    "saleNumber": "Sale",
+    "createdAt": "Created",
+    "updatedAt": "Updated",
+    "live": "Live",
+    "client": "Client",
+    "units": "Items",
+    "total": "Total",
+    "status": "S. sale",
+    "statusAria": "Sale status {{sale}}",
+    "packageStatus": "S. package",
+    "packageStatusAria": "Package status of sale {{sale}}"
+  },
+  "statusUpdate": {
+    "success": "Status updated",
+    "error": "Could not update the status"
+  },
+  "filters": {
+    "dateRange": "Date",
+    "dateRangePlaceholder": "From – to",
+    "liveTitle": "Live",
+    "liveTitlePlaceholder": "Search by title",
+    "client": "Client",
+    "status": "Sale status",
+    "packageStatus": "Package status",
+    "allPlaceholder": "All",
+    "noOptions": "No matches",
+    "clear": "Clear filters",
+    "noResults": "No results for these filters"
+  },
+  "summary": {
+    "orders": "Sales found",
+    "units": "Items",
+    "total": "Total"
+  }
+}

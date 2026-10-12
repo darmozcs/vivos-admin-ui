@@ -1,0 +1,73 @@
+{
+  "title": "Clients",
+  "description": "Registered clients and what they bought during lives.",
+  "columns": {
+    "fullName": "Name",
+    "account": "Account",
+    "phone": "Phone",
+    "address": "Address",
+    "noAddress": "No address",
+    "department": "Department",
+    "deliveryType": "Delivery",
+    "notSet": "—"
+  },
+  "actions": {
+    "edit": "Edit {{name}}",
+    "delete": "Delete {{name}}"
+  },
+  "edit": {
+    "title": "Edit client",
+    "submit": "Save changes",
+    "success": "Client details updated",
+    "errors": {
+      "save": "Could not save the changes"
+    }
+  },
+  "form": {
+    "fields": {
+      "fullName": "Full name",
+      "account": "Account",
+      "accountPlaceholder": "@user",
+      "phone": "Phone",
+      "address": "Address",
+      "addressPlaceholder": "Street, number, apt, city"
+    },
+    "cancel": "Cancel",
+    "errors": {
+      "nameRequired": "Enter the client's name",
+      "fullNameMax": "Name: {{fullNameMax}} characters max",
+      "accountMax": "Account: {{accountMax}} characters max",
+      "phoneMax": "Phone: {{phoneMax}} characters max",
+      "addressMax": "Address: {{addressMax}} characters max"
+    }
+  },
+  "create": {
+    "button": "New client",
+    "title": "New client",
+    "submit": "Create client",
+    "success": "Client created",
+    "error": "Could not create the client"
+  },
+  "delete": {
+    "title": "Delete client",
+    "message": "Are you sure you want to delete {{name}}? This can't be undone.",
+    "confirm": "Delete",
+    "success": "Client deleted",
+    "error": "Could not delete the client",
+    "blocked": "Can't be deleted: it has recorded purchases"
+  },
+  "filters": {
+    "fullName": "Name",
+    "fullNamePlaceholder": "Search by name",
+    "account": "Account",
+    "accountPlaceholder": "@username",
+    "phone": "Phone",
+    "phonePlaceholder": "Search by phone",
+    "department": "Department",
+    "deliveryType": "Delivery",
+    "allPlaceholder": "All",
+    "noOptions": "No matches",
+    "clear": "Clear filters",
+    "noResults": "No results for these filters"
+  }
+}

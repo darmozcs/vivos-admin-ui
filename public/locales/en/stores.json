@@ -1,0 +1,89 @@
+{
+  "title": "Stores",
+  "description": "Registered stores and their administrator account.",
+  "empty": "There are no stores yet",
+  "columns": {
+    "name": "Store",
+    "adminEmail": "Administrator email",
+    "emailStatus": "Email",
+    "status": "Status",
+    "createdAt": "Created"
+  },
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "emailStatus": {
+    "verified": "Verified",
+    "pending": "Pending"
+  },
+  "actions": {
+    "edit": "Edit {{name}}",
+    "activate": "Activate {{name}}",
+    "deactivate": "Deactivate {{name}}",
+    "resetPassword": "Reset the password of {{name}}",
+    "resendVerification": "Resend the verification code of {{name}}"
+  },
+  "form": {
+    "fields": {
+      "name": "Store name",
+      "namePlaceholder": "E.g.: Lucia Boutique",
+      "adminEmail": "Administrator email",
+      "adminPassword": "Initial password",
+      "newPassword": "New password",
+      "confirmPassword": "Repeat the password",
+      "passwordHint": "Between {{min}} and {{passwordMax}} characters"
+    },
+    "cancel": "Cancel",
+    "errors": {
+      "nameRequired": "Enter the store name",
+      "nameMax": "{{max}} characters max",
+      "emailRequired": "Enter the administrator email",
+      "emailInvalid": "Enter a valid email",
+      "passwordRequired": "Enter a password",
+      "passwordMin": "Must be at least {{min}} characters",
+      "passwordMax": "Must be at most {{passwordMax}} characters",
+      "confirmRequired": "Repeat the password",
+      "mismatch": "Passwords don't match"
+    }
+  },
+  "create": {
+    "button": "New store",
+    "title": "New store",
+    "submit": "Create store",
+    "verificationNotice": "We will email a verification code to the administrator. She will need it the first time she signs in.",
+    "success": "Store created. We sent the verification code to {{email}}.",
+    "error": "Could not create the store"
+  },
+  "edit": {
+    "title": "Edit store",
+    "submit": "Save changes",
+    "success": "Store updated",
+    "error": "Could not update the store"
+  },
+  "activate": {
+    "title": "Activate store",
+    "message": "Activate {{name}}? Its administrator will be able to sign in again.",
+    "confirm": "Activate",
+    "success": "{{name}} is active",
+    "error": "Could not activate the store"
+  },
+  "deactivate": {
+    "title": "Deactivate store",
+    "message": "Deactivate {{name}}? Its administrator loses access to the panel right away.",
+    "confirm": "Deactivate",
+    "success": "{{name}} was deactivated",
+    "error": "Could not deactivate the store"
+  },
+  "resetPassword": {
+    "title": "Reset password",
+    "description": "New password for {{email}}. Her open sessions will be closed.",
+    "submit": "Change password",
+    "success": "Password of {{email}} updated",
+    "error": "Could not change the password"
+  },
+  "resendVerification": {
+    "success": "We sent a new code to {{email}}",
+    "error": "Could not resend the code"
+  }
+}

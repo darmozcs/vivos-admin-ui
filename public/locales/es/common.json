@@ -1,0 +1,130 @@
+{
+  "languages": {
+    "es": "Español",
+    "en": "English",
+    "select": "Seleccionar idioma"
+  },
+  "app": {
+    "title": "Admin tienda"
+  },
+  "brand": {
+    "subtitle": "Panel de administración",
+    "name": "Vivos"
+  },
+  "menu": {
+    "ariaLabel": "Menú principal",
+    "toggle": "Abrir o cerrar menú",
+    "hide": "Ocultar barra lateral",
+    "show": "Mostrar barra lateral",
+    "clients": "Clientes",
+    "sales": "Ventas",
+    "lives": "Vivos",
+    "startLive": "Comenzar vivo",
+    "settings": "Configuración",
+    "stores": "Tiendas"
+  },
+  "roles": {
+    "admin": "Administradora",
+    "superAdmin": "Super administradora"
+  },
+  "meta": {
+    "live": {
+      "title": "Comenzar vivo",
+      "description": "Gestioná el vivo: clientas, compras y totales en tiempo real."
+    },
+    "lives": {
+      "title": "Vivos",
+      "description": "Todos los vivos de la tienda con sus ventas."
+    },
+    "liveDetail": {
+      "title": "Detalle del vivo",
+      "description": "Toda la información de un vivo: horarios, compras y prendas vendidas."
+    },
+    "login": {
+      "title": "Iniciar sesión",
+      "description": "Ingresá al panel de administración de la tienda."
+    },
+    "settings": {
+      "title": "Configuración",
+      "description": "Nombre de la tienda y contraseña."
+    },
+    "clients": {
+      "title": "Clientes",
+      "description": "Clientas de la tienda y sus compras."
+    },
+    "sales": {
+      "title": "Ventas",
+      "description": "Ventas de la tienda y estado de los envíos."
+    },
+    "stores": {
+      "title": "Tiendas",
+      "description": "Alta, edición y estado de las tiendas y de sus administradoras."
+    }
+  },
+  "modals": {
+    "labels": {
+      "confirm": "Confirmar",
+      "cancel": "Cancelar"
+    }
+  },
+  "notifications": {
+    "errorTitle": "Error",
+    "successTitle": "Listo"
+  },
+  "orderStatus": {
+    "pending": "Pendiente",
+    "paid": "Pagada",
+    "cancelled": "Cancelada"
+  },
+  "table": {
+    "empty": "No hay datos para mostrar"
+  },
+  "liveStatus": {
+    "notStarted": "Sin comenzar",
+    "running": "En vivo",
+    "paused": "En pausa",
+    "ended": "Vivo terminado"
+  },
+  "packageStatus": {
+    "pending": "Pendiente",
+    "prepared": "Armado",
+    "shipped": "Enviado",
+    "delivered": "Entregado"
+  },
+  "auth": {
+    "notAuthorized": "Tu cuenta no tiene permisos para usar este panel."
+  },
+  "department": {
+    "ARTIGAS": "Artigas",
+    "CANELONES": "Canelones",
+    "CERRO_LARGO": "Cerro Largo",
+    "COLONIA": "Colonia",
+    "DURAZNO": "Durazno",
+    "FLORES": "Flores",
+    "FLORIDA": "Florida",
+    "LAVALLEJA": "Lavalleja",
+    "MALDONADO": "Maldonado",
+    "MONTEVIDEO": "Montevideo",
+    "PAYSANDU": "Paysandú",
+    "RIO_NEGRO": "Río Negro",
+    "RIVERA": "Rivera",
+    "ROCHA": "Rocha",
+    "SALTO": "Salto",
+    "SAN_JOSE": "San José",
+    "SORIANO": "Soriano",
+    "TACUAREMBO": "Tacuarembó",
+    "TREINTA_Y_TRES": "Treinta y Tres"
+  },
+  "deliveryType": {
+    "CADETERIA": "Cadetería",
+    "AGENCIA": "Agencia",
+    "DOMICILIO": "Domicilio"
+  },
+  "clientDelivery": {
+    "department": "Departamento",
+    "departmentPlaceholder": "Elegí un departamento",
+    "deliveryType": "Tipo de entrega",
+    "deliveryTypePlaceholder": "Elegí el tipo de entrega",
+    "noResults": "Sin resultados"
+  }
+}

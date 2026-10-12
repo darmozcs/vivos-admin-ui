@@ -1,0 +1,40 @@
+{
+  "title": "Configuración",
+  "description": "Datos de la tienda y de tu cuenta.",
+  "save": "Guardar",
+  "store": {
+    "title": "Tienda",
+    "description": "El nombre se muestra en el menú lateral.",
+    "fields": {
+      "storeName": "Nombre de la tienda",
+      "storeNamePlaceholder": "Ej.: Boutique Lucía"
+    },
+    "success": "Nombre de la tienda actualizado",
+    "errors": {
+      "required": "Ingresá el nombre de la tienda",
+      "max": "Máximo 60 caracteres",
+      "save": "No se pudo guardar el nombre de la tienda"
+    }
+  },
+  "password": {
+    "title": "Contraseña",
+    "description": "Para cambiarla, ingresá tu contraseña actual. Después vas a tener que iniciar sesión de nuevo.",
+    "fields": {
+      "current": "Contraseña actual",
+      "new": "Nueva contraseña",
+      "newHint": "Mínimo {{min}} caracteres",
+      "confirm": "Repetí la nueva contraseña"
+    },
+    "success": "Contraseña actualizada. Iniciá sesión con la nueva contraseña.",
+    "errors": {
+      "currentRequired": "Ingresá tu contraseña actual",
+      "currentInvalid": "La contraseña actual no es correcta",
+      "newRequired": "Ingresá la nueva contraseña",
+      "min": "Debe tener al menos {{min}} caracteres",
+      "max": "Debe tener como máximo {{max}} caracteres",
+      "confirmRequired": "Repetí la nueva contraseña",
+      "mismatch": "Las contraseñas no coinciden",
+      "save": "No se pudo cambiar la contraseña"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "title": "Clientes",
+  "description": "Clientas registradas y lo que compraron en los vivos.",
+  "columns": {
+    "fullName": "Nombre",
+    "account": "Cuenta",
+    "phone": "Teléfono",
+    "address": "Dirección",
+    "noAddress": "Sin dirección",
+    "department": "Departamento",
+    "deliveryType": "Entrega",
+    "notSet": "—"
+  },
+  "actions": {
+    "edit": "Editar a {{name}}",
+    "delete": "Eliminar a {{name}}"
+  },
+  "edit": {
+    "title": "Editar clienta",
+    "submit": "Guardar cambios",
+    "success": "Datos de la clienta actualizados",
+    "errors": {
+      "save": "No se pudieron guardar los cambios"
+    }
+  },
+  "form": {
+    "fields": {
+      "fullName": "Nombre y apellido",
+      "account": "Cuenta",
+      "accountPlaceholder": "@usuario",
+      "phone": "Teléfono",
+      "address": "Dirección",
+      "addressPlaceholder": "Calle, número, apto, ciudad"
+    },
+    "cancel": "Cancelar",
+    "errors": {
+      "nameRequired": "Ingresá el nombre de la clienta",
+      "fullNameMax": "Nombre: máximo {{fullNameMax}} caracteres",
+      "accountMax": "Cuenta: máximo {{accountMax}} caracteres",
+      "phoneMax": "Teléfono: máximo {{phoneMax}} caracteres",
+      "addressMax": "Dirección: máximo {{addressMax}} caracteres"
+    }
+  },
+  "create": {
+    "button": "Nueva clienta",
+    "title": "Nueva clienta",
+    "submit": "Crear clienta",
+    "success": "Clienta creada",
+    "error": "No se pudo crear la clienta"
+  },
+  "delete": {
+    "title": "Eliminar clienta",
+    "message": "¿Seguro que querés eliminar a {{name}}? Esta acción no se puede deshacer.",
+    "confirm": "Eliminar",
+    "success": "Clienta eliminada",
+    "error": "No se pudo eliminar la clienta",
+    "blocked": "No se puede eliminar: tiene compras registradas"
+  },
+  "filters": {
+    "fullName": "Nombre",
+    "fullNamePlaceholder": "Buscar por nombre",
+    "account": "Cuenta",
+    "accountPlaceholder": "@usuario",
+    "phone": "Teléfono",
+    "phonePlaceholder": "Buscar por teléfono",
+    "department": "Departamento",
+    "deliveryType": "Entrega",
+    "allPlaceholder": "Todos",
+    "noOptions": "Sin coincidencias",
+    "clear": "Limpiar filtros",
+    "noResults": "No hay resultados para estos filtros"
+  }
+}

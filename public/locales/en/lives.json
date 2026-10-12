@@ -1,0 +1,145 @@
+{
+  "subtitle": {
+    "ready": "ready to start",
+    "started": "started at {{time}}",
+    "ended": "from {{from}} to {{to}}"
+  },
+  "saved": {
+    "justNow": "Saved just now",
+    "seconds": "Saved {{count}} s ago",
+    "minutes": "Saved {{count}} min ago"
+  },
+  "actions": {
+    "start": "Start live",
+    "pause": "Pause",
+    "resume": "Resume",
+    "end": "End live",
+    "prepareNext": "Prepare another live",
+    "backToLives": "Back to lives",
+    "prepareFirst": "Prepare live"
+  },
+  "end": {
+    "confirmTitle": "Confirm end of live",
+    "confirmMessage": "End the live now? You'll still be able to fix purchases and statuses afterwards.",
+    "confirm": "Yes, end it",
+    "cancel": "Stay live"
+  },
+  "errors": {
+    "action": "Could not update the live",
+    "prepare": "Could not prepare the live",
+    "createClient": "Could not create the client",
+    "saveOrder": "Could not save the purchase",
+    "notFound": "We couldn't find this live."
+  },
+  "prepare": {
+    "title": "Prepare another live",
+    "fields": {
+      "title": "Live name",
+      "titlePlaceholder": "E.g.: Summer drop"
+    },
+    "submit": "Prepare live",
+    "success": "The new live is ready to start",
+    "errors": {
+      "titleRequired": "Enter a name for the live",
+      "titleMax": "{{max}} characters max"
+    },
+    "firstTitle": "Prepare the first live"
+  },
+  "stats": {
+    "ariaLabel": "Live numbers",
+    "duration": "Live duration",
+    "buyers": "Clients who bought",
+    "total": "Total sold in the live",
+    "units": "Items sold"
+  },
+  "summary": {
+    "title": "Live ended",
+    "stillEditable": "You can still fix purchases and statuses.",
+    "text": "Lasted {{duration}} · {{buyers}} · {{units}} · {{total}}",
+    "durationHours": "{{hours}} h {{minutes}} min",
+    "durationMinutes": "{{minutes}} min",
+    "buyers_one": "{{count}} client",
+    "buyers_other": "{{count}} clients",
+    "units_one": "{{count}} item",
+    "units_other": "{{count}} items"
+  },
+  "clients": {
+    "title": "Clients",
+    "new": "New",
+    "searchLabel": "Search client",
+    "searchPlaceholder": "Name, @user or phone",
+    "noResults": "No clients match “{{search}}”.",
+    "createFromSearch": "Create “{{search}}”"
+  },
+  "newClient": {
+    "title": "New client",
+    "fields": {
+      "fullName": "Full name",
+      "account": "Account",
+      "accountPlaceholder": "@user",
+      "phone": "Phone"
+    },
+    "submit": "Create and start purchase",
+    "cancel": "Cancel",
+    "errors": {
+      "nameRequired": "Enter the client's name",
+      "fullNameMax": "Name: {{fullNameMax}} characters max",
+      "accountMax": "Account: {{accountMax}} characters max",
+      "phoneMax": "Phone: {{phoneMax}} characters max"
+    }
+  },
+  "editor": {
+    "title": "{{name}}'s purchase",
+    "statusLabel": "Sale status",
+    "noAccount": "No account",
+    "noPhone": "No phone",
+    "startHint": "Start the live to begin recording purchases.",
+    "emptyTitle": "Live purchase",
+    "emptyMessage": "Search or create a client to start their purchase.",
+    "footer_one": "{{count}} item · saves automatically on every change",
+    "footer_other": "{{count}} items · saves automatically on every change",
+    "total": "Total {{total}}",
+    "packageStatusLabel": "Package status"
+  },
+  "addItem": {
+    "title": "Add item",
+    "titleEnded": "Fix: add another item",
+    "fields": {
+      "code": "Code",
+      "codePlaceholder": "E.g.: 101",
+      "name": "Name",
+      "namePlaceholder": "E.g.: Linen dress",
+      "color": "Color",
+      "colorPlaceholder": "E.g.: Olive green",
+      "price": "Price ($)"
+    },
+    "submit": "Add",
+    "errors": {
+      "required": "Fill in code, name and a valid price."
+    }
+  },
+  "table": {
+    "code": "Code",
+    "name": "Name",
+    "color": "Color",
+    "price": "Price",
+    "quantity": "Quantity",
+    "subtotal": "Subtotal",
+    "removeColumn": "Remove",
+    "remove": "Remove {{name}}",
+    "increment": "Add one",
+    "decrement": "Remove one",
+    "empty": "No items yet. Enter code, name, color and price above."
+  },
+  "orders": {
+    "title": "Live purchases",
+    "count_one": "{{count}} purchase",
+    "count_other": "{{count}} purchases",
+    "empty": "Purchases show up here as soon as an item is added.",
+    "edit": "Edit",
+    "editAria": "Edit {{name}}'s purchase"
+  },
+  "empty": {
+    "noCurrentLive": "There are no lives yet. Prepare the first one to start selling."
+  }
+}

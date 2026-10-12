@@ -1,0 +1,17 @@
+.link {
+  min-height: 44px;
+  border-radius: var(--mantine-radius-md);
+  color: var(--mantine-color-plum-9);
+  font-weight: 500;
+  transition: background-color 150ms ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  &[data-active] {
+    background-color: var(--mantine-color-white);
+    color: var(--mantine-color-plum-9);
+    font-weight: 700;
+  }
+}

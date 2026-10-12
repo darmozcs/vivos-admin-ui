@@ -1,0 +1,145 @@
+{
+  "subtitle": {
+    "ready": "listo para comenzar",
+    "started": "empezó a las {{time}}",
+    "ended": "de {{from}} a {{to}}"
+  },
+  "saved": {
+    "justNow": "Guardado recién",
+    "seconds": "Guardado hace {{count}} s",
+    "minutes": "Guardado hace {{count}} min"
+  },
+  "actions": {
+    "start": "Comenzar vivo",
+    "pause": "Pausar",
+    "resume": "Reanudar",
+    "end": "Terminar vivo",
+    "prepareNext": "Preparar otro vivo",
+    "backToLives": "Volver a vivos",
+    "prepareFirst": "Preparar vivo"
+  },
+  "end": {
+    "confirmTitle": "Confirmar fin del vivo",
+    "confirmMessage": "¿Terminar el vivo ahora? Después vas a poder seguir corrigiendo compras y estados.",
+    "confirm": "Sí, terminar",
+    "cancel": "Seguir en vivo"
+  },
+  "errors": {
+    "action": "No se pudo actualizar el vivo",
+    "prepare": "No se pudo preparar el vivo",
+    "createClient": "No se pudo crear la clienta",
+    "saveOrder": "No se pudo guardar la compra",
+    "notFound": "No encontramos este vivo."
+  },
+  "prepare": {
+    "title": "Preparar otro vivo",
+    "fields": {
+      "title": "Nombre del vivo",
+      "titlePlaceholder": "Ej.: Drop de verano"
+    },
+    "submit": "Preparar vivo",
+    "success": "El nuevo vivo está listo para comenzar",
+    "errors": {
+      "titleRequired": "Ingresá un nombre para el vivo",
+      "titleMax": "Máximo {{max}} caracteres"
+    },
+    "firstTitle": "Preparar el primer vivo"
+  },
+  "stats": {
+    "ariaLabel": "Números del vivo",
+    "duration": "Duración del vivo",
+    "buyers": "Clientas que compraron",
+    "total": "Total vendido en el vivo",
+    "units": "Prendas vendidas"
+  },
+  "summary": {
+    "title": "Vivo terminado",
+    "stillEditable": "Todavía podés corregir compras y estados.",
+    "text": "Duró {{duration}} · {{buyers}} · {{units}} · {{total}}",
+    "durationHours": "{{hours}} h {{minutes}} min",
+    "durationMinutes": "{{minutes}} min",
+    "buyers_one": "{{count}} clienta",
+    "buyers_other": "{{count}} clientas",
+    "units_one": "{{count}} prenda",
+    "units_other": "{{count}} prendas"
+  },
+  "clients": {
+    "title": "Clientas",
+    "new": "Nueva",
+    "searchLabel": "Buscar clienta",
+    "searchPlaceholder": "Nombre, @usuario o teléfono",
+    "noResults": "No hay clientas que coincidan con «{{search}}».",
+    "createFromSearch": "Crear «{{search}}»"
+  },
+  "newClient": {
+    "title": "Nueva clienta",
+    "fields": {
+      "fullName": "Nombre y apellido",
+      "account": "Cuenta",
+      "accountPlaceholder": "@usuario",
+      "phone": "Teléfono"
+    },
+    "submit": "Crear y empezar compra",
+    "cancel": "Cancelar",
+    "errors": {
+      "nameRequired": "Ingresá el nombre de la clienta",
+      "fullNameMax": "Nombre: máximo {{fullNameMax}} caracteres",
+      "accountMax": "Cuenta: máximo {{accountMax}} caracteres",
+      "phoneMax": "Teléfono: máximo {{phoneMax}} caracteres"
+    }
+  },
+  "editor": {
+    "title": "Compra de {{name}}",
+    "statusLabel": "Estado de la venta",
+    "noAccount": "Sin cuenta",
+    "noPhone": "Sin teléfono",
+    "startHint": "Comenzá el vivo para empezar a cargar compras.",
+    "emptyTitle": "Compra en vivo",
+    "emptyMessage": "Buscá o creá una clienta para empezar su compra.",
+    "footer_one": "{{count}} prenda · se guarda sola con cada cambio",
+    "footer_other": "{{count}} prendas · se guarda sola con cada cambio",
+    "total": "Total {{total}}",
+    "packageStatusLabel": "Estado del paquete"
+  },
+  "addItem": {
+    "title": "Cargar prenda",
+    "titleEnded": "Corregir: cargar otra prenda",
+    "fields": {
+      "code": "Código",
+      "codePlaceholder": "Ej.: 101",
+      "name": "Nombre",
+      "namePlaceholder": "Ej.: Vestido de lino",
+      "color": "Color",
+      "colorPlaceholder": "Ej.: Verde oliva",
+      "price": "Precio ($)"
+    },
+    "submit": "Agregar",
+    "errors": {
+      "required": "Completá código, nombre y un precio válido."
+    }
+  },
+  "table": {
+    "code": "Código",
+    "name": "Nombre",
+    "color": "Color",
+    "price": "Precio",
+    "quantity": "Cantidad",
+    "subtotal": "Subtotal",
+    "removeColumn": "Quitar",
+    "remove": "Quitar {{name}}",
+    "increment": "Sumar uno",
+    "decrement": "Restar uno",
+    "empty": "Todavía no hay prendas. Cargá código, nombre, color y precio arriba."
+  },
+  "orders": {
+    "title": "Compras del vivo",
+    "count_one": "{{count}} compra",
+    "count_other": "{{count}} compras",
+    "empty": "Las compras aparecen acá apenas se agrega una prenda.",
+    "edit": "Editar",
+    "editAria": "Editar compra de {{name}}"
+  },
+  "empty": {
+    "noCurrentLive": "Todavía no hay vivos. Prepará el primero para empezar a vender."
+  }
+}

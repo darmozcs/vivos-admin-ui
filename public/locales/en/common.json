@@ -1,0 +1,130 @@
+{
+  "languages": {
+    "es": "Español",
+    "en": "English",
+    "select": "Select language"
+  },
+  "app": {
+    "title": "Store admin"
+  },
+  "brand": {
+    "subtitle": "Admin panel",
+    "name": "Vivos"
+  },
+  "menu": {
+    "ariaLabel": "Main menu",
+    "toggle": "Toggle menu",
+    "hide": "Hide sidebar",
+    "show": "Show sidebar",
+    "clients": "Clients",
+    "sales": "Sales",
+    "lives": "Lives",
+    "startLive": "Start live",
+    "settings": "Settings",
+    "stores": "Stores"
+  },
+  "roles": {
+    "admin": "Administrator",
+    "superAdmin": "Super administrator"
+  },
+  "meta": {
+    "live": {
+      "title": "Start live",
+      "description": "Run the live: clients, purchases and totals in real time."
+    },
+    "lives": {
+      "title": "Lives",
+      "description": "Every store live with its sales."
+    },
+    "liveDetail": {
+      "title": "Live detail",
+      "description": "Everything about a live: schedule, purchases and items sold."
+    },
+    "login": {
+      "title": "Sign in",
+      "description": "Sign in to the store admin panel."
+    },
+    "settings": {
+      "title": "Settings",
+      "description": "Store name and password."
+    },
+    "clients": {
+      "title": "Clients",
+      "description": "Store clients and their purchases."
+    },
+    "sales": {
+      "title": "Sales",
+      "description": "Store sales and shipping status."
+    },
+    "stores": {
+      "title": "Stores",
+      "description": "Create, edit and enable stores and their administrators."
+    }
+  },
+  "modals": {
+    "labels": {
+      "confirm": "Confirm",
+      "cancel": "Cancel"
+    }
+  },
+  "notifications": {
+    "errorTitle": "Error",
+    "successTitle": "Done"
+  },
+  "orderStatus": {
+    "pending": "Pending",
+    "paid": "Paid",
+    "cancelled": "Cancelled"
+  },
+  "table": {
+    "empty": "No data to show"
+  },
+  "liveStatus": {
+    "notStarted": "Not started",
+    "running": "Live",
+    "paused": "Paused",
+    "ended": "Live ended"
+  },
+  "packageStatus": {
+    "pending": "Pending",
+    "prepared": "Packed",
+    "shipped": "Shipped",
+    "delivered": "Delivered"
+  },
+  "auth": {
+    "notAuthorized": "Your account is not allowed to use this panel."
+  },
+  "department": {
+    "ARTIGAS": "Artigas",
+    "CANELONES": "Canelones",
+    "CERRO_LARGO": "Cerro Largo",
+    "COLONIA": "Colonia",
+    "DURAZNO": "Durazno",
+    "FLORES": "Flores",
+    "FLORIDA": "Florida",
+    "LAVALLEJA": "Lavalleja",
+    "MALDONADO": "Maldonado",
+    "MONTEVIDEO": "Montevideo",
+    "PAYSANDU": "Paysandú",
+    "RIO_NEGRO": "Río Negro",
+    "RIVERA": "Rivera",
+    "ROCHA": "Rocha",
+    "SALTO": "Salto",
+    "SAN_JOSE": "San José",
+    "SORIANO": "Soriano",
+    "TACUAREMBO": "Tacuarembó",
+    "TREINTA_Y_TRES": "Treinta y Tres"
+  },
+  "deliveryType": {
+    "CADETERIA": "Courier",
+    "AGENCIA": "Agency",
+    "DOMICILIO": "Home delivery"
+  },
+  "clientDelivery": {
+    "department": "Department",
+    "departmentPlaceholder": "Choose a department",
+    "deliveryType": "Delivery type",
+    "deliveryTypePlaceholder": "Choose the delivery type",
+    "noResults": "No results"
+  }
+}

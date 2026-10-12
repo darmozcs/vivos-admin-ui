@@ -1,0 +1,39 @@
+{
+  "title": "Ventas",
+  "description": "Todas las ventas de los vivos. Cambiá el estado de la venta o del paquete desde la tabla.",
+  "columns": {
+    "saleNumber": "Venta",
+    "createdAt": "Creada",
+    "updatedAt": "Actualización",
+    "live": "Vivo",
+    "client": "Clienta",
+    "units": "Prendas",
+    "total": "Total",
+    "status": "E. venta",
+    "statusAria": "Estado de la venta {{sale}}",
+    "packageStatus": "E. paquete",
+    "packageStatusAria": "Estado del paquete de la venta {{sale}}"
+  },
+  "statusUpdate": {
+    "success": "Estado actualizado",
+    "error": "No se pudo actualizar el estado"
+  },
+  "filters": {
+    "dateRange": "Fecha",
+    "dateRangePlaceholder": "Desde – hasta",
+    "liveTitle": "Vivo",
+    "liveTitlePlaceholder": "Buscar por título",
+    "client": "Clienta",
+    "status": "Estado de la venta",
+    "packageStatus": "Estado del paquete",
+    "allPlaceholder": "Todos",
+    "noOptions": "Sin coincidencias",
+    "clear": "Limpiar filtros",
+    "noResults": "No hay resultados para estos filtros"
+  },
+  "summary": {
+    "orders": "Ventas encontradas",
+    "units": "Prendas",
+    "total": "Total"
+  }
+}

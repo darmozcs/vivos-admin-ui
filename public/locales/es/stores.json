@@ -1,0 +1,89 @@
+{
+  "title": "Tiendas",
+  "description": "Tiendas registradas y la cuenta de su administradora.",
+  "empty": "Todavía no hay tiendas",
+  "columns": {
+    "name": "Tienda",
+    "adminEmail": "Email de la administradora",
+    "emailStatus": "Email",
+    "status": "Estado",
+    "createdAt": "Alta"
+  },
+  "status": {
+    "active": "Activa",
+    "inactive": "Inactiva"
+  },
+  "emailStatus": {
+    "verified": "Verificado",
+    "pending": "Pendiente"
+  },
+  "actions": {
+    "edit": "Editar {{name}}",
+    "activate": "Activar {{name}}",
+    "deactivate": "Desactivar {{name}}",
+    "resetPassword": "Resetear la contraseña de {{name}}",
+    "resendVerification": "Reenviar el código de verificación de {{name}}"
+  },
+  "form": {
+    "fields": {
+      "name": "Nombre de la tienda",
+      "namePlaceholder": "Ej.: Boutique Lucía",
+      "adminEmail": "Email de la administradora",
+      "adminPassword": "Contraseña inicial",
+      "newPassword": "Nueva contraseña",
+      "confirmPassword": "Repetí la contraseña",
+      "passwordHint": "Entre {{min}} y {{passwordMax}} caracteres"
+    },
+    "cancel": "Cancelar",
+    "errors": {
+      "nameRequired": "Ingresá el nombre de la tienda",
+      "nameMax": "Máximo {{max}} caracteres",
+      "emailRequired": "Ingresá el email de la administradora",
+      "emailInvalid": "Ingresá un email válido",
+      "passwordRequired": "Ingresá una contraseña",
+      "passwordMin": "Debe tener al menos {{min}} caracteres",
+      "passwordMax": "Debe tener como máximo {{passwordMax}} caracteres",
+      "confirmRequired": "Repetí la contraseña",
+      "mismatch": "Las contraseñas no coinciden"
+    }
+  },
+  "create": {
+    "button": "Nueva tienda",
+    "title": "Nueva tienda",
+    "submit": "Crear tienda",
+    "verificationNotice": "Le vamos a enviar un código de verificación al email de la administradora. Lo va a necesitar en su primer inicio de sesión.",
+    "success": "Tienda creada. Enviamos el código de verificación a {{email}}.",
+    "error": "No se pudo crear la tienda"
+  },
+  "edit": {
+    "title": "Editar tienda",
+    "submit": "Guardar cambios",
+    "success": "Tienda actualizada",
+    "error": "No se pudo actualizar la tienda"
+  },
+  "activate": {
+    "title": "Activar tienda",
+    "message": "¿Activar {{name}}? Su administradora va a poder volver a iniciar sesión.",
+    "confirm": "Activar",
+    "success": "{{name}} está activa",
+    "error": "No se pudo activar la tienda"
+  },
+  "deactivate": {
+    "title": "Desactivar tienda",
+    "message": "¿Desactivar {{name}}? Su administradora pierde el acceso al panel de inmediato.",
+    "confirm": "Desactivar",
+    "success": "{{name}} fue desactivada",
+    "error": "No se pudo desactivar la tienda"
+  },
+  "resetPassword": {
+    "title": "Resetear contraseña",
+    "description": "Nueva contraseña para {{email}}. Sus sesiones abiertas se van a cerrar.",
+    "submit": "Cambiar contraseña",
+    "success": "Contraseña de {{email}} actualizada",
+    "error": "No se pudo cambiar la contraseña"
+  },
+  "resendVerification": {
+    "success": "Enviamos un nuevo código a {{email}}",
+    "error": "No se pudo reenviar el código"
+  }
+}
