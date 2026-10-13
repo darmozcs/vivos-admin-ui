@@ -8,14 +8,14 @@ const TABLE_MIN_HEIGHT = 200;
 
 export const LivesTableContainer = () => {
   const { t } = useTranslation("liveHistory");
-  const { records, isLoading, hasActiveFilters, openLive } = useLivesTable();
+  const { records, isLoading, hasActiveFilters, openLive, requestDelete } = useLivesTable();
 
   return (
     <Paper withBorder p={0}>
       <DataTable
         minHeight={TABLE_MIN_HEIGHT}
         records={records}
-        columns={getLivesTableColumns(t)}
+        columns={getLivesTableColumns(t, { onDelete: requestDelete })}
         fetching={isLoading}
         highlightOnHover
         onRowClick={({ record }) => openLive(record.id)}

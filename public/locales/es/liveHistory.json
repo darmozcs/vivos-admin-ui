@@ -30,5 +30,18 @@
     "buyers": "Total clientas",
     "units": "Total prendas",
     "total": "Total ventas"
+  },
+  "untitled": "Vivo sin nombre",
+  "actions": {
+    "delete": "Eliminar {{name}}"
+  },
+  "delete": {
+    "title": "Eliminar vivo",
+    "message": "¿Eliminar el vivo «{{name}}»? Esta acción no se puede deshacer.",
+    "confirm": "Sí, eliminar",
+    "cancel": "Cancelar",
+    "success": "Vivo eliminado",
+    "error": "No se pudo eliminar el vivo",
+    "blocked": "Solo se pueden eliminar vivos sin ventas"
   }
 }

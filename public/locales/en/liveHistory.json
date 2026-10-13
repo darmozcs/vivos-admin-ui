@@ -30,5 +30,18 @@
     "buyers": "Total clients",
     "units": "Total items",
     "total": "Total sales"
+  },
+  "untitled": "Untitled live",
+  "actions": {
+    "delete": "Delete {{name}}"
+  },
+  "delete": {
+    "title": "Delete live",
+    "message": "Delete the live \"{{name}}\"? This cannot be undone.",
+    "confirm": "Yes, delete",
+    "cancel": "Cancel",
+    "success": "Live deleted",
+    "error": "Could not delete the live",
+    "blocked": "Only lives without sales can be deleted"
   }
 }

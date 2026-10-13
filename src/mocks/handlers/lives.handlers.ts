@@ -28,13 +28,23 @@ type RangeParamName = (typeof RANGE_PARAMS)[number];
 const elapsedSince = (iso: string | null, now: number) =>
   iso ? now - new Date(iso).getTime() : 0;
 
-type Transition = (live: Live, nowIso: string, now: number) => Partial<Live>;
+const pad = (value: number) => String(value).padStart(2, "0");
+
+/** dd/MM/yyyy HH:mm, same format as the backend. */
+const formatDefaultTitle = (iso: string) => {
+  const date = new Date(iso);
+  return `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
+};
+
+type Transition =(live: Live, nowIso: string, now: number) => Partial<Live>;
 
 /** Allowed status for each action and the changes it applies. */
 const TRANSITIONS: Record<LiveAction, { from: Live["status"][]; apply: Transition }> = {
   [LIVE_ACTION.START]: {
     from: [LIVE_STATUS.NOT_STARTED],
-    apply: (_live, nowIso) => ({
+    apply: (live, nowIso) => ({
+      // Lives prepared without a name are named after their start date and time.
+      title: live.title || formatDefaultTitle(nowIso),
       status: LIVE_STATUS.RUNNING,
       startedAt: nowIso,
       runningSince: nowIso,
@@ -175,8 +185,8 @@ export const liveHandlers = [
     if ("error" in guard) return guard.error;
     const body = (await request.json()) as CreateLivePayload;
     const title = body.title?.trim() ?? "";
-    if (!title || title.length > LIVE_TITLE_MAX) {
-      return errorResponse(400, "El nombre del vivo es obligatorio (máximo 120 caracteres)");
+    if (title.length > LIVE_TITLE_MAX) {
+      return errorResponse(400, "El titulo no puede superar 120 caracteres");
     }
     const created: MockLive = {
       id: crypto.randomUUID(),
@@ -207,5 +217,26 @@ export const liveHandlers = [
     const now = Date.now();
     Object.assign(live, transition.apply(live, new Date(now).toISOString(), now));
     return HttpResponse.json(live);
+  }),
+
+  http.delete(`${API_URL}${LIVES_PATH}/:id`, async ({ params, request }) => {
+    await delay(MOCK_DELAY_MS);
+    const guard = requireStore(request);
+    if ("error" in guard) return guard.error;
+    const live = findLive(guard.store.id, String(params.id));
+    if (!live) return errorResponse(404, "Vivo no encontrado");
+    // Lives with sales are kept so the sales history stays consistent.
+    const hasSales = MOCK_ORDERS.some(
+      (order) => order.liveId === live.id && order.items.length > 0,
+    );
+    if (hasSales) {
+      return errorResponse(409, "No se puede eliminar un vivo con ventas");
+    }
+    // Empty orders of the live go with it.
+    for (let i = MOCK_ORDERS.length - 1; i >= 0; i--) {
+      if (MOCK_ORDERS[i].liveId === live.id) MOCK_ORDERS.splice(i, 1);
+    }
+    MOCK_LIVES.splice(MOCK_LIVES.indexOf(live), 1);
+    return new HttpResponse(null, { status: 204 });
   }),
 ];

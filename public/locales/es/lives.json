@@ -34,13 +34,12 @@
   "prepare": {
     "title": "Preparar otro vivo",
     "fields": {
-      "title": "Nombre del vivo",
-      "titlePlaceholder": "Ej.: Drop de verano"
+      "title": "Nombre del vivo (opcional)",
+      "titlePlaceholder": "Si lo dejás vacío, se usa la fecha y hora de inicio"
     },
     "submit": "Preparar vivo",
     "success": "El nuevo vivo está listo para comenzar",
     "errors": {
-      "titleRequired": "Ingresá un nombre para el vivo",
       "titleMax": "Máximo {{max}} caracteres"
     },
     "firstTitle": "Preparar el primer vivo"
@@ -141,5 +140,6 @@
   },
   "empty": {
     "noCurrentLive": "Todavía no hay vivos. Prepará el primero para empezar a vender."
-  }
+  },
+  "untitled": "Vivo sin nombre"
 }

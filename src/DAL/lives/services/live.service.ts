@@ -11,7 +11,8 @@ import type { LiveAction } from "@/types";
 import type { AxiosResponse } from "axios";
 
 export interface CreateLivePayload {
-  title: string;
+  /** Optional: when empty, the live is named after its start date and time. */
+  title?: string;
 }
 
 /**
@@ -66,3 +67,8 @@ export const liveActionService = async ({
   action: LiveAction;
 }): Promise<AxiosResponse<Live>> =>
   await httpClient.post<Live>(LIVE_ACTION_PATH({ id, action }));
+
+export const deleteLiveService = async (
+  id: string,
+): Promise<AxiosResponse<void>> =>
+  await httpClient.delete<void>(LIVE_DETAIL_PATH({ id }));

@@ -34,13 +34,12 @@
   "prepare": {
     "title": "Prepare another live",
     "fields": {
-      "title": "Live name",
-      "titlePlaceholder": "E.g.: Summer drop"
+      "title": "Live name (optional)",
+      "titlePlaceholder": "If empty, the start date and time is used"
     },
     "submit": "Prepare live",
     "success": "The new live is ready to start",
     "errors": {
-      "titleRequired": "Enter a name for the live",
       "titleMax": "{{max}} characters max"
     },
     "firstTitle": "Prepare the first live"
@@ -141,5 +140,6 @@
   },
   "empty": {
     "noCurrentLive": "There are no lives yet. Prepare the first one to start selling."
-  }
+  },
+  "untitled": "Untitled live"
 }

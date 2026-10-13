@@ -1,23 +1,26 @@
 import type { DataTableColumn } from "@/libs/ui/table";
 import { LiveStatusBadge } from "@/modules/common/components";
-import { Stack, Text } from "@mantine/core";
+import { Text } from "@mantine/core";
 import type { TFunction } from "i18next";
+import { LiveRowActions } from "../components";
 import type { LiveRow } from "../hooks";
 
-export const getLivesTableColumns = (t: TFunction): DataTableColumn<LiveRow>[] => [
+interface LivesTableActions {
+  onDelete: (live: LiveRow) => void;
+}
+
+export const getLivesTableColumns = (
+  t: TFunction,
+  actions: LivesTableActions,
+): DataTableColumn<LiveRow>[] => [
   {
     accessor: "title",
     title: t("columns.title"),
     width: 240,
     render: (live) => (
-      <Stack gap={0}>
-        <Text size="sm" fw={700}>
-          {live.title}
-        </Text>
-        <Text size="xs" c="dimmed">
-          {live.platform}
-        </Text>
-      </Stack>
+      <Text size="sm" fw={700}>
+        {live.title}
+      </Text>
     ),
   },
   {
@@ -31,4 +34,17 @@ export const getLivesTableColumns = (t: TFunction): DataTableColumn<LiveRow>[] =
   { accessor: "buyers", title: t("columns.buyers"), width: 110, textAlign: "right" },
   { accessor: "units", title: t("columns.units"), width: 100, textAlign: "right" },
   { accessor: "total", title: t("columns.total"), width: 130, textAlign: "right" },
+  {
+    accessor: "actions",
+    title: "",
+    width: 64,
+    textAlign: "center",
+    render: (live) => (
+      <LiveRowActions
+        title={live.title}
+        canDelete={live.canDelete}
+        onDelete={() => actions.onDelete(live)}
+      />
+    ),
+  },
 ];
