@@ -20,7 +20,7 @@ export const LoginForm = ({ form, onSubmit, isLoading, errorMessage }: LoginForm
   return (
     <form onSubmit={onSubmit} noValidate>
       <Stack gap="md">
-        <Title order={2}>{t("login.title")}</Title>
+        <Title order={3}>{t("login.title")}</Title>
         {errorMessage && (
           <Alert color="red" variant="light" icon={<IconAlertCircle size={18} />} role="alert">
             {errorMessage}

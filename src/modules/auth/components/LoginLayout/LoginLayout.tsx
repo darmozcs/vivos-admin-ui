@@ -1,5 +1,6 @@
-import { Avatar, Center, Group, Paper, Stack, Text } from "@mantine/core";
+import { Center, Group, Paper, Stack, Text, Title } from "@mantine/core";
 import type { ReactNode } from "react";
+import { LanguageMenuContainer } from "@/modules/common/containers";
 import { useTranslation } from "react-i18next";
 import { LOGIN_CARD_WIDTH } from "../../const/auth.const";
 
@@ -7,10 +8,9 @@ interface LoginLayoutProps {
   children: ReactNode;
 }
 
-/** Full-page frame of the login screen with the generic app brand. */
+/** Full-page frame of the login screen with the welcome header and language menu. */
 export const LoginLayout = ({ children }: LoginLayoutProps) => {
   const { t } = useTranslation("auth");
-  const brandName = t("common:brand.name");
 
   return (
     <Center mih="100vh" bg="white" p="md">
@@ -22,18 +22,14 @@ export const LoginLayout = ({ children }: LoginLayoutProps) => {
         p={{ base: "lg", sm: "xl" }}
       >
         <Stack gap="lg">
-          <Group gap="sm" wrap="nowrap">
-            <Avatar radius="md" size={44} color="plum.9" name={brandName} />
-            <Stack gap={0}>
-              <Text ff="heading" fw={700} size="lg" c="plum.9">
-                {brandName}
-              </Text>
-              <Text size="sm" c="plum.9">
-                {t("login.subtitle")}
-              </Text>
+          <Group justify="space-between" align="flex-start" wrap="nowrap">
+            <Stack gap={4}>
+              <Title order={2}>{t("login.welcome.title")}</Title>
+              <Text c="dimmed">{t("login.welcome.description")}</Text>
             </Stack>
           </Group>
           {children}
+          <LanguageMenuContainer />
         </Stack>
       </Paper>
     </Center>
