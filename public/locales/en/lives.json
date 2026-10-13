@@ -115,7 +115,7 @@
     },
     "submit": "Add",
     "errors": {
-      "required": "Fill in code, name and a valid price."
+      "required": "Enter a valid price."
     }
   },
   "table": {

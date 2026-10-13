@@ -34,8 +34,8 @@ export const useAddItemForm = ({ knownItems, onAdd }: UseAddItemFormProps) => {
 
   const onSubmit = form.handleSubmit((data) => {
     onAdd({
-      code: data.code,
-      name: data.name,
+      code: data.code ?? "",
+      name: data.name ?? "",
       color: data.color ?? "",
       price: data.price,
       quantity: INITIAL_ITEM_QUANTITY,

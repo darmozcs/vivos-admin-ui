@@ -110,9 +110,9 @@ export const orderHandlers = [
 
       const body = (await request.json()) as SaveOrderBody;
       const invalidItem = body.items?.some(
-        (item) => !item.code?.trim() || !item.name?.trim() || item.price < 0 || item.quantity < 1,
+        (item) => item.price == null || item.price < 0 || (item.quantity != null && item.quantity < 1),
       );
-      if (invalidItem) return errorResponse(400, "Las prendas necesitan código, nombre, precio y cantidad válidos");
+      if (invalidItem) return errorResponse(400, "Las prendas necesitan un precio válido");
       const existing = storeOrders(storeId).find(
         (order) => order.liveId === liveId && order.clientId === clientId,
       );

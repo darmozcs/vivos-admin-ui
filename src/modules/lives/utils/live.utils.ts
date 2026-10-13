@@ -15,8 +15,10 @@ export const isLiveRunning = (live?: Live) => live?.status === LIVE_STATUS.RUNNI
 
 const normalizeCode = (code: string) => code.trim().toLowerCase();
 
+/** Name is compared too: without a code, it is what tells two garments apart. */
 const isSameItem = (a: OrderItem, b: OrderItem) =>
   normalizeCode(a.code) === normalizeCode(b.code) &&
+  normalizeCode(a.name) === normalizeCode(b.name) &&
   a.color === b.color &&
   a.price === b.price;
 

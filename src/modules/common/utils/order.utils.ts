@@ -17,12 +17,12 @@ export const getOrderTotal = (items: OrderItem[]) =>
 export const getOrderUnits = (items: OrderItem[]) =>
   items.reduce((units, item) => units + item.quantity, 0);
 
-/** Short description of the items: "101 Verde ×2 · 205 Negro". */
+/** Short description of the items: "101 Verde ×2 · 205 Negro". Without a code, the name is used. */
 export const summarizeOrderItems = (items: OrderItem[]) =>
   items
     .map((item) =>
       [
-        item.code,
+        item.code || item.name,
         item.color,
         item.quantity > 1 ? `${QUANTITY_PREFIX}${item.quantity}` : "",
       ]

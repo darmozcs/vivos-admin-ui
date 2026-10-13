@@ -1,8 +1,8 @@
 import * as yup from "yup";
 
 export const addItemSchema = yup.object({
-  code: yup.string().trim().required("lives:addItem.errors.required"),
-  name: yup.string().trim().required("lives:addItem.errors.required"),
+  code: yup.string().trim().default(""),
+  name: yup.string().trim().default(""),
   color: yup.string().trim().default(""),
   price: yup
     .number()
