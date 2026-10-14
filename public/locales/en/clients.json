@@ -29,6 +29,8 @@
       "account": "Account",
       "accountPlaceholder": "@user",
       "phone": "Phone",
+      "email": "Email",
+      "emailPlaceholder": "name@email.com",
       "address": "Address",
       "addressPlaceholder": "Street, number, apt, city"
     },
@@ -38,6 +40,8 @@
       "fullNameMax": "Name: {{fullNameMax}} characters max",
       "accountMax": "Account: {{accountMax}} characters max",
       "phoneMax": "Phone: {{phoneMax}} characters max",
+      "emailInvalid": "Enter a valid email",
+      "emailMax": "Email: {{emailMax}} characters max",
       "addressMax": "Address: {{addressMax}} characters max"
     }
   },
@@ -54,15 +58,11 @@
     "confirm": "Delete",
     "success": "Client deleted",
     "error": "Could not delete the client",
-    "blocked": "Can't be deleted: it has recorded purchases"
+    "blocked": "Can't be deleted: it has recorded live sales or purchases/sales"
   },
   "filters": {
-    "fullName": "Name",
-    "fullNamePlaceholder": "Search by name",
-    "account": "Account",
-    "accountPlaceholder": "@username",
-    "phone": "Phone",
-    "phonePlaceholder": "Search by phone",
+    "search": "Search",
+    "searchPlaceholder": "Name, account, phone or email",
     "department": "Department",
     "deliveryType": "Delivery",
     "allPlaceholder": "All",

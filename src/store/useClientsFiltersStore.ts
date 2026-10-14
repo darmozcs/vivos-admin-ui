@@ -4,9 +4,8 @@ import type { DeliveryType, Department } from "@/types";
 import { create } from "zustand";
 
 export interface ClientsFilters {
-  fullName: string;
-  account: string;
-  phone: string;
+  /** Searches name, account, phone and email at once. */
+  search: string;
   department: Department | null;
   deliveryType: DeliveryType | null;
 }
@@ -20,9 +19,7 @@ interface ClientsFiltersState {
 }
 
 const FILTERS_INITIAL: ClientsFilters = {
-  fullName: "",
-  account: "",
-  phone: "",
+  search: "",
   department: null,
   deliveryType: null,
 };

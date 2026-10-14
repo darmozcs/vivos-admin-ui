@@ -57,7 +57,9 @@ export const LiveHeaderContainer = () => {
       {header.fromHistory && <BackToLivesButton onClick={header.goBack} />}
       <Group component="header" justify="space-between" align="center" gap="md">
         <LiveTitle
+          number={header.live.number}
           title={header.live.title || t("untitled")}
+          clock={header.clock}
           subtitle={header.subtitle}
           status={header.live.status}
         />

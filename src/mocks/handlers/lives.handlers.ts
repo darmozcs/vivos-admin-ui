@@ -190,6 +190,10 @@ export const liveHandlers = [
     }
     const created: MockLive = {
       id: crypto.randomUUID(),
+      // Lives are numbered per store.
+      number:
+        MOCK_LIVES.filter((live) => live.storeId === guard.store.id)
+          .reduce((max, live) => Math.max(max, live.number), 0) + 1,
       storeId: guard.store.id,
       title,
       platform: MOCK_PLATFORM,

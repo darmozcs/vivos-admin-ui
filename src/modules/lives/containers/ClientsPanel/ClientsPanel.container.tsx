@@ -13,6 +13,20 @@ export const ClientsPanelContainer = () => {
   const { t } = useTranslation("lives");
   const panel = useClientsPanel();
 
+  // While creating a client the panel only shows the form.
+  if (panel.newOpened) {
+    return (
+      <LivePanel>
+        <NewClientForm
+          form={panel.newClientForm.form}
+          onSubmit={panel.newClientForm.onSubmit}
+          onCancel={panel.closeNew}
+          isLoading={panel.newClientForm.isLoading}
+        />
+      </LivePanel>
+    );
+  }
+
   return (
     <LivePanel
       title={t("clients.title")}
@@ -27,14 +41,6 @@ export const ClientsPanelContainer = () => {
       }
     >
       <ClientSearchInput value={panel.search} onChange={panel.setSearch} />
-      {panel.newOpened && (
-        <NewClientForm
-          form={panel.newClientForm.form}
-          onSubmit={panel.newClientForm.onSubmit}
-          onCancel={panel.closeNew}
-          isLoading={panel.newClientForm.isLoading}
-        />
-      )}
       <ClientList
         items={panel.items}
         search={panel.search.trim()}

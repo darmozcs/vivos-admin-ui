@@ -1,5 +1,5 @@
 import { useLivesQuery } from "@/DAL";
-import { formatClock, formatMoney } from "@/libs";
+import { formatClock, formatLiveNumber, formatMoney } from "@/libs";
 import { getLiveElapsedMs } from "@/modules/common/utils";
 import type { LiveStatus } from "@/types";
 import { useNavigate } from "@tanstack/react-router";
@@ -11,6 +11,7 @@ import { useLiveDelete } from "./useLiveDelete";
 
 export interface LiveRow {
   id: string;
+  number: string;
   title: string;
   status: LiveStatus;
   date: string;
@@ -33,6 +34,7 @@ export const useLivesTable = () => {
     const now = Date.now();
     return lives.map((live) => ({
       id: live.id,
+      number: formatLiveNumber(live.number),
       // Lives prepared without a name get one (start date and time) when they start.
       title: live.title || t("untitled"),
       status: live.status,

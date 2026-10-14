@@ -1,10 +1,8 @@
 export { useClientsFiltersStore, type ClientsFilters } from "./useClientsFiltersStore";
 export {
-  isInvalidRange,
   useLivesFiltersStore,
   type LivesDateRange,
   type LivesFilters,
-  type LivesRangeFilter,
 } from "./useLivesFiltersStore";
 export { useLiveWorkspaceStore } from "./useLiveWorkspaceStore";
 export {
@@ -13,3 +11,5 @@ export {
   type SalesFilters,
 } from "./useSalesFiltersStore";
 export { useUserStore } from "./useUserStore";
+export { useTradesFiltersStore, type TradesDateRange, type TradesFilters } from "./useTradesFiltersStore";
+export { useSellersFiltersStore, type SellersFilters } from "./useSellersFiltersStore";

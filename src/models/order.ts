@@ -10,7 +10,9 @@ export interface OrderItem {
 
 export interface Order {
   id: string;
-  /** Human readable sale number assigned by the server. */
+  /** Number of the live the sale belongs to. */
+  liveNumber: number;
+  /** Correlative number of the sale within its live; shown as "liveNumber-number". */
   number: number;
   liveId: string;
   clientId: string;

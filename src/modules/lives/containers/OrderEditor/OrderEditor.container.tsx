@@ -26,6 +26,7 @@ export const OrderEditorContainer = () => {
     <LivePanel emphasis>
       <OrderEditorHeader
         {...editor.client}
+        saleNumber={editor.saleNumber}
         status={editor.status}
         packageStatus={editor.packageStatus}
         statusDisabled={!editor.started}

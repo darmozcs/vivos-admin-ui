@@ -1,4 +1,4 @@
-import { useClientsQuery, useOrdersQuery } from "@/DAL";
+import { useClientsQuery, useTradesQuery, useOrdersQuery } from "@/DAL";
 import type { DeliveryType, Department } from "@/types";
 import { useMemo, useState } from "react";
 import { useClientsQueryParams } from "../ClientsFilters/useClientsQueryParams";
@@ -12,7 +12,7 @@ export interface ClientRow {
   address: string;
   department: Department | null;
   deliveryType: DeliveryType | null;
-  /** Clients with purchases are kept to preserve the sales history. */
+  /** Clients with purchases or trades are kept to preserve the history. */
   canDelete: boolean;
 }
 
@@ -21,12 +21,16 @@ export const useClientsTable = () => {
   const { data: clients = [], isLoading, isPlaceholderData } = useClientsQuery(params);
   // The delete guard always counts every sale of the store, never filtered ones.
   const { data: orders = [] } = useOrdersQuery();
+  const { data: trades = [] } = useTradesQuery();
   const [editingClientId, setEditingClientId] = useState<string | null>(null);
   const { requestDelete } = useClientDelete();
 
   const records = useMemo<ClientRow[]>(() => {
-    // Any sale, even cancelled, is history that blocks deleting the client.
-    const clientsWithHistory = new Set(orders.map((order) => order.clientId));
+    // Any sale (even cancelled) or trade is history that blocks deleting the client.
+    const clientsWithHistory = new Set([
+      ...orders.map((order) => order.clientId),
+      ...trades.map((trade) => trade.clientId),
+    ]);
     return clients.map((client) => ({
       id: client.id,
       fullName: client.fullName,
@@ -37,7 +41,7 @@ export const useClientsTable = () => {
       deliveryType: client.deliveryType,
       canDelete: !clientsWithHistory.has(client.id),
     }));
-  }, [clients, orders]);
+  }, [clients, orders, trades]);
 
   return {
     records,

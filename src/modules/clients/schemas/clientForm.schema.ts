@@ -18,6 +18,12 @@ export const clientFormSchema = yup.object({
     .trim()
     .max(CLIENT_FIELD_MAX.phoneMax, "clients:form.errors.phoneMax")
     .default(""),
+  email: yup
+    .string()
+    .trim()
+    .email("clients:form.errors.emailInvalid")
+    .max(CLIENT_FIELD_MAX.emailMax, "clients:form.errors.emailMax")
+    .default(""),
   address: yup
     .string()
     .trim()
@@ -43,6 +49,7 @@ export const CLIENT_FORM_DEFAULT_VALUES: ClientFormData = {
   fullName: "",
   account: "",
   phone: "",
+  email: "",
   address: "",
   department: null,
   deliveryType: null,

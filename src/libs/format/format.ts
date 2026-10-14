@@ -44,8 +44,9 @@ export const getInitials = (fullName: string) =>
 
 export const formatDate = (isoDate: string) => dayjs(isoDate).format("DD/MM/YYYY");
 
-const SALE_NUMBER_DIGITS = 4;
+/** Formats a sale number as "<live number>-<sale number>", e.g. "12-3". */
+export const formatSaleNumber = (liveNumber: number, saleNumber: number) =>
+  `${liveNumber}-${saleNumber}`;
 
-/** Formats a sale number as "#0007". */
-export const formatSaleNumber = (saleNumber: number) =>
-  `#${String(saleNumber).padStart(SALE_NUMBER_DIGITS, "0")}`;
+/** Formats a live number as "#12". */
+export const formatLiveNumber = (liveNumber: number) => `#${liveNumber}`;

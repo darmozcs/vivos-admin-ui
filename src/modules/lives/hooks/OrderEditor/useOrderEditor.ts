@@ -4,7 +4,7 @@ import {
   useLiveOrdersQuery,
   useSaveLiveOrderMutation,
 } from "@/DAL";
-import { extractErrorMessage, formatMoney, getInitials } from "@/libs";
+import { extractErrorMessage, formatMoney, formatSaleNumber, getInitials } from "@/libs";
 import type { OrderItem } from "@/models";
 import {
   DEFAULT_ORDER_STATUS,
@@ -79,6 +79,11 @@ export const useOrderEditor = () => {
       phone: client.phone || t("editor.noPhone"),
       initials: getInitials(client.fullName),
     },
+    // A new order has no number until the server assigns it (placeholder 0).
+    saleNumber:
+      serverOrder && serverOrder.number > 0
+        ? formatSaleNumber(serverOrder.liveNumber, serverOrder.number)
+        : null,
     started: isLiveStarted(live),
     ended: isLiveEnded(live),
     onStartLive: () =>

@@ -15,13 +15,6 @@
     "dateRangePlaceholder": "From – to",
     "title": "Live",
     "titlePlaceholder": "Search by name",
-    "duration": "Duration (min)",
-    "buyers": "Clients",
-    "units": "Items",
-    "total": "Total sold",
-    "min": "Min",
-    "max": "Max",
-    "rangeError": "Min can't be greater than max",
     "clear": "Clear filters",
     "noResults": "No lives match these filters"
   },

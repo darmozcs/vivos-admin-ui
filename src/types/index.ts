@@ -77,3 +77,21 @@ export type DeliveryType = (typeof DELIVERY_TYPE)[keyof typeof DELIVERY_TYPE];
 
 /** Inclusive [min, max] filter range; null means "no limit" on that side. */
 export type NumberRange = [number | null, number | null];
+
+/** A ctradehing trade is either sold (to a seller) or purchased (from a client). */
+export const TRADE_TYPE = {
+  SALE: "SALE",
+  PURCHASE: "PURCHASE",
+} as const;
+
+export type TradeType = (typeof TRADE_TYPE)[keyof typeof TRADE_TYPE];
+
+/** PUBLISHED/SOLD belong to sales; PENDING/PURCHASED to purchases. */
+export const TRADE_STATUS = {
+  PUBLISHED: "PUBLISHED",
+  SOLD: "SOLD",
+  PENDING: "PENDING",
+  PURCHASED: "PURCHASED",
+} as const;
+
+export type TradeStatus = (typeof TRADE_STATUS)[keyof typeof TRADE_STATUS];

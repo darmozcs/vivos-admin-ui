@@ -19,6 +19,8 @@
     "clients": "Clients",
     "sales": "Sales",
     "lives": "Lives",
+    "trades": "Purchases & Sales",
+    "sellers": "Sellers",
     "startLive": "Start live",
     "settings": "Settings",
     "stores": "Stores"
@@ -47,6 +49,14 @@
     "settings": {
       "title": "Settings",
       "description": "Store name and password."
+    },
+    "trades": {
+      "title": "Purchases & Sales",
+      "description": "Business purchases and sales with their totals."
+    },
+    "sellers": {
+      "title": "Sellers",
+      "description": "Sellers the business buys from."
     },
     "clients": {
       "title": "Clients",

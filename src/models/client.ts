@@ -5,6 +5,7 @@ export interface Client {
   fullName: string;
   account: string;
   phone: string;
+  email: string;
   address: string;
   department: Department | null;
   deliveryType: DeliveryType | null;

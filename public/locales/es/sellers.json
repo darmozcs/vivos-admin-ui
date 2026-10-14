@@ -1,0 +1,73 @@
+{
+  "title": "Vendedores",
+  "description": "Vendedores registrados a los que el negocio les compra.",
+  "columns": {
+    "fullName": "Nombre",
+    "account": "Cuenta",
+    "phone": "Teléfono",
+    "address": "Dirección",
+    "noAddress": "Sin dirección",
+    "department": "Departamento",
+    "deliveryType": "Entrega",
+    "notSet": "—"
+  },
+  "actions": {
+    "edit": "Editar a {{name}}",
+    "delete": "Eliminar a {{name}}"
+  },
+  "edit": {
+    "title": "Editar vendedor",
+    "submit": "Guardar cambios",
+    "success": "Datos del vendedor actualizados",
+    "errors": {
+      "save": "No se pudieron guardar los cambios"
+    }
+  },
+  "form": {
+    "fields": {
+      "fullName": "Nombre y apellido",
+      "account": "Cuenta",
+      "accountPlaceholder": "@usuario",
+      "phone": "Teléfono",
+      "email": "Correo",
+      "emailPlaceholder": "nombre@correo.com",
+      "address": "Dirección",
+      "addressPlaceholder": "Calle, número, apto, ciudad"
+    },
+    "cancel": "Cancelar",
+    "errors": {
+      "nameRequired": "Ingresá el nombre del vendedor",
+      "fullNameMax": "Nombre: máximo {{fullNameMax}} caracteres",
+      "accountMax": "Cuenta: máximo {{accountMax}} caracteres",
+      "phoneMax": "Teléfono: máximo {{phoneMax}} caracteres",
+      "emailInvalid": "Ingresá un correo válido",
+      "emailMax": "Correo: máximo {{emailMax}} caracteres",
+      "addressMax": "Dirección: máximo {{addressMax}} caracteres"
+    }
+  },
+  "create": {
+    "button": "Nuevo vendedor",
+    "title": "Nuevo vendedor",
+    "submit": "Crear vendedor",
+    "success": "Vendedor creado",
+    "error": "No se pudo crear el vendedor"
+  },
+  "delete": {
+    "title": "Eliminar vendedor",
+    "message": "¿Seguro que querés eliminar a {{name}}? Esta acción no se puede deshacer.",
+    "confirm": "Eliminar",
+    "success": "Vendedor eliminado",
+    "error": "No se pudo eliminar el vendedor",
+    "blocked": "No se puede eliminar: tiene compras/ventas registradas"
+  },
+  "filters": {
+    "search": "Buscar",
+    "searchPlaceholder": "Nombre, cuenta, teléfono o correo",
+    "department": "Departamento",
+    "deliveryType": "Entrega",
+    "allPlaceholder": "Todos",
+    "noOptions": "Sin coincidencias",
+    "clear": "Limpiar filtros",
+    "noResults": "No hay resultados para estos filtros"
+  }
+}

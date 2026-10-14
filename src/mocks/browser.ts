@@ -3,7 +3,9 @@ import {
   authHandlers,
   clientHandlers,
   liveHandlers,
+  tradeHandlers,
   orderHandlers,
+  sellerHandlers,
   settingsHandlers,
   storeHandlers,
 } from "./handlers";
@@ -15,4 +17,6 @@ export const worker = setupWorker(
   ...clientHandlers,
   ...liveHandlers,
   ...orderHandlers,
+  ...sellerHandlers,
+  ...tradeHandlers,
 );

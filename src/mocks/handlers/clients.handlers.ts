@@ -3,6 +3,7 @@ import { CLIENTS_PATH } from "@/DAL/const";
 import type { CreateClientPayload, UpdateClientPayload } from "@/DAL/clients";
 import { delay, http, HttpResponse } from "msw";
 import { MOCK_CLIENTS, type MockClient } from "../data/clients";
+import { MOCK_TRADES } from "../data/trades";
 import { MOCK_ORDERS } from "../data/orders";
 import { containsText, stripAccountPrefix, textParam } from "../utils/filters";
 import { errorResponse, MOCK_DELAY_MS } from "../utils/response";
@@ -10,7 +11,14 @@ import { requireStore } from "../utils/session";
 
 const API_URL = config.VITE_API_BASE_URL || "";
 const ACCOUNT_PREFIX = "@";
-const FIELD_MAX = { fullName: 150, account: 100, phone: 30, address: 255 } as const;
+const FIELD_MAX = { fullName: 150, account: 100, phone: 30, email: 150, address: 255 } as const;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/** Like vivos-be: an empty email is fine, otherwise it must look like one. */
+const isInvalidEmail = (value?: string) => {
+  const trimmed = value?.trim() ?? "";
+  return trimmed !== "" && !EMAIL_PATTERN.test(trimmed);
+};
 
 /** vivos-be length limits; returns the first invalid field. */
 const tooLongField = (body: Partial<Record<keyof typeof FIELD_MAX, string>>) =>
@@ -39,16 +47,18 @@ export const clientHandlers = [
     const fullName = textParam(params, "fullName");
     const account = textParam(params, "account");
     const phone = textParam(params, "phone");
+    const email = textParam(params, "email");
     const department = params.get("department") || undefined;
     const deliveryType = params.get("deliveryType") || undefined;
     // Every filter is combined with AND, like vivos-be.
     const results = MOCK_CLIENTS.filter(
       (client) =>
         client.storeId === guard.store.id &&
-        containsText(`${client.fullName} ${client.account} ${client.phone}`, search) &&
+        containsText(`${client.fullName} ${client.account} ${client.phone} ${client.email}`, search) &&
         containsText(client.fullName, fullName) &&
         containsText(stripAccountPrefix(client.account), account && stripAccountPrefix(account)) &&
         containsText(client.phone, phone) &&
+        containsText(client.email, email) &&
         (!department || client.department === department) &&
         (!deliveryType || client.deliveryType === deliveryType),
     );
@@ -65,12 +75,14 @@ export const clientHandlers = [
     }
     const invalidField = tooLongField(body);
     if (invalidField) return errorResponse(400, `El campo ${invalidField} es demasiado largo`);
+    if (isInvalidEmail(body.email)) return errorResponse(400, "El correo no es valido");
     const created: MockClient = {
       id: crypto.randomUUID(),
       storeId: guard.store.id,
       fullName: body.fullName.trim(),
       account: normalizeAccount(body.account),
       phone: body.phone?.trim() ?? "",
+      email: body.email?.trim() ?? "",
       address: body.address?.trim() ?? "",
       department: body.department ?? null,
       deliveryType: body.deliveryType ?? null,
@@ -92,10 +104,12 @@ export const clientHandlers = [
     }
     const invalidField = tooLongField(body);
     if (invalidField) return errorResponse(400, `El campo ${invalidField} es demasiado largo`);
+    if (isInvalidEmail(body.email)) return errorResponse(400, "El correo no es valido");
     Object.assign(client, {
       fullName: body.fullName.trim(),
       account: normalizeAccount(body.account),
       phone: body.phone?.trim() ?? "",
+      email: body.email?.trim() ?? "",
       address: body.address?.trim() ?? "",
       // Like vivos-be, the PATCH replaces everything: missing values are cleared.
       department: body.department ?? null,
@@ -116,6 +130,9 @@ export const clientHandlers = [
     );
     if (hasPurchases) {
       return errorResponse(409, "No se puede eliminar una clienta con compras");
+    }
+    if (MOCK_TRADES.some((trade) => trade.clientId === client.id)) {
+      return errorResponse(409, "No se puede eliminar una clienta con compras/ventas");
     }
     MOCK_CLIENTS.splice(MOCK_CLIENTS.indexOf(client), 1);
     return new HttpResponse(null, { status: 204 });

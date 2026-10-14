@@ -31,7 +31,7 @@ export const useSalesTable = () => {
     const liveTitles = new Map(lives.map((l) => [l.id, l.title]));
     return orders.map((order) => ({
       id: order.id,
-      saleNumber: formatSaleNumber(order.number),
+      saleNumber: formatSaleNumber(order.liveNumber, order.number),
       createdAt: formatDateTime(order.createdAt),
       updatedAt: formatDateTime(order.updatedAt),
       liveTitle: liveTitles.get(order.liveId) ?? "",

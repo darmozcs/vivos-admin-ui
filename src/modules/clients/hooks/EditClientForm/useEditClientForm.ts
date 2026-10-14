@@ -33,6 +33,7 @@ export const useEditClientForm = ({ client, onDone }: UseEditClientFormProps) =>
       fullName: client.fullName,
       account: client.account,
       phone: client.phone,
+      email: client.email,
       address: client.address,
       department: client.department,
       deliveryType: client.deliveryType,

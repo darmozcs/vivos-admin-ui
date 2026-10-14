@@ -15,13 +15,6 @@
     "dateRangePlaceholder": "Desde – hasta",
     "title": "Vivo",
     "titlePlaceholder": "Buscar por nombre",
-    "duration": "Duración (min)",
-    "buyers": "Clientas",
-    "units": "Prendas",
-    "total": "Total vendido",
-    "min": "Mín",
-    "max": "Máx",
-    "rangeError": "El mínimo no puede ser mayor que el máximo",
     "clear": "Limpiar filtros",
     "noResults": "No hay vivos para estos filtros"
   },

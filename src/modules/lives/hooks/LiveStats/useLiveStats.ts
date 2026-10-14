@@ -1,5 +1,5 @@
 import { useLiveOrdersQuery } from "@/DAL";
-import { formatClock, formatMoney, splitDuration } from "@/libs";
+import { formatMoney, splitDuration } from "@/libs";
 import { useNow } from "@/modules/common/hooks";
 import {
   getLiveElapsedMs,
@@ -7,6 +7,7 @@ import {
   getOrderUnits,
   isBillableOrder,
 } from "@/modules/common/utils";
+import { ORDER_STATUS } from "@/types";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { CLOCK_TICK_MS } from "../../const/lives.const";
@@ -24,13 +25,18 @@ export const useLiveStats = () => {
 
   const totals = useMemo(() => {
     // Cancelled sales stay listed but do not count towards the live totals.
+    // Collected: only what was already paid.
     return orders.filter(isBillableOrder).reduce(
-      (acc, order) => ({
-        buyers: acc.buyers + 1,
-        amount: acc.amount + getOrderTotal(order.items),
-        units: acc.units + getOrderUnits(order.items),
-      }),
-      { buyers: 0, amount: 0, units: 0 },
+      (acc, order) => {
+        const amount = getOrderTotal(order.items);
+        return {
+          buyers: acc.buyers + 1,
+          amount: acc.amount + amount,
+          collected: acc.collected + (order.status === ORDER_STATUS.PAID ? amount : 0),
+          units: acc.units + getOrderUnits(order.items),
+        };
+      },
+      { buyers: 0, amount: 0, collected: 0, units: 0 },
     );
   }, [orders]);
 
@@ -41,10 +47,10 @@ export const useLiveStats = () => {
     : t("summary.durationMinutes", { minutes });
 
   return {
-    clock: formatClock(elapsedMs),
     buyers: totals.buyers,
     units: totals.units,
     grandTotal: formatMoney(totals.amount),
+    collected: formatMoney(totals.collected),
     ended: isLiveEnded(live),
     endSummary: t("summary.text", {
       duration,

@@ -11,6 +11,7 @@ export interface GetClientsParams {
   fullName?: string;
   account?: string;
   phone?: string;
+  email?: string;
   department?: Department;
   deliveryType?: DeliveryType;
 }
@@ -19,6 +20,7 @@ export interface CreateClientPayload {
   fullName: string;
   account?: string;
   phone?: string;
+  email?: string;
   address?: string;
   department?: Department | null;
   deliveryType?: DeliveryType | null;
@@ -29,6 +31,7 @@ export interface UpdateClientPayload {
   fullName: string;
   account: string;
   phone: string;
+  email: string;
   address: string;
   department: Department | null;
   deliveryType: DeliveryType | null;

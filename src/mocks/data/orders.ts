@@ -10,6 +10,7 @@ export const MOCK_ORDERS: MockOrder[] = [
   {
     id: "o0a",
     storeId: STORE_1,
+    liveNumber: 1,
     number: 1,
     liveId: "l0",
     clientId: "c1",
@@ -25,6 +26,7 @@ export const MOCK_ORDERS: MockOrder[] = [
   {
     id: "o0b",
     storeId: STORE_1,
+    liveNumber: 1,
     number: 2,
     liveId: "l0",
     clientId: "c3",
@@ -39,6 +41,7 @@ export const MOCK_ORDERS: MockOrder[] = [
   {
     id: "o0c",
     storeId: STORE_1,
+    liveNumber: 1,
     number: 3,
     liveId: "l0",
     clientId: "c5",
@@ -54,7 +57,8 @@ export const MOCK_ORDERS: MockOrder[] = [
   {
     id: "o1",
     storeId: STORE_1,
-    number: 4,
+    liveNumber: 2,
+    number: 1,
     liveId: "l1",
     clientId: "c2",
     status: ORDER_STATUS.PAID,
@@ -69,7 +73,8 @@ export const MOCK_ORDERS: MockOrder[] = [
   {
     id: "o2",
     storeId: STORE_1,
-    number: 5,
+    liveNumber: 2,
+    number: 2,
     liveId: "l1",
     clientId: "c4",
     status: ORDER_STATUS.PENDING,
@@ -83,6 +88,7 @@ export const MOCK_ORDERS: MockOrder[] = [
   {
     id: "o3",
     storeId: STORE_2,
+    liveNumber: 1,
     number: 1,
     liveId: "l3",
     clientId: "c8",

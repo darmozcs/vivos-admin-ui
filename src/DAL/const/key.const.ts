@@ -13,3 +13,8 @@ export const LIVE_DETAIL = "LIVE_DETAIL";
 export const ORDER_LIST = "ORDER_LIST";
 export const ORDER_SUMMARY_DETAIL = "ORDER_SUMMARY_DETAIL";
 export const LIVE_ORDER_LIST = "LIVE_ORDER_LIST";
+
+export const SELLER_LIST = "SELLER_LIST";
+
+export const TRADE_LIST = "TRADE_LIST";
+export const TRADE_SUMMARY_DETAIL = "TRADE_SUMMARY_DETAIL";

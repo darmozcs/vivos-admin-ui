@@ -19,9 +19,7 @@ export const useClientsFilters = () => {
     canClear,
     departmentOptions: getDepartmentOptions(t),
     deliveryTypeOptions: getDeliveryTypeOptions(t),
-    onFullNameChange: (value: string) => setFilter("fullName", value),
-    onAccountChange: (value: string) => setFilter("account", value),
-    onPhoneChange: (value: string) => setFilter("phone", value),
+    onSearchChange: (value: string) => setFilter("search", value),
     onDepartmentChange: (value: string | null) =>
       setFilter("department", value as Department | null),
     onDeliveryTypeChange: (value: string | null) =>

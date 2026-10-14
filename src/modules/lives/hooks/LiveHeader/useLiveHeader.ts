@@ -1,7 +1,8 @@
 import { useCurrentLiveQuery, useLiveActionMutation } from "@/DAL";
-import { extractErrorMessage, formatDate, formatTime } from "@/libs";
+import { extractErrorMessage, formatClock, formatDate, formatTime } from "@/libs";
 import type { Live } from "@/models";
 import { useNow } from "@/modules/common/hooks";
+import { getLiveElapsedMs } from "@/modules/common/utils";
 import { useLiveWorkspaceStore } from "@/store";
 import { LIVE_ACTION, type LiveAction } from "@/types";
 import { useDisclosure } from "@mantine/hooks";
@@ -103,6 +104,8 @@ export const useLiveHeader = () => {
     isRunning,
     isPending: liveAction.isPending,
     subtitle: getSubtitle(t, live),
+    // Live duration, shown next to the title once the live has started.
+    clock: started && live ? formatClock(getLiveElapsedMs(live, now)) : null,
     // An ended live opened from the history only shows it after an edit in this visit.
     savedLabel: active || lastSavedAt ? getSavedLabel(t, savedAt, now) : "",
     fromHistory,

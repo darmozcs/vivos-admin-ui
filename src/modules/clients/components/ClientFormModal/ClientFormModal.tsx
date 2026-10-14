@@ -54,6 +54,13 @@ export const ClientFormModal = ({
             {...form.register("phone")}
             error={errorOf(errors.phone?.message)}
           />
+          <TextInput
+            type="email"
+            label={t("form.fields.email")}
+            placeholder={t("form.fields.emailPlaceholder")}
+            {...form.register("email")}
+            error={errorOf(errors.email?.message)}
+          />
           <Textarea
             label={t("form.fields.address")}
             placeholder={t("form.fields.addressPlaceholder")}

@@ -14,6 +14,7 @@ export const MOCK_PLATFORM = "Instagram Live";
 export const MOCK_LIVES: MockLive[] = [
   {
     id: "l0",
+    number: 1,
     storeId: STORE_1,
     title: "Liquidación de verano",
     platform: MOCK_PLATFORM,
@@ -26,6 +27,7 @@ export const MOCK_LIVES: MockLive[] = [
   },
   {
     id: "l1",
+    number: 2,
     storeId: STORE_1,
     title: "Drop de invierno",
     platform: MOCK_PLATFORM,
@@ -38,6 +40,7 @@ export const MOCK_LIVES: MockLive[] = [
   },
   {
     id: "l2",
+    number: 3,
     storeId: STORE_1,
     title: "Drop de primavera",
     platform: MOCK_PLATFORM,
@@ -50,6 +53,7 @@ export const MOCK_LIVES: MockLive[] = [
   },
   {
     id: "l3",
+    number: 1,
     storeId: STORE_2,
     title: "Primer vivo de Moda Sur",
     platform: MOCK_PLATFORM,

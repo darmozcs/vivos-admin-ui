@@ -1,11 +1,13 @@
 import type { SidebarMenuItem } from "@/modules/common/components";
 import { USER_ROLE, type UserRole } from "@/types";
 import {
+  IconArrowsExchange,
   IconBroadcast,
   IconBuildingStore,
   IconPlayerPlay,
   IconSettings,
   IconShoppingBag,
+  IconUserDollar,
   IconUsers,
 } from "@tabler/icons-react";
 
@@ -15,6 +17,8 @@ export const MENU_ITEMS_BY_ROLE: Record<UserRole, SidebarMenuItem[]> = {
     { label: "menu.clients", to: "/clients", icon: IconUsers },
     { label: "menu.sales", to: "/sales", icon: IconShoppingBag },
     { label: "menu.lives", to: "/lives", icon: IconBroadcast },
+    { label: "menu.trades", to: "/compra-venta", icon: IconArrowsExchange },
+    { label: "menu.sellers", to: "/sellers", icon: IconUserDollar },
     { label: "menu.startLive", to: "/live", icon: IconPlayerPlay },
     { label: "menu.settings", to: "/settings", icon: IconSettings },
   ],

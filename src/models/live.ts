@@ -2,6 +2,8 @@ import type { LiveStatus } from "@/types";
 
 export interface Live {
   id: string;
+  /** Correlative number of the live within the store. */
+  number: number;
   title: string;
   platform: string;
   status: LiveStatus;

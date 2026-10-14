@@ -1,0 +1,90 @@
+{
+  "title": "Compra/Venta",
+  "description": "Compras y ventas del negocio. Las ventas suman y las compras restan.",
+  "type": {
+    "sale": "Venta",
+    "purchase": "Compra"
+  },
+  "status": {
+    "published": "Publicado",
+    "sold": "Vendido",
+    "pending": "Pendiente",
+    "purchased": "Comprado"
+  },
+  "summary": {
+    "sales": "Ventas",
+    "purchases": "Compras",
+    "quantity": "Cantidad (vendida / comprada)",
+    "quantityValue": "{{sold}} / {{bought}}",
+    "balance": "Balance"
+  },
+  "columns": {
+    "type": "Tipo",
+    "counterpart": "Clienta / Vendedor",
+    "quantity": "Cantidad",
+    "total": "Total",
+    "status": "Estado",
+    "createdAt": "Creado",
+    "updatedAt": "Actualizado",
+    "totals": "Totales"
+  },
+  "actions": {
+    "edit": "Editar compra/venta",
+    "delete": "Eliminar compra/venta"
+  },
+  "form": {
+    "fields": {
+      "type": "Tipo",
+      "seller": "Vendedor",
+      "client": "Clienta",
+      "counterpartPlaceholder": "Buscar por nombre",
+      "noOptions": "Sin coincidencias",
+      "quantity": "Cantidad",
+      "price": "Precio",
+      "status": "Estado",
+      "note": "Nota",
+      "notePlaceholder": "Ej.: 40 remeras y 20 jeans"
+    },
+    "cancel": "Cancelar",
+    "errors": {
+      "statusRequired": "Elegí un estado válido para el tipo",
+      "quantityRequired": "Ingresá la cantidad",
+      "quantityMin": "La cantidad debe ser un número entero de al menos {{quantityMin}}",
+      "priceRequired": "Ingresá el precio",
+      "priceMin": "El precio no puede ser negativo",
+      "noteMax": "Nota: máximo {{noteMax}} caracteres",
+      "counterpartRequired": "Elegí a quién corresponde la compra/venta"
+    }
+  },
+  "create": {
+    "button": "Nueva compra/venta",
+    "title": "Nueva compra/venta",
+    "submit": "Crear compra/venta",
+    "success": "Compra/venta creada",
+    "error": "No se pudo crear la compra/venta"
+  },
+  "edit": {
+    "title": "Editar compra/venta",
+    "submit": "Guardar cambios",
+    "success": "Compra/venta actualizada",
+    "error": "No se pudieron guardar los cambios"
+  },
+  "delete": {
+    "title": "Eliminar compra/venta",
+    "message": "¿Seguro que querés eliminar esta compra/venta? Esta acción no se puede deshacer.",
+    "confirm": "Eliminar",
+    "success": "Compra/venta eliminada",
+    "error": "No se pudo eliminar la compra/venta"
+  },
+  "filters": {
+    "dateRange": "Fecha",
+    "dateRangePlaceholder": "Desde – hasta",
+    "search": "Nota",
+    "searchPlaceholder": "Buscar en la nota",
+    "type": "Tipo",
+    "status": "Estado",
+    "allPlaceholder": "Todos",
+    "clear": "Limpiar filtros",
+    "noResults": "No hay resultados para estos filtros"
+  }
+}

@@ -39,12 +39,20 @@ export const useClientsPanel = () => {
   const newClientForm = useNewClientForm({ onCreated: handleCreated });
 
   const items = useMemo<ClientListItemView[]>(() => {
+    const billableOrders = orders.filter(isBillableOrder);
     const totalsByClient = new Map(
-      orders
-        .filter(isBillableOrder)
-        .map((order) => [order.clientId, getOrderTotal(order.items)]),
+      billableOrders.map((order) => [order.clientId, getOrderTotal(order.items)]),
     );
-    return clients.map((client) => {
+    // A new order has number 0 until the server assigns one: it is the newest.
+    const orderRank = new Map(
+      billableOrders.map((order) => [order.clientId, order.number || Infinity]),
+    );
+    // Clients who already bought in this live go first, newest purchase on top;
+    // the rest keep the server order (sort is stable).
+    const sortedClients = [...clients].sort(
+      (a, b) => (orderRank.get(b.id) ?? 0) - (orderRank.get(a.id) ?? 0),
+    );
+    return sortedClients.map((client) => {
       const total = totalsByClient.get(client.id);
       return {
         id: client.id,

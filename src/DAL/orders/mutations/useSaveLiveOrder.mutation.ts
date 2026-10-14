@@ -23,6 +23,7 @@ const upsertOrder = (
   // Server-owned fields keep their value; a new order gets placeholders until refetched.
   const updated: Order = {
     id: existing?.id ?? `${payload.liveId}-${payload.clientId}`,
+    liveNumber: existing?.liveNumber ?? 0,
     number: existing?.number ?? 0,
     createdAt: existing?.createdAt ?? now,
     ...payload,

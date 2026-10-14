@@ -29,6 +29,8 @@
       "account": "Cuenta",
       "accountPlaceholder": "@usuario",
       "phone": "Teléfono",
+      "email": "Correo",
+      "emailPlaceholder": "nombre@correo.com",
       "address": "Dirección",
       "addressPlaceholder": "Calle, número, apto, ciudad"
     },
@@ -38,6 +40,8 @@
       "fullNameMax": "Nombre: máximo {{fullNameMax}} caracteres",
       "accountMax": "Cuenta: máximo {{accountMax}} caracteres",
       "phoneMax": "Teléfono: máximo {{phoneMax}} caracteres",
+      "emailInvalid": "Ingresá un correo válido",
+      "emailMax": "Correo: máximo {{emailMax}} caracteres",
       "addressMax": "Dirección: máximo {{addressMax}} caracteres"
     }
   },
@@ -54,15 +58,11 @@
     "confirm": "Eliminar",
     "success": "Clienta eliminada",
     "error": "No se pudo eliminar la clienta",
-    "blocked": "No se puede eliminar: tiene compras registradas"
+    "blocked": "No se puede eliminar: tiene ventas de vivos o compras/ventas registradas"
   },
   "filters": {
-    "fullName": "Nombre",
-    "fullNamePlaceholder": "Buscar por nombre",
-    "account": "Cuenta",
-    "accountPlaceholder": "@usuario",
-    "phone": "Teléfono",
-    "phonePlaceholder": "Buscar por teléfono",
+    "search": "Buscar",
+    "searchPlaceholder": "Nombre, cuenta, teléfono o correo",
     "department": "Departamento",
     "deliveryType": "Entrega",
     "allPlaceholder": "Todos",

@@ -19,6 +19,9 @@ export const getLivesTableColumns = (
     width: 240,
     render: (live) => (
       <Text size="sm" fw={700}>
+        <Text span c="dimmed" fw={600} inherit>
+          {live.number}
+        </Text>{" "}
         {live.title}
       </Text>
     ),

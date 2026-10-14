@@ -53,3 +53,10 @@ export const LIVE_CLIENT_ORDER_PATH = ({
 export const ORDERS_PATH = BASE_PATH + "/orders";
 export const ORDERS_SUMMARY_PATH = ORDERS_PATH + "/summary";
 export const ORDER_DETAIL_PATH = ({ id }: { id: string }) => `${ORDERS_PATH}/${id}`;
+
+export const SELLERS_PATH = BASE_PATH + "/sellers";
+export const SELLER_DETAIL_PATH = ({ id }: { id: string }) => `${SELLERS_PATH}/${id}`;
+
+export const TRADES_PATH = BASE_PATH + "/trades";
+export const TRADES_SUMMARY_PATH = TRADES_PATH + "/summary";
+export const TRADE_DETAIL_PATH = ({ id }: { id: string }) => `${TRADES_PATH}/${id}`;

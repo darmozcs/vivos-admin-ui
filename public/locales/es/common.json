@@ -19,6 +19,8 @@
     "clients": "Clientes",
     "sales": "Ventas",
     "lives": "Vivos",
+    "trades": "Compra/Venta",
+    "sellers": "Vendedores",
     "startLive": "Comenzar vivo",
     "settings": "Configuración",
     "stores": "Tiendas"
@@ -47,6 +49,14 @@
     "settings": {
       "title": "Configuración",
       "description": "Nombre de la tienda y contraseña."
+    },
+    "trades": {
+      "title": "Compra/Venta",
+      "description": "Compras y ventas del negocio con sus totales."
+    },
+    "sellers": {
+      "title": "Vendedores",
+      "description": "Vendedores a los que se les compra."
     },
     "clients": {
       "title": "Clientes",

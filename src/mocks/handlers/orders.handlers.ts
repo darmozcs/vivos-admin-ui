@@ -18,9 +18,11 @@ type SaveOrderBody = Pick<SaveLiveOrderPayload, "status" | "packageStatus" | "it
 const storeOrders = (storeId: string) =>
   MOCK_ORDERS.filter((order) => order.storeId === storeId);
 
-/** Sale numbers are correlative per store. */
-const nextOrderNumber = (storeId: string) =>
-  storeOrders(storeId).reduce((max, order) => Math.max(max, order.number), 0) + 1;
+/** Sale numbers are correlative within each live. */
+const nextOrderNumber = (storeId: string, liveId: string) =>
+  storeOrders(storeId)
+    .filter((order) => order.liveId === liveId)
+    .reduce((max, order) => Math.max(max, order.number), 0) + 1;
 
 /**
  * Orders with items matching the GET /orders filters (AND), like vivos-be.
@@ -59,7 +61,7 @@ export const orderHandlers = [
     if ("error" in guard) return guard.error;
     const result = filterOrders(guard.store.id, new URL(request.url).searchParams);
     if ("error" in result) return result.error;
-    return HttpResponse.json(result.orders.sort((a, b) => b.number - a.number));
+    return HttpResponse.json(result.orders.sort((a, b) => b.liveNumber - a.liveNumber || b.number - a.number));
   }),
 
   http.get(`${API_URL}${ORDERS_SUMMARY_PATH}`, async ({ request }) => {
@@ -120,7 +122,8 @@ export const orderHandlers = [
       const saved: MockOrder = {
         id: existing?.id ?? crypto.randomUUID(),
         storeId,
-        number: existing?.number ?? nextOrderNumber(storeId),
+        liveNumber: live.number,
+        number: existing?.number ?? nextOrderNumber(storeId, liveId),
         liveId,
         clientId,
         status: body.status,

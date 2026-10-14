@@ -46,10 +46,10 @@
   },
   "stats": {
     "ariaLabel": "Números del vivo",
-    "duration": "Duración del vivo",
-    "buyers": "Clientas que compraron",
-    "total": "Total vendido en el vivo",
-    "units": "Prendas vendidas"
+    "buyers": "Clientas",
+    "total": "Total vendido",
+    "units": "Ventas",
+    "collected": "Total recaudado"
   },
   "summary": {
     "title": "Vivo terminado",
@@ -71,24 +71,22 @@
     "createFromSearch": "Crear «{{search}}»"
   },
   "newClient": {
-    "title": "Nueva clienta",
     "fields": {
       "fullName": "Nombre y apellido",
       "account": "Cuenta",
-      "accountPlaceholder": "@usuario",
-      "phone": "Teléfono"
+      "accountPlaceholder": "@usuario"
     },
-    "submit": "Crear y empezar compra",
+    "submit": "Crear",
     "cancel": "Cancelar",
     "errors": {
       "nameRequired": "Ingresá el nombre de la clienta",
       "fullNameMax": "Nombre: máximo {{fullNameMax}} caracteres",
-      "accountMax": "Cuenta: máximo {{accountMax}} caracteres",
-      "phoneMax": "Teléfono: máximo {{phoneMax}} caracteres"
+      "accountMax": "Cuenta: máximo {{accountMax}} caracteres"
     }
   },
   "editor": {
     "title": "Compra de {{name}}",
+    "saleNumber": "Paquete {{number}}",
     "statusLabel": "Estado de la venta",
     "noAccount": "Sin cuenta",
     "noPhone": "Sin teléfono",

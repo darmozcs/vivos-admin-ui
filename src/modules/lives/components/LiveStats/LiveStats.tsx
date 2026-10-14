@@ -4,13 +4,14 @@ import { StatCard } from "@/modules/common/components";
 import { STAT_TONE } from "@/modules/common/const";
 
 interface LiveStatsProps {
-  clock: string;
   buyers: number;
-  grandTotal: string;
   units: number;
+  grandTotal: string;
+  /** Total of the paid sales. */
+  collected: string;
 }
 
-export const LiveStats = ({ clock, buyers, grandTotal, units }: LiveStatsProps) => {
+export const LiveStats = ({ buyers, units, grandTotal, collected }: LiveStatsProps) => {
   const { t } = useTranslation("lives");
 
   return (
@@ -20,10 +21,10 @@ export const LiveStats = ({ clock, buyers, grandTotal, units }: LiveStatsProps) 
       cols={{ base: 1, xs: 2, lg: 4 }}
       spacing="md"
     >
-      <StatCard label={t("stats.duration")} value={clock} tone={STAT_TONE.DARK} tabularNumbers />
       <StatCard label={t("stats.buyers")} value={buyers} tone={STAT_TONE.OUTLINE} />
-      <StatCard label={t("stats.total")} value={grandTotal} tone={STAT_TONE.ACCENT} />
       <StatCard label={t("stats.units")} value={units} tone={STAT_TONE.OUTLINE} />
+      <StatCard label={t("stats.total")} value={grandTotal} tone={STAT_TONE.ACCENT} />
+      <StatCard label={t("stats.collected")} value={collected} tone={STAT_TONE.DARK} />
     </SimpleGrid>
   );
 };

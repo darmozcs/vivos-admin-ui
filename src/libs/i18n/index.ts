@@ -22,6 +22,8 @@ export const i18nReady = i18n
       "lives",
       "liveHistory",
       "clients",
+      "sellers",
+      "trades",
       "sales",
       "stores",
     ],

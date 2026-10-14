@@ -46,10 +46,10 @@
   },
   "stats": {
     "ariaLabel": "Live numbers",
-    "duration": "Live duration",
-    "buyers": "Clients who bought",
-    "total": "Total sold in the live",
-    "units": "Items sold"
+    "buyers": "Clients",
+    "total": "Total sold",
+    "units": "Sales",
+    "collected": "Collected"
   },
   "summary": {
     "title": "Live ended",
@@ -71,24 +71,22 @@
     "createFromSearch": "Create “{{search}}”"
   },
   "newClient": {
-    "title": "New client",
     "fields": {
       "fullName": "Full name",
       "account": "Account",
-      "accountPlaceholder": "@user",
-      "phone": "Phone"
+      "accountPlaceholder": "@user"
     },
-    "submit": "Create and start purchase",
+    "submit": "Create",
     "cancel": "Cancel",
     "errors": {
       "nameRequired": "Enter the client's name",
       "fullNameMax": "Name: {{fullNameMax}} characters max",
-      "accountMax": "Account: {{accountMax}} characters max",
-      "phoneMax": "Phone: {{phoneMax}} characters max"
+      "accountMax": "Account: {{accountMax}} characters max"
     }
   },
   "editor": {
     "title": "{{name}}'s purchase",
+    "saleNumber": "Package {{number}}",
     "statusLabel": "Sale status",
     "noAccount": "No account",
     "noPhone": "No phone",
