@@ -6,13 +6,18 @@ import {
   OrderEditorHeader,
   OrderFooter,
   OrderItemsTable,
+  PackageNumberBadge,
   StartLiveHint,
 } from "../../components";
-import { useOrderEditor } from "../../hooks";
+import { useOrderEditor, usePackageNumberEditor } from "../../hooks";
 
 export const OrderEditorContainer = () => {
   const { t } = useTranslation("lives");
   const editor = useOrderEditor();
+  const packageEditor = usePackageNumberEditor({
+    orderId: editor.packageNumber?.orderId ?? null,
+    number: editor.packageNumber?.number ?? null,
+  });
 
   if (!editor.client) {
     return (
@@ -26,7 +31,15 @@ export const OrderEditorContainer = () => {
     <LivePanel emphasis>
       <OrderEditorHeader
         {...editor.client}
-        saleNumber={editor.saleNumber}
+        packageBadge={
+          editor.packageNumber && (
+            <PackageNumberBadge
+              {...packageEditor}
+              label={editor.packageNumber.label}
+              liveNumber={editor.packageNumber.liveNumber}
+            />
+          )
+        }
         status={editor.status}
         packageStatus={editor.packageStatus}
         statusDisabled={!editor.started}

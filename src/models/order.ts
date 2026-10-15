@@ -12,8 +12,8 @@ export interface Order {
   id: string;
   /** Number of the live the sale belongs to. */
   liveNumber: number;
-  /** Correlative number of the sale within its live; shown as "liveNumber-number". */
-  number: number;
+  /** Package number within its live ("liveNumber-number"); null until the client buys something. */
+  number: number | null;
   liveId: string;
   clientId: string;
   /** Sale (payment) status. */

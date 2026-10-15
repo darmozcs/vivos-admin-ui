@@ -1,4 +1,5 @@
 import {
+  BALANCE_DETAIL,
   LIVE_CURRENT_DETAIL,
   LIVE_DETAIL,
   LIVE_LIST,
@@ -23,6 +24,7 @@ export const useLiveActionMutation = () => {
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: [LIVE_LIST] }),
         queryClient.invalidateQueries({ queryKey: [LIVE_SUMMARY_DETAIL] }),
+        queryClient.invalidateQueries({ queryKey: [BALANCE_DETAIL] }),
         queryClient.invalidateQueries({ queryKey: [LIVE_DETAIL] }),
       ]);
     },

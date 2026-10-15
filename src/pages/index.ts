@@ -1,3 +1,4 @@
+export * from "./Balance.page";
 export * from "./Clients.page";
 export * from "./Lives.page";
 export * from "./LiveWorkspace.page";

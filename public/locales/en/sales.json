@@ -2,7 +2,7 @@
   "title": "Sales",
   "description": "Every sale from the lives. Change the sale or package status right from the table.",
   "columns": {
-    "saleNumber": "Sale",
+    "saleNumber": "Package ID",
     "createdAt": "Created",
     "updatedAt": "Updated",
     "live": "Live",

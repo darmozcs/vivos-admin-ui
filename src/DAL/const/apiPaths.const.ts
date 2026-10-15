@@ -60,3 +60,5 @@ export const SELLER_DETAIL_PATH = ({ id }: { id: string }) => `${SELLERS_PATH}/$
 export const TRADES_PATH = BASE_PATH + "/trades";
 export const TRADES_SUMMARY_PATH = TRADES_PATH + "/summary";
 export const TRADE_DETAIL_PATH = ({ id }: { id: string }) => `${TRADES_PATH}/${id}`;
+
+export const BALANCE_PATH = BASE_PATH + "/balance";

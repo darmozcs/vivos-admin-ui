@@ -80,9 +80,15 @@ export const useOrderEditor = () => {
       initials: getInitials(client.fullName),
     },
     // A new order has no number until the server assigns it (placeholder 0).
-    saleNumber:
-      serverOrder && serverOrder.number > 0
-        ? formatSaleNumber(serverOrder.liveNumber, serverOrder.number)
+    // The package number exists only once the client bought something (assigned by the server).
+    packageNumber:
+      serverOrder && serverOrder.number !== null
+        ? {
+            orderId: serverOrder.id,
+            liveNumber: serverOrder.liveNumber,
+            number: serverOrder.number,
+            label: formatSaleNumber(serverOrder.liveNumber, serverOrder.number),
+          }
         : null,
     started: isLiveStarted(live),
     ended: isLiveEnded(live),

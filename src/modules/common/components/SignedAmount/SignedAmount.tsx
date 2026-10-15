@@ -1,5 +1,5 @@
 import { Text, type TextProps } from "@mantine/core";
-import { formatSignedMoney } from "../../utils/trade.utils";
+import { formatSignedMoney } from "../../utils/signedAmount.utils";
 
 interface SignedAmountProps extends TextProps {
   /** Positive adds to the balance, negative subtracts. */

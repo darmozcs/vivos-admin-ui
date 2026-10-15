@@ -32,18 +32,6 @@ export const TRADE_STATUS_CHIP_COLORS: Record<TradeStatus, string> = {
   PURCHASED: "#E8E1FF",
 };
 
-/** Sales add to the balance (green) and purchases subtract (red). */
-export const TRADE_AMOUNT_COLORS = {
-  POSITIVE: "green.8",
-  NEGATIVE: "red.8",
-  NEUTRAL: "plum.9",
-} as const;
-
-export const TRADE_AMOUNT_SIGNS = {
-  POSITIVE: "+",
-  NEGATIVE: "−",
-} as const;
-
 /** Limits enforced by vivos-be (also used to interpolate messages). */
 export const TRADE_FIELD_LIMITS = {
   noteMax: 500,

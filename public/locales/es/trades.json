@@ -14,8 +14,7 @@
   "summary": {
     "sales": "Ventas",
     "purchases": "Compras",
-    "quantity": "Cantidad (vendida / comprada)",
-    "quantityValue": "{{sold}} / {{bought}}",
+    "quantity": "Prendas (compradas − vendidas)",
     "balance": "Balance"
   },
   "columns": {

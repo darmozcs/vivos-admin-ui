@@ -20,6 +20,7 @@
     "sales": "Sales",
     "lives": "Lives",
     "trades": "Purchases & Sales",
+    "balance": "Balance",
     "sellers": "Sellers",
     "startLive": "Start live",
     "settings": "Settings",
@@ -53,6 +54,10 @@
     "trades": {
       "title": "Purchases & Sales",
       "description": "Business purchases and sales with their totals."
+    },
+    "balance": {
+      "title": "Balance",
+      "description": "Lives, sales and purchases of the business in one place."
     },
     "sellers": {
       "title": "Sellers",

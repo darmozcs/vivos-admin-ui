@@ -18,3 +18,5 @@ export const SELLER_LIST = "SELLER_LIST";
 
 export const TRADE_LIST = "TRADE_LIST";
 export const TRADE_SUMMARY_DETAIL = "TRADE_SUMMARY_DETAIL";
+
+export const BALANCE_DETAIL = "BALANCE_DETAIL";

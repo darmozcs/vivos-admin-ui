@@ -18,6 +18,7 @@ export * from "./OrderEditor/OrderItemCard";
 export * from "./OrderEditor/OrderItemRow";
 export * from "./OrderEditor/OrderItemsTable";
 export * from "./OrderEditor/OrderStatusControls";
+export * from "./OrderEditor/PackageNumberBadge";
 export * from "./OrderEditor/QuantityStepper";
 export * from "./OrderEditor/StartLiveHint";
 export * from "./PrepareLiveModal/PrepareLiveModal";

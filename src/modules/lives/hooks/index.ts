@@ -7,5 +7,6 @@ export * from "./LiveWorkspace/useLiveWorkspace";
 export * from "./NewClientForm/useNewClientForm";
 export * from "./OrderEditor/useOrderEditor";
 export * from "./OrderEditor/useOrderItemActions";
+export * from "./OrderEditor/usePackageNumberEditor";
 export * from "./PrepareLiveForm/usePrepareLiveForm";
 export * from "./WorkspaceLive/useWorkspaceLive";

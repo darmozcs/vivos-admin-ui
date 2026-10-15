@@ -13,3 +13,8 @@ export {
 export { useUserStore } from "./useUserStore";
 export { useTradesFiltersStore, type TradesDateRange, type TradesFilters } from "./useTradesFiltersStore";
 export { useSellersFiltersStore, type SellersFilters } from "./useSellersFiltersStore";
+export {
+  useBalanceFiltersStore,
+  type BalanceDateRange,
+  type BalanceFilters,
+} from "./useBalanceFiltersStore";

@@ -1,4 +1,5 @@
 export * from "./auth";
+export * from "./balance";
 export * from "./clients";
 export * from "./lives";
 export * from "./trades";

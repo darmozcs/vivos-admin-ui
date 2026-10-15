@@ -1,4 +1,5 @@
 import {
+  BALANCE_DETAIL,
   LIVE_DETAIL,
   LIVE_LIST,
   LIVE_SUMMARY_DETAIL,
@@ -20,11 +21,12 @@ const upsertOrder = (
   const current = orders ?? [];
   const existing = current.find((order) => order.clientId === payload.clientId);
   const now = new Date().toISOString();
-  // Server-owned fields keep their value; a new order gets placeholders until refetched.
+  // Server-owned fields keep their value until the response arrives. An order left without
+  // items loses its package number right away, like the server does.
   const updated: Order = {
     id: existing?.id ?? `${payload.liveId}-${payload.clientId}`,
     liveNumber: existing?.liveNumber ?? 0,
-    number: existing?.number ?? 0,
+    number: payload.items.length > 0 ? (existing?.number ?? null) : null,
     createdAt: existing?.createdAt ?? now,
     ...payload,
     updatedAt: now,
@@ -34,6 +36,24 @@ const upsertOrder = (
     ? current.map((order) => (order === existing ? updated : order))
     : [...current, updated];
 };
+
+/**
+ * Copies the fields only the server knows (id, numbers, creation date) into the cached order,
+ * so the package label shows up as soon as the first purchase is saved. Items and statuses are
+ * left alone: they may already hold newer local edits.
+ */
+const applyServerFields = (orders: Order[] | undefined, saved: Order): Order[] | undefined =>
+  orders?.map((order) =>
+    order.clientId === saved.clientId
+      ? {
+          ...order,
+          id: saved.id,
+          liveNumber: saved.liveNumber,
+          number: saved.number,
+          createdAt: saved.createdAt,
+        }
+      : order,
+  );
 
 /**
  * Saves the order of a client inside a live. The live orders cache is updated
@@ -56,9 +76,12 @@ export const useSaveLiveOrderMutation = () => {
     onError: (_error, _payload, context) => {
       if (context) queryClient.setQueryData(context.queryKey, context.previous);
     },
-    onSuccess: async () => {
+    onSuccess: async (saved, payload) => {
+      queryClient.setQueryData<Order[]>([LIVE_ORDER_LIST, payload.liveId], (orders) =>
+        applyServerFields(orders, saved),
+      );
       await Promise.all(
-        [ORDER_LIST, ORDER_SUMMARY_DETAIL, LIVE_LIST, LIVE_SUMMARY_DETAIL, LIVE_DETAIL].map((key) =>
+        [ORDER_LIST, ORDER_SUMMARY_DETAIL, LIVE_LIST, LIVE_SUMMARY_DETAIL, LIVE_DETAIL, BALANCE_DETAIL].map((key) =>
           queryClient.invalidateQueries({ queryKey: [key] }),
         ),
       );

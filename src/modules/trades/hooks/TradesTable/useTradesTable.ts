@@ -2,7 +2,7 @@ import { useTradesQuery, useTradesSummaryQuery } from "@/DAL";
 import { formatDateTime } from "@/libs";
 import type { TradeStatus, TradeType } from "@/types";
 import { useMemo, useState } from "react";
-import { signedTradeAmount } from "../../utils/trade.utils";
+import { netTradeQuantity, signedTradeAmount } from "../../utils/trade.utils";
 import { useTradesQueryParams } from "../TradesFilters/useTradesQueryParams";
 import { useTradeDelete } from "./useTradeDelete";
 
@@ -20,8 +20,8 @@ export interface TradeRow {
 }
 
 export interface TradesTableTotals {
-  soldQuantity: number;
-  boughtQuantity: number;
+  /** Garments bought minus garments sold. */
+  netQuantity: number;
   balance: number;
 }
 
@@ -48,8 +48,7 @@ export const useTradesTable = () => {
   );
 
   const totals: TradesTableTotals = {
-    soldQuantity: summary?.salesQuantity ?? 0,
-    boughtQuantity: summary?.purchasesQuantity ?? 0,
+    netQuantity: netTradeQuantity(summary?.purchasesQuantity ?? 0, summary?.salesQuantity ?? 0),
     balance: summary?.balance ?? 0,
   };
 

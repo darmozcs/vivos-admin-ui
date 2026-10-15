@@ -1,4 +1,5 @@
 import {
+  BALANCE_DETAIL,
   LIVE_DETAIL,
   LIVE_LIST,
   LIVE_SUMMARY_DETAIL,
@@ -25,6 +26,7 @@ export const useUpdateOrderStatusMutation = () => {
           LIVE_DETAIL,
           LIVE_LIST,
           LIVE_SUMMARY_DETAIL,
+          BALANCE_DETAIL,
         ].map((key) =>
           queryClient.invalidateQueries({ queryKey: [key] }),
         ),

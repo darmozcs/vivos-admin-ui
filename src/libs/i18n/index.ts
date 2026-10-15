@@ -24,6 +24,7 @@ export const i18nReady = i18n
       "clients",
       "sellers",
       "trades",
+      "balance",
       "sales",
       "stores",
     ],

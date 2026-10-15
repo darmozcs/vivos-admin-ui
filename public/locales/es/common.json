@@ -20,6 +20,7 @@
     "sales": "Ventas",
     "lives": "Vivos",
     "trades": "Compra/Venta",
+    "balance": "Balance",
     "sellers": "Vendedores",
     "startLive": "Comenzar vivo",
     "settings": "Configuración",
@@ -53,6 +54,10 @@
     "trades": {
       "title": "Compra/Venta",
       "description": "Compras y ventas del negocio con sus totales."
+    },
+    "balance": {
+      "title": "Balance",
+      "description": "Vivos, ventas y compras del negocio en un solo lugar."
     },
     "sellers": {
       "title": "Vendedores",

@@ -29,7 +29,8 @@
     "prepare": "Could not prepare the live",
     "createClient": "Could not create the client",
     "saveOrder": "Could not save the purchase",
-    "notFound": "We couldn't find this live."
+    "notFound": "We couldn't find this live.",
+    "packageNumber": "The package number couldn't be changed"
   },
   "prepare": {
     "title": "Prepare another live",
@@ -96,7 +97,14 @@
     "footer_one": "{{count}} item · saves automatically on every change",
     "footer_other": "{{count}} items · saves automatically on every change",
     "total": "Total {{total}}",
-    "packageStatusLabel": "Package status"
+    "packageStatusLabel": "Package status",
+    "packageNumber": {
+      "edit": "Change package number",
+      "label": "Package number",
+      "save": "Save",
+      "cancel": "Cancel",
+      "success": "Package number updated"
+    }
   },
   "addItem": {
     "title": "Add item",

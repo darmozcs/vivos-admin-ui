@@ -1,16 +1,17 @@
 import type { DataTableColumn } from "@/libs/ui/table";
 import { Text } from "@mantine/core";
 import type { TFunction } from "i18next";
-import { TradeRowActions, TradeStatusBadge, TradeTypeBadge, SignedAmount } from "../components";
+import { SignedAmount } from "@/modules/common/components";
+import { formatSignedQuantity } from "@/modules/common/utils";
+import { TradeRowActions, TradeStatusBadge, TradeTypeBadge } from "../components";
 import type { TradeRow, TradesTableTotals } from "../hooks";
-import { TRADE_AMOUNT_SIGNS } from "./trade.const";
 
 interface TradesTableActions {
   onEdit: (tradeId: string) => void;
   onDelete: (tradeId: string) => void;
 }
 
-/** Columns of the trades table; the footer row shows quantities and balance of the filtered trades. */
+/** Columns of the trades table; the footer row shows net garments (bought - sold) and balance of the filtered trades. */
 export const getTradesTableColumns = (
   t: TFunction,
   totals: TradesTableTotals,
@@ -31,7 +32,7 @@ export const getTradesTableColumns = (
     textAlign: "right",
     footer: (
       <Text size="sm" fw={700} ta="right">
-        {`${TRADE_AMOUNT_SIGNS.POSITIVE}${totals.soldQuantity} / ${TRADE_AMOUNT_SIGNS.NEGATIVE}${totals.boughtQuantity}`}
+        {formatSignedQuantity(totals.netQuantity)}
       </Text>
     ),
   },

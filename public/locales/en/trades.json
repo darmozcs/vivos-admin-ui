@@ -15,8 +15,7 @@
     "sales": "Sales",
     "purchases": "Purchases",
     "balance": "Balance",
-    "quantity": "Quantity (sold / bought)",
-    "quantityValue": "{{sold}} / {{bought}}"
+    "quantity": "Garments (bought − sold)"
   },
   "columns": {
     "type": "Type",

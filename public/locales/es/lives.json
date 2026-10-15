@@ -29,7 +29,8 @@
     "prepare": "No se pudo preparar el vivo",
     "createClient": "No se pudo crear la clienta",
     "saveOrder": "No se pudo guardar la compra",
-    "notFound": "No encontramos este vivo."
+    "notFound": "No encontramos este vivo.",
+    "packageNumber": "No se pudo cambiar el número de paquete"
   },
   "prepare": {
     "title": "Preparar otro vivo",
@@ -96,7 +97,14 @@
     "footer_one": "{{count}} prenda · se guarda sola con cada cambio",
     "footer_other": "{{count}} prendas · se guarda sola con cada cambio",
     "total": "Total {{total}}",
-    "packageStatusLabel": "Estado del paquete"
+    "packageStatusLabel": "Estado del paquete",
+    "packageNumber": {
+      "edit": "Cambiar número de paquete",
+      "label": "Número de paquete",
+      "save": "Guardar",
+      "cancel": "Cancelar",
+      "success": "Número de paquete actualizado"
+    }
   },
   "addItem": {
     "title": "Cargar prenda",

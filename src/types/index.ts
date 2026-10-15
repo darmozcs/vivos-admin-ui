@@ -95,3 +95,12 @@ export const TRADE_STATUS = {
 } as const;
 
 export type TradeStatus = (typeof TRADE_STATUS)[keyof typeof TRADE_STATUS];
+
+/** Origin of a balance row: lives and sales add, purchases subtract. */
+export const BALANCE_ENTRY_TYPE = {
+  PURCHASE: "PURCHASE",
+  SALE: "SALE",
+  LIVE: "LIVE",
+} as const;
+
+export type BalanceEntryType = (typeof BALANCE_ENTRY_TYPE)[keyof typeof BALANCE_ENTRY_TYPE];

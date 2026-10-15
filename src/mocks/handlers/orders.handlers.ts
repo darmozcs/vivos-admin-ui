@@ -18,11 +18,33 @@ type SaveOrderBody = Pick<SaveLiveOrderPayload, "status" | "packageStatus" | "it
 const storeOrders = (storeId: string) =>
   MOCK_ORDERS.filter((order) => order.storeId === storeId);
 
-/** Sale numbers are correlative within each live. */
-const nextOrderNumber = (storeId: string, liveId: string) =>
-  storeOrders(storeId)
-    .filter((order) => order.liveId === liveId)
-    .reduce((max, order) => Math.max(max, order.number), 0) + 1;
+/**
+ * Package number counter of each live, like vivos-be: it only goes up, so a number that was
+ * freed (sale left without items) is never handed out again. Starts after the seeded orders.
+ */
+const nextPackageNumbers = new Map<string, number>();
+
+const packageNumberInUse = (liveId: string, number: number, exceptId?: string) =>
+  MOCK_ORDERS.some((order) => order.liveId === liveId && order.number === number && order.id !== exceptId);
+
+const counterOf = (liveId: string) =>
+  nextPackageNumbers.get(liveId) ??
+  MOCK_ORDERS.filter((order) => order.liveId === liveId).reduce(
+    (max, order) => Math.max(max, order.number ?? 0),
+    0,
+  ) + 1;
+
+/** Next number of the live counter, skipping the ones set by hand. */
+const takePackageNumber = (liveId: string) => {
+  let candidate = counterOf(liveId);
+  while (packageNumberInUse(liveId, candidate)) candidate += 1;
+  nextPackageNumbers.set(liveId, candidate + 1);
+  return candidate;
+};
+
+/** A number set by hand is never handed out by the counter. */
+const reservePackageNumber = (liveId: string, number: number) =>
+  nextPackageNumbers.set(liveId, Math.max(counterOf(liveId), number + 1));
 
 /**
  * Orders with items matching the GET /orders filters (AND), like vivos-be.
@@ -61,7 +83,7 @@ export const orderHandlers = [
     if ("error" in guard) return guard.error;
     const result = filterOrders(guard.store.id, new URL(request.url).searchParams);
     if ("error" in result) return result.error;
-    return HttpResponse.json(result.orders.sort((a, b) => b.liveNumber - a.liveNumber || b.number - a.number));
+    return HttpResponse.json(result.orders.sort((a, b) => b.liveNumber - a.liveNumber || (b.number ?? 0) - (a.number ?? 0)));
   }),
 
   http.get(`${API_URL}${ORDERS_SUMMARY_PATH}`, async ({ request }) => {
@@ -123,7 +145,9 @@ export const orderHandlers = [
         id: existing?.id ?? crypto.randomUUID(),
         storeId,
         liveNumber: live.number,
-        number: existing?.number ?? nextOrderNumber(storeId, liveId),
+        // The package number comes with the first purchase and goes away with the last one.
+        number:
+          body.items.length === 0 ? null : (existing?.number ?? takePackageNumber(liveId)),
         liveId,
         clientId,
         status: body.status,
@@ -146,6 +170,15 @@ export const orderHandlers = [
     const order = storeOrders(guard.store.id).find((o) => o.id === params.id);
     if (!order) return errorResponse(404, "Venta no encontrada");
     const body = (await request.json()) as UpdateOrderStatusPayload;
+    if (body.number != null && body.number !== order.number) {
+      if (body.number < 1) return errorResponse(400, "El numero de paquete debe ser mayor a 0");
+      if (order.items.length === 0) return errorResponse(409, "La venta no tiene compras");
+      if (packageNumberInUse(order.liveId, body.number, order.id)) {
+        return errorResponse(409, "Ese número de paquete ya está en uso en este vivo");
+      }
+      order.number = body.number;
+      reservePackageNumber(order.liveId, body.number);
+    }
     if (body.status) order.status = body.status;
     if (body.packageStatus) order.packageStatus = body.packageStatus;
     order.updatedAt = new Date().toISOString();

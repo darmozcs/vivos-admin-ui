@@ -1,0 +1,30 @@
+{
+  "title": "Balance",
+  "description": "Lives, sales and purchases of the business in one place. Lives and sales add, purchases subtract.",
+  "type": {
+    "purchase": "Purchase",
+    "sale": "Sale",
+    "live": "Live"
+  },
+  "summary": {
+    "sales": "Sales (lives included)",
+    "purchases": "Purchases",
+    "quantity": "Garments (bought − sold)",
+    "balance": "Balance"
+  },
+  "columns": {
+    "type": "Type",
+    "quantity": "Garments",
+    "total": "Total",
+    "createdAt": "Created",
+    "totals": "Totals"
+  },
+  "filters": {
+    "dateRange": "Date",
+    "dateRangePlaceholder": "From – to",
+    "type": "Type",
+    "allPlaceholder": "All",
+    "clear": "Clear filters",
+    "noResults": "No results for these filters"
+  }
+}

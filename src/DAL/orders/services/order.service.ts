@@ -58,6 +58,8 @@ export const saveLiveOrderService = async ({
 export interface UpdateOrderStatusPayload {
   status?: OrderStatus;
   packageStatus?: PackageStatus;
+  /** Package number, unique within the live. */
+  number?: number;
 }
 
 export const updateOrderStatusService = async ({

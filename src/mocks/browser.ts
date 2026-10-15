@@ -1,6 +1,7 @@
 import { setupWorker } from "msw/browser";
 import {
   authHandlers,
+  balanceHandlers,
   clientHandlers,
   liveHandlers,
   tradeHandlers,
@@ -19,4 +20,5 @@ export const worker = setupWorker(
   ...orderHandlers,
   ...sellerHandlers,
   ...tradeHandlers,
+  ...balanceHandlers,
 );

@@ -1,4 +1,5 @@
-import { Avatar, Badge, Group, Stack, Text, Title } from "@mantine/core";
+import { Avatar, Group, Stack, Text, Title } from "@mantine/core";
+import type { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import type { OrderStatus, PackageStatus } from "@/types";
 import { OrderStatusControls } from "./OrderStatusControls";
@@ -8,8 +9,8 @@ interface OrderEditorHeaderProps {
   account: string;
   phone: string;
   initials: string;
-  /** "liveNumber-number" of the sale; null until the server creates it. */
-  saleNumber: string | null;
+  /** Package label of the sale; absent until the client buys something. */
+  packageBadge?: ReactNode;
   status: OrderStatus;
   packageStatus: PackageStatus;
   statusDisabled: boolean;
@@ -22,7 +23,7 @@ export const OrderEditorHeader = ({
   account,
   phone,
   initials,
-  saleNumber,
+  packageBadge,
   status,
   packageStatus,
   statusDisabled,
@@ -45,11 +46,7 @@ export const OrderEditorHeader = ({
             </Text>
           </Stack>
         </Group>
-        {saleNumber && (
-          <Badge size="lg" variant="light" color="plum" style={{ flexShrink: 0 }}>
-            {t("editor.saleNumber", { number: saleNumber })}
-          </Badge>
-        )}
+        {packageBadge}
       </Group>
       <OrderStatusControls
         status={status}
