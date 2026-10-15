@@ -1,18 +1,18 @@
 import { config } from "@/config";
 import { BALANCE_PATH } from "@/DAL/const";
 import type { Balance, BalanceEntry } from "@/models";
-import { BALANCE_ENTRY_TYPE, LIVE_STATUS, TRADE_STATUS, TRADE_TYPE } from "@/types";
+import { BALANCE_ENTRY_TYPE, LIVE_STATUS, ORDER_STATUS, TRADE_STATUS, TRADE_TYPE } from "@/types";
 import { delay, http, HttpResponse } from "msw";
 import { MOCK_LIVES } from "../data/lives";
+import { MOCK_ORDERS } from "../data/orders";
 import { MOCK_TRADES } from "../data/trades";
 import { INVALID_DATE_RANGE, toLocalDay } from "../utils/filters";
 import { errorResponse, MOCK_DELAY_MS } from "../utils/response";
 import { requireStore } from "../utils/session";
-import { toSummary } from "./lives.handlers";
 
 const API_URL = config.VITE_API_BASE_URL || "";
 
-/** Like vivos-be: ended lives (total collected), sold sales and purchased purchases. */
+/** Like vivos-be: ended lives (total collected: paid sales only), sold sales and purchased purchases. */
 const storeEntries = (storeId: string): BalanceEntry[] => [
   ...MOCK_TRADES.filter(
     (trade) =>
@@ -26,15 +26,21 @@ const storeEntries = (storeId: string): BalanceEntry[] => [
     amount: trade.price,
     createdAt: trade.createdAt,
   })),
-  ...MOCK_LIVES.filter((live) => live.storeId === storeId && live.status === LIVE_STATUS.ENDED)
-    .map(toSummary)
-    .map((live) => ({
-      id: live.id,
-      type: BALANCE_ENTRY_TYPE.LIVE,
-      quantity: live.units,
-      amount: live.totalAmount,
-      createdAt: live.createdAt,
-    })),
+  ...MOCK_LIVES.filter((live) => live.storeId === storeId && live.status === LIVE_STATUS.ENDED).map(
+    (live) => {
+      // Total collected: only the paid sales of the live (money and garments).
+      const items = MOCK_ORDERS.filter(
+        (order) => order.liveId === live.id && order.status === ORDER_STATUS.PAID,
+      ).flatMap((order) => order.items);
+      return {
+        id: live.id,
+        type: BALANCE_ENTRY_TYPE.LIVE,
+        quantity: items.reduce((units, item) => units + item.quantity, 0),
+        amount: items.reduce((total, item) => total + item.price * item.quantity, 0),
+        createdAt: live.createdAt,
+      };
+    },
+  ),
 ];
 
 const summarize = (entries: BalanceEntry[]): Balance["summary"] => {

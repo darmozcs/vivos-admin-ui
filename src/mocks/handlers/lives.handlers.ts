@@ -81,7 +81,7 @@ export const findLive = (storeId: string, id: string) =>
 const storeLives = (storeId: string) => MOCK_LIVES.filter((live) => live.storeId === storeId);
 
 /** Adds the sales totals of the live, as the real backend would compute them. */
-export const toSummary = (live: Live): LiveSummary => {
+const toSummary = (live: Live): LiveSummary => {
   const orders = MOCK_ORDERS.filter(
     (order) =>
       order.liveId === live.id &&
