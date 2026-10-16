@@ -17,6 +17,7 @@ import {
 } from "../utils/filters";
 import { errorResponse, MOCK_DELAY_MS } from "../utils/response";
 import { requireStore } from "../utils/session";
+import { unknownTag } from "./tags.handlers";
 
 const API_URL = config.VITE_API_BASE_URL || "";
 const LIVE_TITLE_MAX = 120;
@@ -179,6 +180,18 @@ export const liveHandlers = [
     return HttpResponse.json(toSummary(live));
   }),
 
+  http.put(`${API_URL}${LIVES_PATH}/:id/tags`, async ({ params, request }) => {
+    await delay(MOCK_DELAY_MS);
+    const guard = requireStore(request);
+    if ("error" in guard) return guard.error;
+    const live = findLive(guard.store.id, String(params.id));
+    if (!live) return errorResponse(404, "Vivo no encontrado");
+    const { tagIds } = (await request.json()) as { tagIds?: string[] };
+    if (unknownTag(guard.store.id, tagIds)) return errorResponse(400, "Alguna etiqueta no existe");
+    live.tagIds = [...new Set(tagIds ?? [])];
+    return HttpResponse.json(toSummary(live));
+  }),
+
   http.post(`${API_URL}${LIVES_PATH}`, async ({ request }) => {
     await delay(MOCK_DELAY_MS);
     const guard = requireStore(request);
@@ -188,6 +201,7 @@ export const liveHandlers = [
     if (title.length > LIVE_TITLE_MAX) {
       return errorResponse(400, "El titulo no puede superar 120 caracteres");
     }
+    if (unknownTag(guard.store.id, body.tagIds)) return errorResponse(400, "Alguna etiqueta no existe");
     const created: MockLive = {
       id: crypto.randomUUID(),
       // Lives are numbered per store.
@@ -203,6 +217,7 @@ export const liveHandlers = [
       accumulatedMs: 0,
       runningSince: null,
       createdAt: new Date().toISOString(),
+      tagIds: [...new Set(body.tagIds ?? [])],
     };
     MOCK_LIVES.push(created);
     return HttpResponse.json(created, { status: 201 });

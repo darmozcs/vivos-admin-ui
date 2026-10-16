@@ -58,7 +58,7 @@
     "confirm": "Eliminar",
     "success": "Clienta eliminada",
     "error": "No se pudo eliminar la clienta",
-    "blocked": "No se puede eliminar: tiene ventas de vivos o compras/ventas registradas"
+    "blocked": "No se puede eliminar: tiene ventas de vivos o movimientos registrados"
   },
   "filters": {
     "search": "Buscar",

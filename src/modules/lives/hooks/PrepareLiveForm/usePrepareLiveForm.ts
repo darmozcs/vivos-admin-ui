@@ -1,5 +1,6 @@
 import { useCreateLiveMutation } from "@/DAL";
 import { extractErrorMessage } from "@/libs";
+import { useTagOptions } from "@/modules/common/hooks";
 import { useLiveWorkspaceStore } from "@/store";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { notifications } from "@mantine/notifications";
@@ -19,6 +20,7 @@ export const usePrepareLiveForm = ({ onDone }: UsePrepareLiveFormProps) => {
   const { t } = useTranslation("lives");
   const createLive = useCreateLiveMutation();
   const resetWorkspace = useLiveWorkspaceStore((state) => state.reset);
+  const { options: tagOptions } = useTagOptions();
 
   const form = useForm<PrepareLiveFormData>({
     resolver: yupResolver(prepareLiveSchema),
@@ -50,5 +52,6 @@ export const usePrepareLiveForm = ({ onDone }: UsePrepareLiveFormProps) => {
     form,
     onSubmit: form.handleSubmit(onSubmit),
     isLoading: createLive.isPending,
+    tagOptions,
   };
 };

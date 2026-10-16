@@ -2,6 +2,7 @@ import {
   LIVE_ACTION_PATH,
   LIVE_CURRENT_PATH,
   LIVE_DETAIL_PATH,
+  LIVE_TAGS_PATH,
   LIVES_PATH,
   LIVES_SUMMARY_PATH,
 } from "@/DAL/const";
@@ -13,6 +14,7 @@ import type { AxiosResponse } from "axios";
 export interface CreateLivePayload {
   /** Optional: when empty, the live is named after its start date and time. */
   title?: string;
+  tagIds?: string[];
 }
 
 /**
@@ -72,3 +74,13 @@ export const deleteLiveService = async (
   id: string,
 ): Promise<AxiosResponse<void>> =>
   await httpClient.delete<void>(LIVE_DETAIL_PATH({ id }));
+
+/** Replaces the tags of the live. */
+export const updateLiveTagsService = async ({
+  id,
+  tagIds,
+}: {
+  id: string;
+  tagIds: string[];
+}): Promise<AxiosResponse<LiveSummary>> =>
+  await httpClient.put<LiveSummary>(LIVE_TAGS_PATH({ id }), { tagIds });

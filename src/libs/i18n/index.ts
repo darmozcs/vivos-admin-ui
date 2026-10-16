@@ -25,6 +25,7 @@ export const i18nReady = i18n
       "sellers",
       "trades",
       "balance",
+      "tags",
       "sales",
       "stores",
     ],

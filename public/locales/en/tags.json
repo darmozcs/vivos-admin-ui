@@ -1,0 +1,48 @@
+{
+  "title": "Tags",
+  "description": "Create tags to relate lives and movements and filter them in Movements and Balance.",
+  "empty": "No tags yet",
+  "columns": {
+    "name": "Name",
+    "preview": "Preview",
+    "color": "Color"
+  },
+  "actions": {
+    "edit": "Edit {{name}}",
+    "delete": "Delete {{name}}"
+  },
+  "form": {
+    "fields": {
+      "name": "Name",
+      "namePlaceholder": "E.g.: Winter 2026",
+      "color": "Color"
+    },
+    "previewPlaceholder": "Tag",
+    "cancel": "Cancel",
+    "errors": {
+      "nameRequired": "Enter the tag name",
+      "nameMax": "Name: up to {{nameMax}} characters",
+      "colorInvalid": "Choose a valid color"
+    }
+  },
+  "create": {
+    "button": "New tag",
+    "title": "New tag",
+    "submit": "Create tag",
+    "success": "Tag created",
+    "error": "The tag couldn't be created"
+  },
+  "edit": {
+    "title": "Edit tag",
+    "submit": "Save changes",
+    "success": "Tag updated",
+    "error": "The changes couldn't be saved"
+  },
+  "delete": {
+    "title": "Delete tag",
+    "message": "Are you sure you want to delete {{name}}? It will be removed from every live and movement that has it.",
+    "confirm": "Delete",
+    "success": "Tag deleted",
+    "error": "The tag couldn't be deleted"
+  }
+}

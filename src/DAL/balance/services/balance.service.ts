@@ -10,6 +10,8 @@ export interface GetBalanceParams {
   from?: string;
   to?: string;
   type?: BalanceEntryType;
+  /** Comma separated tag ids: the row has any of them. */
+  tagIds?: string;
 }
 
 export const getBalanceService = async (

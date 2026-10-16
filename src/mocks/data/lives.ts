@@ -24,6 +24,7 @@ export const MOCK_LIVES: MockLive[] = [
     accumulatedMs: 55 * 60 * 1000,
     runningSince: null,
     createdAt: "2026-08-30T20:00:00Z",
+    tagIds: ["t1"],
   },
   {
     id: "l1",
@@ -37,6 +38,7 @@ export const MOCK_LIVES: MockLive[] = [
     accumulatedMs: ONE_HOUR_TEN_MS,
     runningSince: null,
     createdAt: "2026-09-20T20:00:00Z",
+    tagIds: [],
   },
   {
     id: "l2",
@@ -50,6 +52,7 @@ export const MOCK_LIVES: MockLive[] = [
     accumulatedMs: 0,
     runningSince: null,
     createdAt: "2026-10-01T20:00:00Z",
+    tagIds: [],
   },
   {
     id: "l3",
@@ -63,5 +66,6 @@ export const MOCK_LIVES: MockLive[] = [
     accumulatedMs: 45 * 60 * 1000,
     runningSince: null,
     createdAt: "2026-09-25T20:00:00Z",
+    tagIds: [],
   },
 ];

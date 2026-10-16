@@ -1,19 +1,21 @@
 {
-  "title": "Purchases & Sales",
-  "description": "Business purchases and sales. Sales add and purchases subtract.",
+  "title": "Movements",
+  "description": "Sales, purchases and payments of the business. Sales add; purchases and payments subtract.",
   "type": {
     "sale": "Sale",
-    "purchase": "Purchase"
+    "purchase": "Purchase",
+    "payment": "Payment"
   },
   "status": {
     "published": "Published",
     "sold": "Sold",
     "pending": "Pending",
-    "purchased": "Purchased"
+    "purchased": "Purchased",
+    "paid": "Paid"
   },
   "summary": {
     "sales": "Sales",
-    "purchases": "Purchases",
+    "purchases": "Purchases and payments",
     "balance": "Balance",
     "quantity": "Garments (bought − sold)"
   },
@@ -25,11 +27,12 @@
     "status": "Status",
     "createdAt": "Created",
     "updatedAt": "Updated",
-    "totals": "Totals"
+    "totals": "Totals",
+    "noQuantity": "—"
   },
   "actions": {
-    "edit": "Edit purchase/sale",
-    "delete": "Delete purchase/sale"
+    "edit": "Edit movement",
+    "delete": "Delete movement"
   },
   "form": {
     "fields": {
@@ -52,28 +55,28 @@
       "priceRequired": "Enter the price",
       "priceMin": "The price can't be negative",
       "noteMax": "Note: up to {{noteMax}} characters",
-      "counterpartRequired": "Choose who the purchase/sale belongs to"
+      "counterpartRequired": "Choose who the movement belongs to"
     }
   },
   "create": {
-    "button": "New purchase/sale",
-    "title": "New purchase/sale",
-    "submit": "Create purchase/sale",
-    "success": "Purchase/sale created",
-    "error": "The purchase/sale couldn't be created"
+    "button": "New movement",
+    "title": "New movement",
+    "submit": "Create movement",
+    "success": "Movement created",
+    "error": "The movement couldn't be created"
   },
   "edit": {
-    "title": "Edit purchase/sale",
+    "title": "Edit movement",
     "submit": "Save changes",
-    "success": "Purchase/sale updated",
+    "success": "Movement updated",
     "error": "The changes couldn't be saved"
   },
   "delete": {
-    "title": "Delete purchase/sale",
-    "message": "Are you sure you want to delete this purchase/sale? This can't be undone.",
+    "title": "Delete movement",
+    "message": "Are you sure you want to delete this movement? This can't be undone.",
     "confirm": "Delete",
-    "success": "Purchase/sale deleted",
-    "error": "The purchase/sale couldn't be deleted"
+    "success": "Movement deleted",
+    "error": "The movement couldn't be deleted"
   },
   "filters": {
     "dateRange": "Date",

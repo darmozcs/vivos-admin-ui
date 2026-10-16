@@ -125,7 +125,7 @@ export const sellerHandlers = [
     if (!seller) return errorResponse(404, "Vendedor no encontrado");
     // Sellers with trades are kept so the trades history stays consistent, like vivos-be.
     if (MOCK_TRADES.some((trade) => trade.sellerId === seller.id)) {
-      return errorResponse(409, "No se puede eliminar un vendedor con compras/ventas");
+      return errorResponse(409, "No se puede eliminar un vendedor con movimientos");
     }
     MOCK_SELLERS.splice(MOCK_SELLERS.indexOf(seller), 1);
     return new HttpResponse(null, { status: 204 });

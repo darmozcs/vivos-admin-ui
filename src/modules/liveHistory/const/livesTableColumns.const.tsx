@@ -2,11 +2,14 @@ import type { DataTableColumn } from "@/libs/ui/table";
 import { LiveStatusBadge } from "@/modules/common/components";
 import { Text } from "@mantine/core";
 import type { TFunction } from "i18next";
-import { LiveRowActions } from "../components";
+import type { ComponentProps } from "react";
+import { LiveRowActions, LiveTagsCell } from "../components";
 import type { LiveRow } from "../hooks";
 
 interface LivesTableActions {
   onDelete: (live: LiveRow) => void;
+  /** Props of the tags cell of a row (popover state and handlers). */
+  tagsCellProps: (liveId: string, tagIds: string[]) => Omit<ComponentProps<typeof LiveTagsCell>, "tags">;
 }
 
 export const getLivesTableColumns = (
@@ -37,6 +40,12 @@ export const getLivesTableColumns = (
   { accessor: "buyers", title: t("columns.buyers"), width: 110, textAlign: "right" },
   { accessor: "units", title: t("columns.units"), width: 100, textAlign: "right" },
   { accessor: "total", title: t("columns.total"), width: 130, textAlign: "right" },
+  {
+    accessor: "tags",
+    title: t("common:tags.label"),
+    width: 240,
+    render: (live) => <LiveTagsCell tags={live.tags} {...actions.tagsCellProps(live.id, live.tagIds)} />,
+  },
   {
     accessor: "actions",
     title: "",

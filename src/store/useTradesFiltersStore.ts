@@ -1,4 +1,5 @@
 import type { GetTradesParams } from "@/DAL";
+import { toTagIdsParam } from "@/DAL";
 import { compactParams } from "@/libs/query";
 import type { TradeStatus, TradeType } from "@/types";
 import { create } from "zustand";
@@ -11,6 +12,7 @@ export interface TradesFilters {
   search: string;
   type: TradeType | null;
   status: TradeStatus | null;
+  tagIds: string[];
 }
 
 interface TradesFiltersState {
@@ -26,6 +28,7 @@ const FILTERS_INITIAL: TradesFilters = {
   search: "",
   type: null,
   status: null,
+  tagIds: [],
 };
 
 /** Server-side filters of the trades page (also applied to the totals). */
@@ -34,7 +37,7 @@ export const useTradesFiltersStore = create<TradesFiltersState>((set, get) => ({
   setFilter: (key, value) => set((state) => ({ filters: { ...state.filters, [key]: value } })),
   resetFilters: () => set({ filters: FILTERS_INITIAL }),
   getQueryParams: () => {
-    const { dateRange, ...rest } = get().filters;
-    return compactParams({ from: dateRange[0], to: dateRange[1], ...rest });
+    const { dateRange, tagIds, ...rest } = get().filters;
+    return compactParams({ from: dateRange[0], to: dateRange[1], ...rest, tagIds: toTagIdsParam(tagIds) });
   },
 }));

@@ -25,10 +25,11 @@ export const useEditTradeForm = ({ trade, onDone }: UseEditTradeFormProps) => {
     form.reset({
       type: trade.type,
       status: trade.status,
-      quantity: trade.quantity,
+      quantity: trade.quantity ?? undefined,
       price: trade.price,
       note: trade.note,
       counterpartId: (trade.clientId ?? trade.sellerId) as string,
+      tagIds: trade.tagIds,
     });
   }, [trade, form]);
 

@@ -19,9 +19,10 @@
     "clients": "Clientes",
     "sales": "Ventas",
     "lives": "Vivos",
-    "trades": "Compra/Venta",
+    "trades": "Movimientos",
     "balance": "Balance",
     "sellers": "Vendedores",
+    "tags": "Etiquetas",
     "startLive": "Comenzar vivo",
     "settings": "Configuración",
     "stores": "Tiendas"
@@ -52,16 +53,20 @@
       "description": "Nombre de la tienda y contraseña."
     },
     "trades": {
-      "title": "Compra/Venta",
-      "description": "Compras y ventas del negocio con sus totales."
+      "title": "Movimientos",
+      "description": "Ventas, compras y pagos del negocio con sus totales."
     },
     "balance": {
       "title": "Balance",
-      "description": "Vivos, ventas y compras del negocio en un solo lugar."
+      "description": "Vivos, ventas, compras y pagos del negocio en un solo lugar."
     },
     "sellers": {
       "title": "Vendedores",
       "description": "Vendedores a los que se les compra."
+    },
+    "tags": {
+      "title": "Etiquetas",
+      "description": "Etiquetas para relacionar y filtrar vivos y movimientos."
     },
     "clients": {
       "title": "Clientes",
@@ -141,5 +146,10 @@
     "deliveryType": "Tipo de entrega",
     "deliveryTypePlaceholder": "Elegí el tipo de entrega",
     "noResults": "Sin resultados"
+  },
+  "tags": {
+    "label": "Etiquetas",
+    "placeholder": "Sin etiquetas",
+    "noOptions": "Sin etiquetas que coincidan"
   }
 }

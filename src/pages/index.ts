@@ -8,3 +8,4 @@ export * from "./Sales.page";
 export * from "./Sellers.page";
 export * from "./Settings.page";
 export * from "./Stores.page";
+export * from "./Tags.page";

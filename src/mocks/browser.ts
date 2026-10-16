@@ -9,6 +9,7 @@ import {
   sellerHandlers,
   settingsHandlers,
   storeHandlers,
+  tagHandlers,
 } from "./handlers";
 
 export const worker = setupWorker(
@@ -21,4 +22,5 @@ export const worker = setupWorker(
   ...sellerHandlers,
   ...tradeHandlers,
   ...balanceHandlers,
+  ...tagHandlers,
 );

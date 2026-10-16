@@ -36,5 +36,12 @@
     "success": "Live deleted",
     "error": "Could not delete the live",
     "blocked": "Only lives without sales can be deleted"
+  },
+  "tags": {
+    "edit": "Change tags",
+    "save": "Save",
+    "cancel": "Cancel",
+    "success": "Live tags updated",
+    "error": "The tags couldn't be changed"
   }
 }

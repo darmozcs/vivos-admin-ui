@@ -24,6 +24,7 @@ export const LiveHeaderContainer = () => {
       form={prepareForm.form}
       onSubmit={prepareForm.onSubmit}
       isLoading={prepareForm.isLoading}
+      tagOptions={prepareForm.tagOptions}
     />
   );
 

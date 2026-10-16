@@ -1,7 +1,7 @@
 import type { DataTableColumn } from "@/libs/ui/table";
 import { Text } from "@mantine/core";
 import type { TFunction } from "i18next";
-import { SignedAmount } from "@/modules/common/components";
+import { SignedAmount, TagBadges } from "@/modules/common/components";
 import { formatSignedQuantity } from "@/modules/common/utils";
 import { TradeRowActions, TradeStatusBadge, TradeTypeBadge } from "../components";
 import type { TradeRow, TradesTableTotals } from "../hooks";
@@ -30,6 +30,7 @@ export const getTradesTableColumns = (
     title: t("columns.quantity"),
     width: 130,
     textAlign: "right",
+    render: (trade) => trade.quantity ?? t("columns.noQuantity"),
     footer: (
       <Text size="sm" fw={700} ta="right">
         {formatSignedQuantity(totals.netQuantity)}
@@ -49,6 +50,12 @@ export const getTradesTableColumns = (
     title: t("columns.status"),
     width: 130,
     render: (trade) => <TradeStatusBadge status={trade.status} />,
+  },
+  {
+    accessor: "tags",
+    title: t("common:tags.label"),
+    width: 200,
+    render: (trade) => <TagBadges tags={trade.tags} />,
   },
   { accessor: "createdAt", title: t("columns.createdAt"), width: 150 },
   { accessor: "updatedAt", title: t("columns.updatedAt"), width: 150 },

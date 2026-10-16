@@ -36,5 +36,12 @@
     "success": "Vivo eliminado",
     "error": "No se pudo eliminar el vivo",
     "blocked": "Solo se pueden eliminar vivos sin ventas"
+  },
+  "tags": {
+    "edit": "Cambiar etiquetas",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "success": "Etiquetas del vivo actualizadas",
+    "error": "No se pudieron cambiar las etiquetas"
   }
 }

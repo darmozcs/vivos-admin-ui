@@ -1,4 +1,4 @@
-import { FiltersBar } from "@/modules/common/components";
+import { FiltersBar, TagsMultiSelect } from "@/modules/common/components";
 import {
   DATE_FILTER_FORMAT,
   FILTER_INPUT_SIZE,
@@ -21,6 +21,8 @@ interface TradesFiltersBarProps {
   onSearchChange: (value: string) => void;
   onTypeChange: (value: string | null) => void;
   onStatusChange: (value: string | null) => void;
+  tagOptions: SelectOption[];
+  onTagsChange: (tagIds: string[]) => void;
   onClear: () => void;
 }
 
@@ -33,6 +35,8 @@ export const TradesFiltersBar = ({
   onSearchChange,
   onTypeChange,
   onStatusChange,
+  tagOptions,
+  onTagsChange,
   onClear,
 }: TradesFiltersBarProps) => {
   const { t } = useTranslation("trades");
@@ -78,6 +82,14 @@ export const TradesFiltersBar = ({
         clearable
         value={filters.status}
         onChange={onStatusChange}
+      />
+      <TagsMultiSelect
+        size={FILTER_INPUT_SIZE}
+        w={FILTER_WIDE_INPUT_WIDTH}
+        options={tagOptions}
+        value={filters.tagIds}
+        onChange={onTagsChange}
+        placeholder={t("filters.allPlaceholder")}
       />
     </FiltersBar>
   );

@@ -1,19 +1,21 @@
 {
-  "title": "Compra/Venta",
-  "description": "Compras y ventas del negocio. Las ventas suman y las compras restan.",
+  "title": "Movimientos",
+  "description": "Ventas, compras y pagos del negocio. Las ventas suman; las compras y los pagos restan.",
   "type": {
     "sale": "Venta",
-    "purchase": "Compra"
+    "purchase": "Compra",
+    "payment": "Pago"
   },
   "status": {
     "published": "Publicado",
     "sold": "Vendido",
     "pending": "Pendiente",
-    "purchased": "Comprado"
+    "purchased": "Comprado",
+    "paid": "Pagado"
   },
   "summary": {
     "sales": "Ventas",
-    "purchases": "Compras",
+    "purchases": "Compras y pagos",
     "quantity": "Prendas (compradas − vendidas)",
     "balance": "Balance"
   },
@@ -25,11 +27,12 @@
     "status": "Estado",
     "createdAt": "Creado",
     "updatedAt": "Actualizado",
-    "totals": "Totales"
+    "totals": "Totales",
+    "noQuantity": "—"
   },
   "actions": {
-    "edit": "Editar compra/venta",
-    "delete": "Eliminar compra/venta"
+    "edit": "Editar movimiento",
+    "delete": "Eliminar movimiento"
   },
   "form": {
     "fields": {
@@ -52,28 +55,28 @@
       "priceRequired": "Ingresá el precio",
       "priceMin": "El precio no puede ser negativo",
       "noteMax": "Nota: máximo {{noteMax}} caracteres",
-      "counterpartRequired": "Elegí a quién corresponde la compra/venta"
+      "counterpartRequired": "Elegí a quién corresponde el movimiento"
     }
   },
   "create": {
-    "button": "Nueva compra/venta",
-    "title": "Nueva compra/venta",
-    "submit": "Crear compra/venta",
-    "success": "Compra/venta creada",
-    "error": "No se pudo crear la compra/venta"
+    "button": "Nuevo movimiento",
+    "title": "Nuevo movimiento",
+    "submit": "Crear movimiento",
+    "success": "Movimiento creado",
+    "error": "No se pudo crear el movimiento"
   },
   "edit": {
-    "title": "Editar compra/venta",
+    "title": "Editar movimiento",
     "submit": "Guardar cambios",
-    "success": "Compra/venta actualizada",
+    "success": "Movimiento actualizado",
     "error": "No se pudieron guardar los cambios"
   },
   "delete": {
-    "title": "Eliminar compra/venta",
-    "message": "¿Seguro que querés eliminar esta compra/venta? Esta acción no se puede deshacer.",
+    "title": "Eliminar movimiento",
+    "message": "¿Seguro que querés eliminar este movimiento? Esta acción no se puede deshacer.",
     "confirm": "Eliminar",
-    "success": "Compra/venta eliminada",
-    "error": "No se pudo eliminar la compra/venta"
+    "success": "Movimiento eliminado",
+    "error": "No se pudo eliminar el movimiento"
   },
   "filters": {
     "dateRange": "Fecha",

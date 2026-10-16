@@ -62,3 +62,7 @@ export const TRADES_SUMMARY_PATH = TRADES_PATH + "/summary";
 export const TRADE_DETAIL_PATH = ({ id }: { id: string }) => `${TRADES_PATH}/${id}`;
 
 export const BALANCE_PATH = BASE_PATH + "/balance";
+
+export const TAGS_PATH = BASE_PATH + "/tags";
+export const TAG_DETAIL_PATH = ({ id }: { id: string }) => `${TAGS_PATH}/${id}`;
+export const LIVE_TAGS_PATH = ({ id }: { id: string }) => `${LIVES_PATH}/${id}/tags`;

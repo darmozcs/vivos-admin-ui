@@ -5,7 +5,8 @@ export interface Trade {
   id: string;
   type: TradeType;
   status: TradeStatus;
-  quantity: number;
+  /** Garments of the sale or purchase; null for payments. */
+  quantity: number | null;
   price: number;
   note: string;
   sellerId: string | null;
@@ -14,6 +15,8 @@ export interface Trade {
   clientName: string | null;
   createdAt: string;
   updatedAt: string;
+  /** Ids of the store tags of the movement. */
+  tagIds: string[];
 }
 
 /** Totals of GET /trades/summary: balance = sales - purchases, quantities are units. */

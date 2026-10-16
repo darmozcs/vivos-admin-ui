@@ -1,3 +1,4 @@
+export { tagHandlers } from "./tags.handlers";
 export { balanceHandlers } from "./balance.handlers";
 export { authHandlers } from "./auth.handlers";
 export { clientHandlers } from "./clients.handlers";

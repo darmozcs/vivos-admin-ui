@@ -14,6 +14,8 @@ export interface Live {
   /** Start of the current running segment; null while paused or stopped. */
   runningSince: string | null;
   createdAt: string;
+  /** Ids of the store tags of the live. */
+  tagIds: string[];
 }
 
 /** Live plus the sales totals computed by the server. */

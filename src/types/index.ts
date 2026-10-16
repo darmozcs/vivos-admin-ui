@@ -82,25 +82,28 @@ export type NumberRange = [number | null, number | null];
 export const TRADE_TYPE = {
   SALE: "SALE",
   PURCHASE: "PURCHASE",
+  PAYMENT: "PAYMENT",
 } as const;
 
 export type TradeType = (typeof TRADE_TYPE)[keyof typeof TRADE_TYPE];
 
-/** PUBLISHED/SOLD belong to sales; PENDING/PURCHASED to purchases. */
+/** PUBLISHED/SOLD belong to sales; PENDING/PURCHASED to purchases; PENDING/PAID to payments. */
 export const TRADE_STATUS = {
   PUBLISHED: "PUBLISHED",
   SOLD: "SOLD",
   PENDING: "PENDING",
   PURCHASED: "PURCHASED",
+  PAID: "PAID",
 } as const;
 
 export type TradeStatus = (typeof TRADE_STATUS)[keyof typeof TRADE_STATUS];
 
-/** Origin of a balance row: lives and sales add, purchases subtract. */
+/** Origin of a balance row: lives and sales add, purchases and payments subtract. */
 export const BALANCE_ENTRY_TYPE = {
   PURCHASE: "PURCHASE",
   SALE: "SALE",
   LIVE: "LIVE",
+  PAYMENT: "PAYMENT",
 } as const;
 
 export type BalanceEntryType = (typeof BALANCE_ENTRY_TYPE)[keyof typeof BALANCE_ENTRY_TYPE];

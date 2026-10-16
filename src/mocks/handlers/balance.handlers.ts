@@ -12,19 +12,27 @@ import { requireStore } from "../utils/session";
 
 const API_URL = config.VITE_API_BASE_URL || "";
 
-/** Like vivos-be: ended lives (total collected: paid sales only), sold sales and purchased purchases. */
+/** Status that makes a trade count in the balance, per type (like vivos-be). */
+const COUNTED_STATUS = {
+  [TRADE_TYPE.SALE]: TRADE_STATUS.SOLD,
+  [TRADE_TYPE.PURCHASE]: TRADE_STATUS.PURCHASED,
+  [TRADE_TYPE.PAYMENT]: TRADE_STATUS.PAID,
+} as const;
+
+/**
+ * Like vivos-be: ended lives (total collected: paid sales only), sold sales, purchased
+ * purchases and paid payments (with no garments).
+ */
 const storeEntries = (storeId: string): BalanceEntry[] => [
   ...MOCK_TRADES.filter(
-    (trade) =>
-      trade.storeId === storeId &&
-      ((trade.type === TRADE_TYPE.SALE && trade.status === TRADE_STATUS.SOLD) ||
-        (trade.type === TRADE_TYPE.PURCHASE && trade.status === TRADE_STATUS.PURCHASED)),
+    (trade) => trade.storeId === storeId && trade.status === COUNTED_STATUS[trade.type],
   ).map((trade) => ({
     id: trade.id,
-    type: trade.type === TRADE_TYPE.SALE ? BALANCE_ENTRY_TYPE.SALE : BALANCE_ENTRY_TYPE.PURCHASE,
-    quantity: trade.quantity,
+    type: trade.type,
+    quantity: trade.quantity ?? 0,
     amount: trade.price,
     createdAt: trade.createdAt,
+    tagIds: trade.tagIds,
   })),
   ...MOCK_LIVES.filter((live) => live.storeId === storeId && live.status === LIVE_STATUS.ENDED).map(
     (live) => {
@@ -38,14 +46,17 @@ const storeEntries = (storeId: string): BalanceEntry[] => [
         quantity: items.reduce((units, item) => units + item.quantity, 0),
         amount: items.reduce((total, item) => total + item.price * item.quantity, 0),
         createdAt: live.createdAt,
+        tagIds: live.tagIds,
       };
     },
   ),
 ];
 
 const summarize = (entries: BalanceEntry[]): Balance["summary"] => {
-  const purchases = entries.filter((entry) => entry.type === BALANCE_ENTRY_TYPE.PURCHASE);
-  const sales = entries.filter((entry) => entry.type !== BALANCE_ENTRY_TYPE.PURCHASE);
+  const subtracts = (entry: BalanceEntry) =>
+    entry.type === BALANCE_ENTRY_TYPE.PURCHASE || entry.type === BALANCE_ENTRY_TYPE.PAYMENT;
+  const purchases = entries.filter(subtracts);
+  const sales = entries.filter((entry) => !subtracts(entry));
   const sum = (items: BalanceEntry[], pick: (entry: BalanceEntry) => number) =>
     items.reduce((total, entry) => total + pick(entry), 0);
   const salesTotal = sum(sales, (entry) => entry.amount);
@@ -71,11 +82,13 @@ export const balanceHandlers = [
     const from = params.get("from") || undefined;
     const to = params.get("to") || undefined;
     const type = params.get("type") || undefined;
+    const tagIds = params.get("tagIds")?.split(",").filter(Boolean) ?? [];
     if (from && to && from > to) return errorResponse(400, INVALID_DATE_RANGE);
     const entries = storeEntries(guard.store.id)
       .filter((entry) => {
         const day = toLocalDay(entry.createdAt);
-        return (!from || day >= from) && (!to || day <= to) && (!type || entry.type === type);
+        const tagged = tagIds.length === 0 || entry.tagIds.some((id) => tagIds.includes(id));
+        return (!from || day >= from) && (!to || day <= to) && (!type || entry.type === type) && tagged;
       })
       .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
     const balance: Balance = { entries, summary: summarize(entries) };

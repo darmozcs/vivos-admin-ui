@@ -7,6 +7,8 @@ export interface BalanceEntry {
   quantity: number;
   amount: number;
   createdAt: string;
+  /** Ids of the store tags of the live or movement. */
+  tagIds: string[];
 }
 
 /** Sales include lives. balance = sales - purchases; netQuantity = garments bought - sold. */

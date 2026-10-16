@@ -1,0 +1,48 @@
+{
+  "title": "Etiquetas",
+  "description": "Creá etiquetas para relacionar vivos y movimientos y filtrarlos en Movimientos y Balance.",
+  "empty": "Todavía no hay etiquetas",
+  "columns": {
+    "name": "Nombre",
+    "preview": "Vista previa",
+    "color": "Color"
+  },
+  "actions": {
+    "edit": "Editar {{name}}",
+    "delete": "Eliminar {{name}}"
+  },
+  "form": {
+    "fields": {
+      "name": "Nombre",
+      "namePlaceholder": "Ej.: Invierno 2026",
+      "color": "Color"
+    },
+    "previewPlaceholder": "Etiqueta",
+    "cancel": "Cancelar",
+    "errors": {
+      "nameRequired": "Ingresá el nombre de la etiqueta",
+      "nameMax": "Nombre: máximo {{nameMax}} caracteres",
+      "colorInvalid": "Elegí un color válido"
+    }
+  },
+  "create": {
+    "button": "Nueva etiqueta",
+    "title": "Nueva etiqueta",
+    "submit": "Crear etiqueta",
+    "success": "Etiqueta creada",
+    "error": "No se pudo crear la etiqueta"
+  },
+  "edit": {
+    "title": "Editar etiqueta",
+    "submit": "Guardar cambios",
+    "success": "Etiqueta actualizada",
+    "error": "No se pudieron guardar los cambios"
+  },
+  "delete": {
+    "title": "Eliminar etiqueta",
+    "message": "¿Seguro que querés eliminar {{name}}? Se va a quitar de todos los vivos y movimientos que la tengan.",
+    "confirm": "Eliminar",
+    "success": "Etiqueta eliminada",
+    "error": "No se pudo eliminar la etiqueta"
+  }
+}

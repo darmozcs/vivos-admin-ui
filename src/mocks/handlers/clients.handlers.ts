@@ -132,7 +132,7 @@ export const clientHandlers = [
       return errorResponse(409, "No se puede eliminar una clienta con compras");
     }
     if (MOCK_TRADES.some((trade) => trade.clientId === client.id)) {
-      return errorResponse(409, "No se puede eliminar una clienta con compras/ventas");
+      return errorResponse(409, "No se puede eliminar una clienta con movimientos");
     }
     MOCK_CLIENTS.splice(MOCK_CLIENTS.indexOf(client), 1);
     return new HttpResponse(null, { status: 204 });

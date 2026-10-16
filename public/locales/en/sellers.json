@@ -58,7 +58,7 @@
     "confirm": "Delete",
     "success": "Seller deleted",
     "error": "Could not delete the seller",
-    "blocked": "Can't be deleted: it has recorded purchases/sales"
+    "blocked": "Can't be deleted: it has recorded movements"
   },
   "filters": {
     "search": "Search",

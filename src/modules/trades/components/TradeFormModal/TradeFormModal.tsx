@@ -7,6 +7,7 @@ import { TRADE_FIELD_LIMITS } from "../../const/trade.const";
 import type { TradeFormData } from "../../schemas/tradeForm.schema";
 import { TradeAmountFields } from "./TradeAmountFields";
 import { TradeCounterpartField } from "./TradeCounterpartField";
+import { TradeTagsField } from "./TradeTagsField";
 
 interface TradeFormModalProps {
   opened: boolean;
@@ -22,6 +23,8 @@ interface TradeFormModalProps {
   typeOptions: SelectOption[];
   statusOptions: SelectOption[];
   counterpartLabel: string;
+  showQuantity: boolean;
+  tagOptions: SelectOption[];
   counterpartOptions: SelectOption[];
   onTypeChange: (value: string) => void;
 }
@@ -42,6 +45,8 @@ export const TradeFormModal = ({
   typeOptions,
   statusOptions,
   counterpartLabel,
+  showQuantity,
+  tagOptions,
   counterpartOptions,
   onTypeChange,
 }: TradeFormModalProps) => {
@@ -62,7 +67,8 @@ export const TradeFormModal = ({
             aria-label={t("form.fields.type")}
           />
           <TradeCounterpartField form={form} label={counterpartLabel} options={counterpartOptions} />
-          <TradeAmountFields form={form} />
+          <TradeAmountFields form={form} showQuantity={showQuantity} />
+          <TradeTagsField form={form} options={tagOptions} />
           <Controller
             name="status"
             control={form.control}

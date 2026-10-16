@@ -1,10 +1,11 @@
 import { useClientsQuery, useSellersQuery } from "@/DAL";
+import { useTagOptions } from "@/modules/common/hooks";
 import { TRADE_TYPE, type TradeType } from "@/types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { TRADE_STATUSES_BY_TYPE } from "../../const/trade.const";
+import { TRADE_STATUSES_BY_TYPE, TRADE_TYPES_WITH_QUANTITY } from "../../const/trade.const";
 import {
   getTradeFormDefaultValues,
   tradeFormSchema,
@@ -23,6 +24,7 @@ export const useTradeForm = () => {
   const isSale = type === TRADE_TYPE.SALE;
   const { data: sellers = [] } = useSellersQuery();
   const { data: clients = [] } = useClientsQuery();
+  const { options: tagOptions } = useTagOptions();
 
   const counterpartOptions = useMemo(
     () => (isSale ? clients : sellers).map(({ id, fullName }) => ({ value: id, label: fullName })),
@@ -46,6 +48,8 @@ export const useTradeForm = () => {
     typeOptions: getTradeTypeOptions(t),
     statusOptions: getTradeStatusOptions(t, type),
     counterpartLabel: isSale ? t("form.fields.client") : t("form.fields.seller"),
+    showQuantity: TRADE_TYPES_WITH_QUANTITY.includes(type),
+    tagOptions,
     counterpartOptions,
     onTypeChange,
   };

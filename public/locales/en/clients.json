@@ -58,7 +58,7 @@
     "confirm": "Delete",
     "success": "Client deleted",
     "error": "Could not delete the client",
-    "blocked": "Can't be deleted: it has recorded live sales or purchases/sales"
+    "blocked": "Can't be deleted: it has recorded live sales or movements"
   },
   "filters": {
     "search": "Search",

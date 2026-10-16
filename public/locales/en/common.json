@@ -19,9 +19,10 @@
     "clients": "Clients",
     "sales": "Sales",
     "lives": "Lives",
-    "trades": "Purchases & Sales",
+    "trades": "Movements",
     "balance": "Balance",
     "sellers": "Sellers",
+    "tags": "Tags",
     "startLive": "Start live",
     "settings": "Settings",
     "stores": "Stores"
@@ -52,16 +53,20 @@
       "description": "Store name and password."
     },
     "trades": {
-      "title": "Purchases & Sales",
-      "description": "Business purchases and sales with their totals."
+      "title": "Movements",
+      "description": "Sales, purchases and payments of the business with their totals."
     },
     "balance": {
       "title": "Balance",
-      "description": "Lives, sales and purchases of the business in one place."
+      "description": "Lives, sales, purchases and payments of the business in one place."
     },
     "sellers": {
       "title": "Sellers",
       "description": "Sellers the business buys from."
+    },
+    "tags": {
+      "title": "Tags",
+      "description": "Tags to relate and filter lives and movements."
     },
     "clients": {
       "title": "Clients",
@@ -141,5 +146,10 @@
     "deliveryType": "Delivery type",
     "deliveryTypePlaceholder": "Choose the delivery type",
     "noResults": "No results"
+  },
+  "tags": {
+    "label": "Tags",
+    "placeholder": "No tags",
+    "noOptions": "No matching tags"
   }
 }

@@ -1,3 +1,4 @@
+import { useTagOptions } from "@/modules/common/hooks";
 import { useTradesFiltersStore, type TradesDateRange } from "@/store";
 import type { TradeStatus, TradeType } from "@/types";
 import { useTranslation } from "react-i18next";
@@ -11,6 +12,7 @@ export const useTradesFilters = () => {
   const { filters, setFilter, resetFilters } = useTradesFiltersStore(
     useShallow(({ filters, setFilter, resetFilters }) => ({ filters, setFilter, resetFilters })),
   );
+  const { options: tagOptions } = useTagOptions();
   const canClear = useTradesFiltersStore((state) => Object.keys(state.getQueryParams()).length > 0);
 
   const onTypeChange = (value: string | null) => {
@@ -31,6 +33,8 @@ export const useTradesFilters = () => {
     onSearchChange: (value: string) => setFilter("search", value),
     onTypeChange,
     onStatusChange: (value: string | null) => setFilter("status", value as TradeStatus | null),
+    tagOptions,
+    onTagsChange: (tagIds: string[]) => setFilter("tagIds", tagIds),
     onClear: resetFilters,
   };
 };

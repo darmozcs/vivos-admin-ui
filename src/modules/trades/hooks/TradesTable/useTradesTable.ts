@@ -1,5 +1,7 @@
 import { useTradesQuery, useTradesSummaryQuery } from "@/DAL";
 import { formatDateTime } from "@/libs";
+import type { Tag } from "@/models";
+import { useTagOptions } from "@/modules/common/hooks";
 import type { TradeStatus, TradeType } from "@/types";
 import { useMemo, useState } from "react";
 import { netTradeQuantity, signedTradeAmount } from "../../utils/trade.utils";
@@ -10,12 +12,14 @@ export interface TradeRow {
   id: string;
   type: TradeType;
   status: TradeStatus;
-  /** Seller of a sale or client of a purchase. */
+  /** Client of a sale or seller of a purchase or payment. */
   counterpartName: string;
-  quantity: number;
-  /** Positive for sales, negative for purchases. */
+  /** Garments; null for payments. */
+  quantity: number | null;
+  /** Positive for sales, negative for purchases and payments. */
   amount: number;
   createdAt: string;
+  tags: Tag[];
   updatedAt: string;
 }
 
@@ -31,6 +35,7 @@ export const useTradesTable = () => {
   const { data: summary } = useTradesSummaryQuery(params);
   const [editingTradeId, setEditingTradeId] = useState<string | null>(null);
   const { requestDelete } = useTradeDelete();
+  const { tagsOf } = useTagOptions();
 
   const records = useMemo<TradeRow[]>(
     () =>
@@ -43,8 +48,9 @@ export const useTradesTable = () => {
         amount: signedTradeAmount(trade.type, trade.price),
         createdAt: formatDateTime(trade.createdAt),
         updatedAt: formatDateTime(trade.updatedAt),
+        tags: tagsOf(trade.tagIds),
       })),
-    [trades],
+    [trades, tagsOf],
   );
 
   const totals: TradesTableTotals = {

@@ -1,12 +1,16 @@
 import { TRADE_STATUS, TRADE_TYPE, type TradeStatus, type TradeType } from "@/types";
 import * as yup from "yup";
-import { TRADE_FIELD_LIMITS, TRADE_STATUSES_BY_TYPE } from "../const/trade.const";
+import {
+  TRADE_FIELD_LIMITS,
+  TRADE_STATUSES_BY_TYPE,
+  TRADE_TYPES_WITH_QUANTITY,
+} from "../const/trade.const";
 
 /** NumberInput returns "" when cleared. */
 const emptyToUndefined = (value: unknown, original: unknown) =>
   original === "" ? undefined : value;
 
-/** counterpartId is the seller of a sale or the client of a purchase. */
+/** counterpartId is the client of a sale or the seller of a purchase or payment. */
 export const tradeFormSchema = yup.object({
   type: yup.mixed<TradeType>().oneOf(Object.values(TRADE_TYPE)).required(),
   status: yup
@@ -16,13 +20,19 @@ export const tradeFormSchema = yup.object({
     .test("status-of-type", "trades:form.errors.statusRequired", (status, context) =>
       TRADE_STATUSES_BY_TYPE[context.parent.type as TradeType].some((allowed) => allowed === status),
     ),
+  // Required for sales and purchases; payments carry no garments.
   quantity: yup
     .number()
     .transform(emptyToUndefined)
     .typeError("trades:form.errors.quantityRequired")
-    .required("trades:form.errors.quantityRequired")
     .integer("trades:form.errors.quantityMin")
-    .min(TRADE_FIELD_LIMITS.quantityMin, "trades:form.errors.quantityMin"),
+    .min(TRADE_FIELD_LIMITS.quantityMin, "trades:form.errors.quantityMin")
+    .test(
+      "quantity-of-type",
+      "trades:form.errors.quantityRequired",
+      (quantity, context) =>
+        !TRADE_TYPES_WITH_QUANTITY.includes(context.parent.type as TradeType) || quantity !== undefined,
+    ),
   price: yup
     .number()
     .transform(emptyToUndefined)
@@ -31,6 +41,7 @@ export const tradeFormSchema = yup.object({
     .min(TRADE_FIELD_LIMITS.priceMin, "trades:form.errors.priceMin"),
   note: yup.string().trim().max(TRADE_FIELD_LIMITS.noteMax, "trades:form.errors.noteMax").default(""),
   counterpartId: yup.string().required("trades:form.errors.counterpartRequired"),
+  tagIds: yup.array(yup.string().defined()).defined().default([]),
 });
 
 export type TradeFormData = yup.InferType<typeof tradeFormSchema>;
@@ -39,8 +50,9 @@ export type TradeFormData = yup.InferType<typeof tradeFormSchema>;
 export const getTradeFormDefaultValues = (type: TradeType = TRADE_TYPE.SALE): TradeFormData => ({
   type,
   status: TRADE_STATUSES_BY_TYPE[type][0],
-  quantity: undefined as unknown as number,
+  quantity: undefined,
   price: undefined as unknown as number,
   note: "",
   counterpartId: undefined as unknown as string,
+  tagIds: [],
 });

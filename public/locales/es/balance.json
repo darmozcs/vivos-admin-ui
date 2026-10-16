@@ -1,14 +1,15 @@
 {
   "title": "Balance",
-  "description": "Vivos, ventas y compras del negocio en un solo lugar. Vivos y ventas suman, compras restan.",
+  "description": "Vivos, ventas, compras y pagos del negocio en un solo lugar. Vivos y ventas suman; compras y pagos restan.",
   "type": {
     "purchase": "Compra",
     "sale": "Venta",
-    "live": "Vivo"
+    "live": "Vivo",
+    "payment": "Pago"
   },
   "summary": {
     "sales": "Ventas (incluye vivos)",
-    "purchases": "Compras",
+    "purchases": "Compras y pagos",
     "quantity": "Prendas (compradas − vendidas)",
     "balance": "Balance"
   },
@@ -17,7 +18,8 @@
     "quantity": "Cantidad de prendas",
     "total": "Total",
     "createdAt": "Creado",
-    "totals": "Totales"
+    "totals": "Totales",
+    "noQuantity": "—"
   },
   "filters": {
     "dateRange": "Fecha",

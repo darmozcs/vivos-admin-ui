@@ -1,5 +1,5 @@
 import type { DataTableColumn } from "@/libs/ui/table";
-import { SignedAmount } from "@/modules/common/components";
+import { SignedAmount, TagBadges } from "@/modules/common/components";
 import { formatSignedQuantity } from "@/modules/common/utils";
 import { Text } from "@mantine/core";
 import type { TFunction } from "i18next";
@@ -25,7 +25,7 @@ export const getBalanceTableColumns = (
     textAlign: "right",
     render: (row) => (
       <Text size="sm" ta="right" style={{ fontVariantNumeric: "tabular-nums" }}>
-        {formatSignedQuantity(row.quantity)}
+        {row.quantity === null ? t("columns.noQuantity") : formatSignedQuantity(row.quantity)}
       </Text>
     ),
     footer: (
@@ -41,6 +41,12 @@ export const getBalanceTableColumns = (
     textAlign: "right",
     render: (row) => <SignedAmount amount={row.amount} ta="right" />,
     footer: <SignedAmount amount={totals.balance} ta="right" fw={700} />,
+  },
+  {
+    accessor: "tags",
+    title: t("common:tags.label"),
+    width: 220,
+    render: (row) => <TagBadges tags={row.tags} />,
   },
   { accessor: "createdAt", title: t("columns.createdAt"), width: 160 },
 ];

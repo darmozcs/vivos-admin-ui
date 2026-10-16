@@ -16,17 +16,21 @@ export interface GetTradesParams {
   status?: TradeStatus;
   sellerId?: string;
   clientId?: string;
+  /** Comma separated tag ids: the movement has any of them. */
+  tagIds?: string;
 }
 
 /** A sale needs clientId and a purchase needs sellerId. PATCH replaces every field but the type. */
 export interface SaveTradePayload {
   type: TradeType;
   status: TradeStatus;
-  quantity: number;
+  /** Required for sales and purchases; null for payments. */
+  quantity: number | null;
   price: number;
   note: string;
   sellerId: string | null;
   clientId: string | null;
+  tagIds: string[];
 }
 
 export const getTradesService = async (

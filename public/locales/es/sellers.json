@@ -58,7 +58,7 @@
     "confirm": "Eliminar",
     "success": "Vendedor eliminado",
     "error": "No se pudo eliminar el vendedor",
-    "blocked": "No se puede eliminar: tiene compras/ventas registradas"
+    "blocked": "No se puede eliminar: tiene movimientos registrados"
   },
   "filters": {
     "search": "Buscar",

@@ -1,5 +1,7 @@
 import { useLivesQuery } from "@/DAL";
 import { formatClock, formatLiveNumber, formatMoney } from "@/libs";
+import type { Tag } from "@/models";
+import { useTagOptions } from "@/modules/common/hooks";
 import { getLiveElapsedMs } from "@/modules/common/utils";
 import type { LiveStatus } from "@/types";
 import { useNavigate } from "@tanstack/react-router";
@@ -19,6 +21,8 @@ export interface LiveRow {
   buyers: number;
   units: number;
   total: string;
+  tagIds: string[];
+  tags: Tag[];
   /** Only lives without sales can be deleted. */
   canDelete: boolean;
 }
@@ -29,6 +33,7 @@ export const useLivesTable = () => {
   const { params, hasActiveFilters } = useLivesQueryParams();
   const { data: lives = [], isLoading, isPlaceholderData } = useLivesQuery(params);
   const { requestDelete } = useLiveDelete();
+  const { tagsOf } = useTagOptions();
 
   const records = useMemo<LiveRow[]>(() => {
     const now = Date.now();
@@ -44,8 +49,10 @@ export const useLivesTable = () => {
       units: live.units,
       total: formatMoney(live.totalAmount),
       canDelete: live.buyers === 0,
+      tagIds: live.tagIds,
+      tags: tagsOf(live.tagIds),
     }));
-  }, [lives, t]);
+  }, [lives, t, tagsOf]);
 
   const openLive = (liveId: string) =>
     navigate({ to: "/lives/$liveId", params: { liveId } });

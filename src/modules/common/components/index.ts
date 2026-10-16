@@ -10,3 +10,5 @@ export * from "./PackageStatusBadge/PackageStatusBadge";
 export * from "./FiltersBar/FiltersBar";
 export * from "./RangeFilter/RangeFilter";
 export * from "./SignedAmount/SignedAmount";
+export * from "./TagBadges/TagBadges";
+export * from "./TagsMultiSelect/TagsMultiSelect";

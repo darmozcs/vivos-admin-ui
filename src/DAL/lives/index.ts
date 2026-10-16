@@ -6,3 +6,4 @@ export * from "./queries/useLive.query";
 export * from "./mutations/useLiveAction.mutation";
 export * from "./mutations/useCreateLive.mutation";
 export * from "./mutations/useDeleteLive.mutation";
+export * from "./mutations/useUpdateLiveTags.mutation";
