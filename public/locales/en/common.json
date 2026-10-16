@@ -17,7 +17,7 @@
     "hide": "Hide sidebar",
     "show": "Show sidebar",
     "clients": "Clients",
-    "sales": "Sales",
+    "sales": "Live sales",
     "lives": "Lives",
     "trades": "Movements",
     "balance": "Balance",
@@ -73,8 +73,8 @@
       "description": "Store clients and their purchases."
     },
     "sales": {
-      "title": "Sales",
-      "description": "Store sales and shipping status."
+      "title": "Live sales",
+      "description": "Sales made during the lives and shipping status."
     },
     "stores": {
       "title": "Stores",

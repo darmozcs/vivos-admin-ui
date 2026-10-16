@@ -1,6 +1,6 @@
 {
-  "title": "Ventas",
-  "description": "Todas las ventas de los vivos. Cambiá el estado de la venta o del paquete desde la tabla.",
+  "title": "Ventas vivos",
+  "description": "Ventas realizadas en los vivos. Cambiá el estado de la venta o del paquete desde la tabla.",
   "columns": {
     "saleNumber": "ID Paquete",
     "createdAt": "Creada",

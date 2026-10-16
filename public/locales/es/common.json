@@ -17,7 +17,7 @@
     "hide": "Ocultar barra lateral",
     "show": "Mostrar barra lateral",
     "clients": "Clientes",
-    "sales": "Ventas",
+    "sales": "Ventas vivos",
     "lives": "Vivos",
     "trades": "Movimientos",
     "balance": "Balance",
@@ -73,8 +73,8 @@
       "description": "Clientas de la tienda y sus compras."
     },
     "sales": {
-      "title": "Ventas",
-      "description": "Ventas de la tienda y estado de los envíos."
+      "title": "Ventas vivos",
+      "description": "Ventas realizadas en los vivos y estado de los envíos."
     },
     "stores": {
       "title": "Tiendas",
