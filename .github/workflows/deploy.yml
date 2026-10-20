@@ -1,7 +1,7 @@
 name: Deploy vivos-admin-ui
 
 on:
-  push: { branches: [main] }
+  push: { branches: [desa] }
   workflow_dispatch: {}
 
 env:
