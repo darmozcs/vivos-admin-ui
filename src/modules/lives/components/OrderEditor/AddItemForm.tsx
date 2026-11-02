@@ -17,6 +17,8 @@ interface AddItemFormProps {
   title: string;
   form: UseFormReturn<AddItemFormData>;
   hasErrors: boolean;
+  /** "Comenzar vivo": only description and price. */
+  simplified: boolean;
   onSubmit: FormEventHandler<HTMLFormElement>;
   onCodeChange: (code: string) => void;
 }
@@ -25,11 +27,13 @@ export const AddItemForm = ({
   title,
   form,
   hasErrors,
+  simplified,
   onSubmit,
   onCodeChange,
 }: AddItemFormProps) => {
   const { t } = useTranslation("lives");
   const { errors } = form.formState;
+  const nameField = simplified ? "description" : "name";
 
   return (
     <Stack gap="xs">
@@ -38,23 +42,27 @@ export const AddItemForm = ({
       </Text>
       <Paper component="form" onSubmit={onSubmit} bg="plum.0" p="md" radius="md">
         <Flex gap="sm" align="flex-end" wrap="wrap">
-          <Controller
-            name="code"
-            control={form.control}
-            render={({ field }) => (
-              <TextInput
-                flex="1 1 90px"
-                label={t("addItem.fields.code")}
-                placeholder={t("addItem.fields.codePlaceholder")}
-                fw={700}
-                value={field.value}
-                onChange={(event) => onCodeChange(event.currentTarget.value)}
-                error={!!errors.code}
-              />
-            )}
-          />
-          <TextInput flex="3 1 180px" label={t("addItem.fields.name")} placeholder={t("addItem.fields.namePlaceholder")} {...form.register("name")} error={!!errors.name} />
-          <TextInput flex="2 1 120px" label={t("addItem.fields.color")} placeholder={t("addItem.fields.colorPlaceholder")} {...form.register("color")} />
+          {!simplified && (
+            <Controller
+              name="code"
+              control={form.control}
+              render={({ field }) => (
+                <TextInput
+                  flex="1 1 90px"
+                  label={t("addItem.fields.code")}
+                  placeholder={t("addItem.fields.codePlaceholder")}
+                  fw={700}
+                  value={field.value}
+                  onChange={(event) => onCodeChange(event.currentTarget.value)}
+                  error={!!errors.code}
+                />
+              )}
+            />
+          )}
+          <TextInput flex="3 1 180px" label={t(`addItem.fields.${nameField}`)} placeholder={t(`addItem.fields.${nameField}Placeholder`)} {...form.register("name")} error={!!errors.name} />
+          {!simplified && (
+            <TextInput flex="2 1 120px" label={t("addItem.fields.color")} placeholder={t("addItem.fields.colorPlaceholder")} {...form.register("color")} />
+          )}
           <Controller
             name="price"
             control={form.control}

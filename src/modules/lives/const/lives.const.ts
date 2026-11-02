@@ -5,6 +5,8 @@ export const SAVED_JUST_NOW_SECONDS = 5;
 export const SECONDS_PER_MINUTE = 60;
 export const MS_PER_SECOND = 1000;
 export const CLIENT_SEARCH_DEBOUNCE_MS = 250;
+/** A client search made only of digits also looks for that package number. */
+export const PACKAGE_NUMBER_SEARCH = /^\d+$/;
 export const NO_CLIENT_SELECTED_KEY = "NO_CLIENT_SELECTED";
 export const INITIAL_ITEM_QUANTITY = 1;
 

@@ -1,8 +1,6 @@
 import { Avatar, Group, Stack, Text, Title } from "@mantine/core";
 import type { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import type { OrderStatus, PackageStatus } from "@/types";
-import { OrderStatusControls } from "./OrderStatusControls";
 
 interface OrderEditorHeaderProps {
   fullName: string;
@@ -11,11 +9,8 @@ interface OrderEditorHeaderProps {
   initials: string;
   /** Package label of the sale; absent until the client buys something. */
   packageBadge?: ReactNode;
-  status: OrderStatus;
-  packageStatus: PackageStatus;
-  statusDisabled: boolean;
-  onStatusChange: (status: OrderStatus) => void;
-  onPackageStatusChange: (status: PackageStatus) => void;
+  /** Sale and package status controls; absent on "Comenzar vivo". */
+  statusControls?: ReactNode;
 }
 
 export const OrderEditorHeader = ({
@@ -24,11 +19,7 @@ export const OrderEditorHeader = ({
   phone,
   initials,
   packageBadge,
-  status,
-  packageStatus,
-  statusDisabled,
-  onStatusChange,
-  onPackageStatusChange,
+  statusControls,
 }: OrderEditorHeaderProps) => {
   const { t } = useTranslation("lives");
 
@@ -48,13 +39,7 @@ export const OrderEditorHeader = ({
         </Group>
         {packageBadge}
       </Group>
-      <OrderStatusControls
-        status={status}
-        packageStatus={packageStatus}
-        disabled={statusDisabled}
-        onStatusChange={onStatusChange}
-        onPackageStatusChange={onPackageStatusChange}
-      />
+      {statusControls}
     </Stack>
   );
 };

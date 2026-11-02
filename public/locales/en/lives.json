@@ -114,6 +114,8 @@
       "codePlaceholder": "E.g.: 101",
       "name": "Name",
       "namePlaceholder": "E.g.: Linen dress",
+      "description": "Description",
+      "descriptionPlaceholder": "E.g.: Black linen dress",
       "color": "Color",
       "colorPlaceholder": "E.g.: Olive green",
       "price": "Price ($)"
@@ -126,6 +128,7 @@
   "table": {
     "code": "Code",
     "name": "Name",
+    "description": "Description",
     "color": "Color",
     "price": "Price",
     "quantity": "Quantity",
@@ -134,7 +137,8 @@
     "remove": "Remove {{name}}",
     "increment": "Add one",
     "decrement": "Remove one",
-    "empty": "No items yet. Enter code, name, color and price above."
+    "empty": "No items yet. Enter code, name, color and price above.",
+    "emptySimplified": "No items yet. Enter a description and price above."
   },
   "orders": {
     "title": "Live purchases",

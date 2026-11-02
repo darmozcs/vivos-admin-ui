@@ -35,7 +35,9 @@ export const useOrderEditor = () => {
   const { t } = useTranslation("lives");
   const selectedClientId = useLiveWorkspaceStore((s) => s.selectedClientId);
   const markSaved = useLiveWorkspaceStore((s) => s.markSaved);
-  const { data: live } = useWorkspaceLive();
+  const { data: live, fromHistory } = useWorkspaceLive();
+  // "Comenzar vivo" only edits description, price and quantity.
+  const simplified = !fromHistory;
   const { data: orders = [] } = useLiveOrdersQuery(live?.id);
   const { data: clients = [] } = useClientsQuery();
   const saveOrder = useSaveLiveOrderMutation();
@@ -87,9 +89,12 @@ export const useOrderEditor = () => {
             orderId: serverOrder.id,
             liveNumber: serverOrder.liveNumber,
             number: serverOrder.number,
-            label: formatSaleNumber(serverOrder.liveNumber, serverOrder.number),
+            label: simplified
+              ? String(serverOrder.number)
+              : formatSaleNumber(serverOrder.liveNumber, serverOrder.number),
           }
         : null,
+    simplified,
     started: isLiveStarted(live),
     ended: isLiveEnded(live),
     onStartLive: () =>

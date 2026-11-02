@@ -5,7 +5,10 @@ import { getOrderTotal, isBillableOrder } from "@/modules/common/utils";
 import { useLiveWorkspaceStore } from "@/store";
 import { useDebouncedValue, useDisclosure } from "@mantine/hooks";
 import { useMemo, useState } from "react";
-import { CLIENT_SEARCH_DEBOUNCE_MS } from "../../const/lives.const";
+import {
+  CLIENT_SEARCH_DEBOUNCE_MS,
+  PACKAGE_NUMBER_SEARCH,
+} from "../../const/lives.const";
 import { useNewClientForm } from "../NewClientForm/useNewClientForm";
 import { useWorkspaceLive } from "../WorkspaceLive/useWorkspaceLive";
 
@@ -25,11 +28,15 @@ export const useClientsPanel = () => {
   const selectedClientId = useLiveWorkspaceStore((state) => state.selectedClientId);
   const selectClient = useLiveWorkspaceStore((state) => state.selectClient);
 
-  const { data: live } = useWorkspaceLive();
+  const { data: live, fromHistory } = useWorkspaceLive();
+  // "Comenzar vivo" shows the package number next to the client and finds clients by it.
+  const simplified = !fromHistory;
   const { data: orders = [] } = useLiveOrdersQuery(live?.id);
-  const { data: clients = [], isFetching } = useClientsQuery({
+  const { data: searchedClients = [], isFetching } = useClientsQuery({
     search: debouncedSearch || undefined,
   });
+  // Unfiltered list (already cached by the order editor), to find clients by package number.
+  const { data: allClients = [] } = useClientsQuery();
 
   const handleCreated = (client: Client) => {
     selectClient(client.id);
@@ -39,6 +46,24 @@ export const useClientsPanel = () => {
   const newClientForm = useNewClientForm({ onCreated: handleCreated });
 
   const items = useMemo<ClientListItemView[]>(() => {
+    // A new order has number 0 or null until the server assigns one.
+    const packageNumbers = new Map(
+      simplified
+        ? orders.filter((order) => order.number).map((order) => [order.clientId, order.number])
+        : [],
+    );
+    const clients = [...searchedClients];
+    if (simplified && PACKAGE_NUMBER_SEARCH.test(debouncedSearch)) {
+      const found = new Set(clients.map((client) => client.id));
+      clients.push(
+        ...allClients.filter(
+          (client) =>
+            !found.has(client.id) &&
+            packageNumbers.get(client.id) === Number(debouncedSearch),
+        ),
+      );
+    }
+
     const billableOrders = orders.filter(isBillableOrder);
     const totalsByClient = new Map(
       billableOrders.map((order) => [order.clientId, getOrderTotal(order.items)]),
@@ -54,16 +79,17 @@ export const useClientsPanel = () => {
     );
     return sortedClients.map((client) => {
       const total = totalsByClient.get(client.id);
+      const packageNumber = packageNumbers.get(client.id);
       return {
         id: client.id,
-        fullName: client.fullName,
+        fullName: packageNumber ? `${client.fullName} · ${packageNumber}` : client.fullName,
         account: client.account,
         initials: getInitials(client.fullName),
         total: total ? formatMoney(total) : "",
         selected: client.id === selectedClientId,
       };
     });
-  }, [clients, orders, selectedClientId]);
+  }, [searchedClients, allClients, orders, selectedClientId, simplified, debouncedSearch]);
 
   const openNew = (fullName = "") => {
     newClientForm.prefill(fullName);

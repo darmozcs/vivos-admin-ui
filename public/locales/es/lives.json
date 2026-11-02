@@ -114,6 +114,8 @@
       "codePlaceholder": "Ej.: 101",
       "name": "Nombre",
       "namePlaceholder": "Ej.: Vestido de lino",
+      "description": "Descripción",
+      "descriptionPlaceholder": "Ej.: Vestido de lino negro",
       "color": "Color",
       "colorPlaceholder": "Ej.: Verde oliva",
       "price": "Precio ($)"
@@ -126,6 +128,7 @@
   "table": {
     "code": "Código",
     "name": "Nombre",
+    "description": "Descripción",
     "color": "Color",
     "price": "Precio",
     "quantity": "Cantidad",
@@ -134,7 +137,8 @@
     "remove": "Quitar {{name}}",
     "increment": "Sumar uno",
     "decrement": "Restar uno",
-    "empty": "Todavía no hay prendas. Cargá código, nombre, color y precio arriba."
+    "empty": "Todavía no hay prendas. Cargá código, nombre, color y precio arriba.",
+    "emptySimplified": "Todavía no hay prendas. Cargá descripción y precio arriba."
   },
   "orders": {
     "title": "Compras del vivo",

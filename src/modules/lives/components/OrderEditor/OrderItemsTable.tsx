@@ -8,6 +8,8 @@ import classes from "./OrderItemsTable.module.css";
 
 interface OrderItemsTableProps {
   lines: (OrderItem & { subtotal: string })[];
+  /** "Comenzar vivo": no code and color columns. */
+  simplified: boolean;
   onFieldChange: (index: number, field: OrderItemField, value: string | number) => void;
   onIncrement: (index: number) => void;
   onDecrement: (index: number) => void;
@@ -19,6 +21,7 @@ const COLUMN_WIDTHS = { code: 72, price: 92, quantity: 104, subtotal: 88, remove
 
 export const OrderItemsTable = ({
   lines,
+  simplified,
   onFieldChange,
   onIncrement,
   onDecrement,
@@ -27,6 +30,7 @@ export const OrderItemsTable = ({
   const { t } = useTranslation("lives");
 
   const handlersFor = (index: number) => ({
+    simplified,
     onFieldChange: (field: OrderItemField, value: string | number) =>
       onFieldChange(index, field, value),
     onIncrement: () => onIncrement(index),
@@ -37,7 +41,7 @@ export const OrderItemsTable = ({
   if (lines.length === 0) {
     return (
       <Text size="sm" c="dimmed" ta="center" p="lg">
-        {t("table.empty")}
+        {t(simplified ? "table.emptySimplified" : "table.empty")}
       </Text>
     );
   }
@@ -53,9 +57,9 @@ export const OrderItemsTable = ({
         <Table layout="fixed" verticalSpacing="xs" horizontalSpacing={6} fz="sm">
           <Table.Thead c="dimmed">
             <Table.Tr>
-              <Table.Th w={COLUMN_WIDTHS.code}>{t("table.code")}</Table.Th>
-              <Table.Th>{t("table.name")}</Table.Th>
-              <Table.Th>{t("table.color")}</Table.Th>
+              {!simplified && <Table.Th w={COLUMN_WIDTHS.code}>{t("table.code")}</Table.Th>}
+              <Table.Th>{t(simplified ? "table.description" : "table.name")}</Table.Th>
+              {!simplified && <Table.Th>{t("table.color")}</Table.Th>}
               <Table.Th w={COLUMN_WIDTHS.price}>{t("table.price")}</Table.Th>
               <Table.Th w={COLUMN_WIDTHS.quantity}>{t("table.quantity")}</Table.Th>
               <Table.Th w={COLUMN_WIDTHS.subtotal} ta="right">{t("table.subtotal")}</Table.Th>

@@ -8,6 +8,7 @@ import { QuantityStepper } from "./QuantityStepper";
 /** Mobile version of an order line: same fields as the table row, stacked. */
 export const OrderItemCard = ({
   item,
+  simplified,
   onFieldChange,
   onIncrement,
   onDecrement,
@@ -18,9 +19,13 @@ export const OrderItemCard = ({
   return (
     <Paper withBorder p="sm" radius="md">
       <SimpleGrid cols={2} spacing="xs" verticalSpacing="xs">
-        <TextInput size="sm" label={t("table.code")} value={item.code} onChange={(e) => onFieldChange(ORDER_ITEM_FIELD.CODE, e.currentTarget.value)} />
-        <TextInput size="sm" label={t("table.name")} value={item.name} onChange={(e) => onFieldChange(ORDER_ITEM_FIELD.NAME, e.currentTarget.value)} />
-        <TextInput size="sm" label={t("table.color")} value={item.color} onChange={(e) => onFieldChange(ORDER_ITEM_FIELD.COLOR, e.currentTarget.value)} />
+        {!simplified && (
+          <TextInput size="sm" label={t("table.code")} value={item.code} onChange={(e) => onFieldChange(ORDER_ITEM_FIELD.CODE, e.currentTarget.value)} />
+        )}
+        <TextInput size="sm" label={t(simplified ? "table.description" : "table.name")} value={item.name} onChange={(e) => onFieldChange(ORDER_ITEM_FIELD.NAME, e.currentTarget.value)} />
+        {!simplified && (
+          <TextInput size="sm" label={t("table.color")} value={item.color} onChange={(e) => onFieldChange(ORDER_ITEM_FIELD.COLOR, e.currentTarget.value)} />
+        )}
         <NumberInput size="sm" label={t("table.price")} min={0} allowNegative={false} value={item.price} onChange={(value) => onFieldChange(ORDER_ITEM_FIELD.PRICE, value)} />
       </SimpleGrid>
       <Group justify="space-between" mt="sm" wrap="nowrap">

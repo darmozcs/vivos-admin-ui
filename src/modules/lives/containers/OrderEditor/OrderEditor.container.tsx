@@ -6,6 +6,7 @@ import {
   OrderEditorHeader,
   OrderFooter,
   OrderItemsTable,
+  OrderStatusControls,
   PackageNumberBadge,
   StartLiveHint,
 } from "../../components";
@@ -37,14 +38,21 @@ export const OrderEditorContainer = () => {
               {...packageEditor}
               label={editor.packageNumber.label}
               liveNumber={editor.packageNumber.liveNumber}
+              simplified={editor.simplified}
             />
           )
         }
-        status={editor.status}
-        packageStatus={editor.packageStatus}
-        statusDisabled={!editor.started}
-        onStatusChange={editor.setStatus}
-        onPackageStatusChange={editor.setPackageStatus}
+        statusControls={
+          !editor.simplified && (
+            <OrderStatusControls
+              status={editor.status}
+              packageStatus={editor.packageStatus}
+              disabled={!editor.started}
+              onStatusChange={editor.setStatus}
+              onPackageStatusChange={editor.setPackageStatus}
+            />
+          )
+        }
       />
       {!editor.started && <StartLiveHint onStart={editor.onStartLive} />}
       {editor.started && (
@@ -52,12 +60,14 @@ export const OrderEditorContainer = () => {
           title={editor.ended ? t("addItem.titleEnded") : t("addItem.title")}
           form={editor.addItemForm.form}
           hasErrors={editor.addItemForm.hasErrors}
+          simplified={editor.simplified}
           onSubmit={editor.addItemForm.onSubmit}
           onCodeChange={editor.addItemForm.handleCodeChange}
         />
       )}
       <OrderItemsTable
         lines={editor.lines}
+        simplified={editor.simplified}
         onFieldChange={editor.updateItemField}
         onIncrement={editor.incrementItem}
         onDecrement={editor.decrementItem}

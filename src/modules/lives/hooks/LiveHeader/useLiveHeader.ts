@@ -104,8 +104,8 @@ export const useLiveHeader = () => {
     isRunning,
     isPending: liveAction.isPending,
     subtitle: getSubtitle(t, live),
-    // Live duration, shown next to the title once the live has started.
-    clock: started && live ? formatClock(getLiveElapsedMs(live, now)) : null,
+    // Live duration, shown next to the title once the live has started (not on "Comenzar vivo").
+    clock: fromHistory && started && live ? formatClock(getLiveElapsedMs(live, now)) : null,
     // An ended live opened from the history only shows it after an edit in this visit.
     savedLabel: active || lastSavedAt ? getSavedLabel(t, savedAt, now) : "",
     fromHistory,

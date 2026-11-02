@@ -4,9 +4,11 @@ import type { FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 
 interface PackageNumberBadgeProps {
-  /** "liveNumber-number" shown on the label. */
+  /** "liveNumber-number" shown on the label ("number" alone when simplified). */
   label: string;
   liveNumber: number;
+  /** "Comenzar vivo": the number is edited without the "liveNumber-" prefix. */
+  simplified: boolean;
   opened: boolean;
   value: number | "";
   isSaving: boolean;
@@ -23,6 +25,7 @@ const POPOVER_WIDTH = 220;
 export const PackageNumberBadge = ({
   label,
   liveNumber,
+  simplified,
   opened,
   value,
   isSaving,
@@ -52,7 +55,7 @@ export const PackageNumberBadge = ({
           <Stack gap="xs">
             <NumberInput
               label={t("editor.packageNumber.label")}
-              leftSection={`${liveNumber}-`}
+              leftSection={simplified ? undefined : `${liveNumber}-`}
               min={MIN_PACKAGE_NUMBER}
               allowDecimal={false}
               allowNegative={false}
