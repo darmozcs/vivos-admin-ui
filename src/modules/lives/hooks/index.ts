@@ -1,7 +1,6 @@
 export * from "./AddItemForm/useAddItemForm";
 export * from "./ClientsPanel/useClientsPanel";
 export * from "./LiveHeader/useLiveHeader";
-export * from "./LiveOrders/useLiveOrders";
 export * from "./LiveStats/useLiveStats";
 export * from "./LiveWorkspace/useLiveWorkspace";
 export * from "./NewClientForm/useNewClientForm";

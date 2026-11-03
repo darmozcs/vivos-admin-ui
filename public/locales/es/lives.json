@@ -94,8 +94,8 @@
     "startHint": "Comenzá el vivo para empezar a cargar compras.",
     "emptyTitle": "Compra en vivo",
     "emptyMessage": "Buscá o creá una clienta para empezar su compra.",
-    "footer_one": "{{count}} prenda · se guarda sola con cada cambio",
-    "footer_other": "{{count}} prendas · se guarda sola con cada cambio",
+    "units_one": "{{count}} prenda",
+    "units_other": "{{count}} prendas",
     "total": "Total {{total}}",
     "packageStatusLabel": "Estado del paquete",
     "packageNumber": {
@@ -139,14 +139,6 @@
     "decrement": "Restar uno",
     "empty": "Todavía no hay prendas. Cargá código, nombre, color y precio arriba.",
     "emptySimplified": "Todavía no hay prendas. Cargá descripción y precio arriba."
-  },
-  "orders": {
-    "title": "Compras del vivo",
-    "count_one": "{{count}} compra",
-    "count_other": "{{count}} compras",
-    "empty": "Las compras aparecen acá apenas se agrega una prenda.",
-    "edit": "Editar",
-    "editAria": "Editar compra de {{name}}"
   },
   "empty": {
     "noCurrentLive": "Todavía no hay vivos. Prepará el primero para empezar a vender."

@@ -19,7 +19,7 @@ import { useWorkspaceLive } from "../WorkspaceLive/useWorkspaceLive";
 
 export const useLiveStats = () => {
   const { t } = useTranslation("lives");
-  const { data: live } = useWorkspaceLive();
+  const { data: live, fromHistory } = useWorkspaceLive();
   const { data: orders = [] } = useLiveOrdersQuery(live?.id);
   const now = useNow({ intervalMs: CLOCK_TICK_MS, enabled: isLiveRunning(live) });
 
@@ -50,7 +50,8 @@ export const useLiveStats = () => {
     buyers: totals.buyers,
     units: totals.units,
     grandTotal: formatMoney(totals.amount),
-    collected: formatMoney(totals.collected),
+    // "Comenzar vivo" does not show the collected total.
+    collected: fromHistory ? formatMoney(totals.collected) : null,
     ended: isLiveEnded(live),
     endSummary: t("summary.text", {
       duration,

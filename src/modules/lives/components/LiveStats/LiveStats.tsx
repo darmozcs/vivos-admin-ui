@@ -7,8 +7,8 @@ interface LiveStatsProps {
   buyers: number;
   units: number;
   grandTotal: string;
-  /** Total of the paid sales. */
-  collected: string;
+  /** Total of the paid sales; null hides the card. */
+  collected: string | null;
 }
 
 export const LiveStats = ({ buyers, units, grandTotal, collected }: LiveStatsProps) => {
@@ -18,13 +18,15 @@ export const LiveStats = ({ buyers, units, grandTotal, collected }: LiveStatsPro
     <SimpleGrid
       component="section"
       aria-label={t("stats.ariaLabel")}
-      cols={{ base: 1, xs: 2, lg: 4 }}
+      cols={{ base: 1, xs: collected === null ? 3 : 2, lg: collected === null ? 3 : 4 }}
       spacing="md"
     >
       <StatCard label={t("stats.buyers")} value={buyers} tone={STAT_TONE.OUTLINE} />
       <StatCard label={t("stats.units")} value={units} tone={STAT_TONE.OUTLINE} />
       <StatCard label={t("stats.total")} value={grandTotal} tone={STAT_TONE.ACCENT} />
-      <StatCard label={t("stats.collected")} value={collected} tone={STAT_TONE.DARK} />
+      {collected !== null && (
+        <StatCard label={t("stats.collected")} value={collected} tone={STAT_TONE.DARK} />
+      )}
     </SimpleGrid>
   );
 };

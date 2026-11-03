@@ -47,5 +47,3 @@ export const getKnownItems = (orders: Order[]) => {
 export const findKnownItem = (known: Map<string, OrderItem>, code: string) =>
   known.get(normalizeCode(code));
 
-export const getOrdersWithItems = (orders: Order[]) =>
-  orders.filter((order) => order.items.length > 0);

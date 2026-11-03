@@ -7,6 +7,8 @@ interface OrderEditorHeaderProps {
   account: string;
   phone: string;
   initials: string;
+  /** Garments and total of the order, between the client and the package label. */
+  summary: ReactNode;
   /** Package label of the sale; absent until the client buys something. */
   packageBadge?: ReactNode;
   /** Sale and package status controls; absent on "Comenzar vivo". */
@@ -18,6 +20,7 @@ export const OrderEditorHeader = ({
   account,
   phone,
   initials,
+  summary,
   packageBadge,
   statusControls,
 }: OrderEditorHeaderProps) => {
@@ -25,8 +28,8 @@ export const OrderEditorHeader = ({
 
   return (
     <Stack gap="sm">
-      <Group justify="space-between" align="flex-start" gap="sm" wrap="nowrap">
-        <Group gap="sm" wrap="nowrap">
+      <Group justify="space-between" align="center" gap="md">
+        <Group gap="sm" wrap="nowrap" flex={1} miw={0}>
           <Avatar radius="xl" size={48} color="blossom.5" ff="heading" fz="lg">
             {initials}
           </Avatar>
@@ -37,7 +40,10 @@ export const OrderEditorHeader = ({
             </Text>
           </Stack>
         </Group>
-        {packageBadge}
+        <Group gap="md" wrap="nowrap">
+          {summary}
+          {packageBadge}
+        </Group>
       </Group>
       {statusControls}
     </Stack>

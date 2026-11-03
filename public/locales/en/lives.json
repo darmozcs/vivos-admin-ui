@@ -94,8 +94,8 @@
     "startHint": "Start the live to begin recording purchases.",
     "emptyTitle": "Live purchase",
     "emptyMessage": "Search or create a client to start their purchase.",
-    "footer_one": "{{count}} item · saves automatically on every change",
-    "footer_other": "{{count}} items · saves automatically on every change",
+    "units_one": "{{count}} item",
+    "units_other": "{{count}} items",
     "total": "Total {{total}}",
     "packageStatusLabel": "Package status",
     "packageNumber": {
@@ -139,14 +139,6 @@
     "decrement": "Remove one",
     "empty": "No items yet. Enter code, name, color and price above.",
     "emptySimplified": "No items yet. Enter a description and price above."
-  },
-  "orders": {
-    "title": "Live purchases",
-    "count_one": "{{count}} purchase",
-    "count_other": "{{count}} purchases",
-    "empty": "Purchases show up here as soon as an item is added.",
-    "edit": "Edit",
-    "editAria": "Edit {{name}}'s purchase"
   },
   "empty": {
     "noCurrentLive": "There are no lives yet. Prepare the first one to start selling."

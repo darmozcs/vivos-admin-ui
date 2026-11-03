@@ -4,9 +4,9 @@ import {
   LivePanel,
   NoClientSelected,
   OrderEditorHeader,
-  OrderFooter,
   OrderItemsTable,
   OrderStatusControls,
+  OrderSummary,
   PackageNumberBadge,
   StartLiveHint,
 } from "../../components";
@@ -32,6 +32,7 @@ export const OrderEditorContainer = () => {
     <LivePanel emphasis>
       <OrderEditorHeader
         {...editor.client}
+        summary={<OrderSummary units={editor.units} total={editor.total} />}
         packageBadge={
           editor.packageNumber && (
             <PackageNumberBadge
@@ -72,8 +73,6 @@ export const OrderEditorContainer = () => {
         onIncrement={editor.incrementItem}
         onDecrement={editor.decrementItem}
         onRemove={editor.removeItem}
-      />
-      <OrderFooter units={editor.units} total={editor.total} />
-    </LivePanel>
+      />    </LivePanel>
   );
 };

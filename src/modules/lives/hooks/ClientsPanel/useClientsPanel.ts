@@ -110,7 +110,11 @@ export const useClientsPanel = () => {
       items.length === 0 &&
       debouncedSearch.length > 0 &&
       debouncedSearch === search.trim(),
-    onSelect: selectClient,
+    // Picking a client clears the search, ready for the next one.
+    onSelect: (clientId: string) => {
+      selectClient(clientId);
+      setSearch("");
+    },
     newOpened,
     openNew: () => openNew(),
     openNewFromSearch: () => openNew(search.trim()),
