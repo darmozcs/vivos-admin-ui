@@ -1,4 +1,4 @@
-import { ActionIcon, Group, NumberInput, Paper, SimpleGrid, Text, TextInput } from "@mantine/core";
+import { ActionIcon, Group, NumberInput, Paper, SimpleGrid, TextInput } from "@mantine/core";
 import { IconTrash } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import { ORDER_ITEM_FIELD } from "../../const/lives.const";
@@ -30,14 +30,9 @@ export const OrderItemCard = ({
       </SimpleGrid>
       <Group justify="space-between" mt="sm" wrap="nowrap">
         <QuantityStepper quantity={item.quantity} onIncrement={onIncrement} onDecrement={onDecrement} />
-        <Group gap="xs" wrap="nowrap">
-          <Text fw={700} size="sm">
-            {item.subtotal}
-          </Text>
-          <ActionIcon onClick={onRemove} aria-label={t("table.remove", { name: item.name })}>
-            <IconTrash size={18} stroke={1.8} />
-          </ActionIcon>
-        </Group>
+        <ActionIcon onClick={onRemove} aria-label={t("table.remove", { name: item.name })}>
+          <IconTrash size={18} stroke={1.8} />
+        </ActionIcon>
       </Group>
     </Paper>
   );

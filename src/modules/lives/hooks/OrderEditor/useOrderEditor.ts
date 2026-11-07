@@ -101,10 +101,7 @@ export const useOrderEditor = () => {
       live && liveAction.mutate({ id: live.id, action: LIVE_ACTION.START }),
     status: current.status,
     packageStatus: current.packageStatus,
-    lines: current.items.map((item) => ({
-      ...item,
-      subtotal: formatMoney(item.price * item.quantity),
-    })),
+    lines: current.items,
     units: getOrderUnits(current.items),
     total: formatMoney(getOrderTotal(current.items)),
     addItemForm,

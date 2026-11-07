@@ -28,9 +28,7 @@ export const useClientsPanel = () => {
   const selectedClientId = useLiveWorkspaceStore((state) => state.selectedClientId);
   const selectClient = useLiveWorkspaceStore((state) => state.selectClient);
 
-  const { data: live, fromHistory } = useWorkspaceLive();
-  // "Comenzar vivo" shows the package number next to the client and finds clients by it.
-  const simplified = !fromHistory;
+  const { data: live } = useWorkspaceLive();
   const { data: orders = [] } = useLiveOrdersQuery(live?.id);
   const { data: searchedClients = [], isFetching } = useClientsQuery({
     search: debouncedSearch || undefined,
@@ -46,14 +44,13 @@ export const useClientsPanel = () => {
   const newClientForm = useNewClientForm({ onCreated: handleCreated });
 
   const items = useMemo<ClientListItemView[]>(() => {
+    // The package number goes next to the client and can be searched.
     // A new order has number 0 or null until the server assigns one.
     const packageNumbers = new Map(
-      simplified
-        ? orders.filter((order) => order.number).map((order) => [order.clientId, order.number])
-        : [],
+      orders.filter((order) => order.number).map((order) => [order.clientId, order.number]),
     );
     const clients = [...searchedClients];
-    if (simplified && PACKAGE_NUMBER_SEARCH.test(debouncedSearch)) {
+    if (PACKAGE_NUMBER_SEARCH.test(debouncedSearch)) {
       const found = new Set(clients.map((client) => client.id));
       clients.push(
         ...allClients.filter(
@@ -89,7 +86,7 @@ export const useClientsPanel = () => {
         selected: client.id === selectedClientId,
       };
     });
-  }, [searchedClients, allClients, orders, selectedClientId, simplified, debouncedSearch]);
+  }, [searchedClients, allClients, orders, selectedClientId, debouncedSearch]);
 
   const openNew = (fullName = "") => {
     newClientForm.prefill(fullName);

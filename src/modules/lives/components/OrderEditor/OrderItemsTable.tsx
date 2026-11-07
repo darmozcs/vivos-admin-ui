@@ -7,7 +7,7 @@ import { OrderItemRow } from "./OrderItemRow";
 import classes from "./OrderItemsTable.module.css";
 
 interface OrderItemsTableProps {
-  lines: (OrderItem & { subtotal: string })[];
+  lines: OrderItem[];
   /** "Comenzar vivo": no code and color columns. */
   simplified: boolean;
   onFieldChange: (index: number, field: OrderItemField, value: string | number) => void;
@@ -17,7 +17,7 @@ interface OrderItemsTableProps {
 }
 
 // Fixed columns; name and color share the remaining width (table shown from 640px of panel).
-const COLUMN_WIDTHS = { code: 72, price: 92, quantity: 104, subtotal: 88, remove: 40 };
+const COLUMN_WIDTHS = { code: 72, price: 92, quantity: 104, remove: 40 };
 
 export const OrderItemsTable = ({
   lines,
@@ -62,7 +62,6 @@ export const OrderItemsTable = ({
               {!simplified && <Table.Th>{t("table.color")}</Table.Th>}
               <Table.Th w={COLUMN_WIDTHS.price}>{t("table.price")}</Table.Th>
               <Table.Th w={COLUMN_WIDTHS.quantity}>{t("table.quantity")}</Table.Th>
-              <Table.Th w={COLUMN_WIDTHS.subtotal} ta="right">{t("table.subtotal")}</Table.Th>
               <Table.Th w={COLUMN_WIDTHS.remove}>
                 <VisuallyHidden>{t("table.removeColumn")}</VisuallyHidden>
               </Table.Th>

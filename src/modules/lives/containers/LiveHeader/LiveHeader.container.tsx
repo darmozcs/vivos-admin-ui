@@ -28,11 +28,11 @@ export const LiveHeaderContainer = () => {
     />
   );
 
-  if (header.noCurrentLive) {
+  if (header.needsNewLive) {
     return (
       <>
         <EmptyState
-          message={t("empty.noCurrentLive")}
+          message={t(header.currentEnded ? "empty.liveEnded" : "empty.noCurrentLive")}
           action={<Button onClick={header.openPrepare}>{t("actions.prepareFirst")}</Button>}
         />
         {prepareModal}

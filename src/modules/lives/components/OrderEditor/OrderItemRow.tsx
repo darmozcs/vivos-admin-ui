@@ -1,12 +1,12 @@
 import type { OrderItem } from "@/models";
-import { ActionIcon, NumberInput, Table, Text, TextInput } from "@mantine/core";
+import { ActionIcon, NumberInput, Table, TextInput } from "@mantine/core";
 import { IconTrash } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import { ORDER_ITEM_FIELD, type OrderItemField } from "../../const/lives.const";
 import { QuantityStepper } from "./QuantityStepper";
 
 export interface OrderItemLineProps {
-  item: OrderItem & { subtotal: string };
+  item: OrderItem;
   /** "Comenzar vivo": only description, price and quantity. */
   simplified: boolean;
   onFieldChange: (field: OrderItemField, value: string | number) => void;
@@ -45,11 +45,6 @@ export const OrderItemRow = ({
       </Table.Td>
       <Table.Td>
         <QuantityStepper quantity={item.quantity} onIncrement={onIncrement} onDecrement={onDecrement} />
-      </Table.Td>
-      <Table.Td ta="right">
-        <Text fw={700} size="sm">
-          {item.subtotal}
-        </Text>
       </Table.Td>
       <Table.Td ta="right">
         <ActionIcon size="md" onClick={onRemove} aria-label={t("table.remove", { name: item.name })}>

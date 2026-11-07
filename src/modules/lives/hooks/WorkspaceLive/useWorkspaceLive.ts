@@ -2,6 +2,7 @@ import { useCurrentLiveQuery, useLiveQuery } from "@/DAL";
 import { getErrorStatus, HTTP_STATUS } from "@/libs/http";
 import type { Live } from "@/models";
 import { useLiveWorkspaceContext } from "../../contexts/liveWorkspace.context";
+import { isLiveEnded } from "../../utils/live.utils";
 
 /**
  * Live shown in the workspace: the one opened from the history, or the
@@ -15,12 +16,17 @@ export const useWorkspaceLive = () => {
   // vivos-be answers 404 on /lives/current while the store has no lives yet.
   const noCurrentLive =
     !liveId && getErrorStatus(current.error) === HTTP_STATUS.NOT_FOUND;
+  // "Comenzar vivo" never shows an ended live: it asks for the next one instead.
+  const currentEnded = !liveId && isLiveEnded(current.data);
 
   return {
     data: query.data as Live | undefined,
     isLoading: query.isLoading,
     isError: query.isError && !noCurrentLive,
     noCurrentLive,
+    currentEnded,
+    /** "Comenzar vivo" without a live to work on: only the prepare action is shown. */
+    needsNewLive: noCurrentLive || currentEnded,
     /** True when the workspace was opened from the lives history. */
     fromHistory: !!liveId,
   };

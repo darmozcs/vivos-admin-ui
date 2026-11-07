@@ -52,7 +52,15 @@ const getSavedLabel = (t: TFunction, savedAt: number, now: number) => {
 export const useLiveHeader = () => {
   const { t } = useTranslation("lives");
   const navigate = useNavigate();
-  const { data: live, isLoading, isError, noCurrentLive, fromHistory } = useWorkspaceLive();
+  const {
+    data: live,
+    isLoading,
+    isError,
+    noCurrentLive,
+    currentEnded,
+    needsNewLive,
+    fromHistory,
+  } = useWorkspaceLive();
   const { data: currentLive } = useCurrentLiveQuery();
   const liveAction = useLiveActionMutation();
   const lastSavedAt = useLiveWorkspaceStore((state) => state.lastSavedAt);
@@ -98,6 +106,8 @@ export const useLiveHeader = () => {
     isLoading,
     notFound: isError,
     noCurrentLive,
+    currentEnded,
+    needsNewLive,
     started,
     ended,
     active,

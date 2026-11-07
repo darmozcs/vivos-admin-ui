@@ -132,7 +132,6 @@
     "color": "Color",
     "price": "Precio",
     "quantity": "Cantidad",
-    "subtotal": "Subtotal",
     "removeColumn": "Quitar",
     "remove": "Quitar {{name}}",
     "increment": "Sumar uno",
@@ -141,7 +140,8 @@
     "emptySimplified": "Todavía no hay prendas. Cargá descripción y precio arriba."
   },
   "empty": {
-    "noCurrentLive": "Todavía no hay vivos. Prepará el primero para empezar a vender."
+    "noCurrentLive": "Todavía no hay vivos. Prepará el primero para empezar a vender.",
+    "liveEnded": "El vivo terminó. Prepará el siguiente para seguir vendiendo."
   },
   "untitled": "Vivo sin nombre"
 }

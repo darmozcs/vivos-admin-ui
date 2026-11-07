@@ -132,7 +132,6 @@
     "color": "Color",
     "price": "Price",
     "quantity": "Quantity",
-    "subtotal": "Subtotal",
     "removeColumn": "Remove",
     "remove": "Remove {{name}}",
     "increment": "Add one",
@@ -141,7 +140,8 @@
     "emptySimplified": "No items yet. Enter a description and price above."
   },
   "empty": {
-    "noCurrentLive": "There are no lives yet. Prepare the first one to start selling."
+    "noCurrentLive": "There are no lives yet. Prepare the first one to start selling.",
+    "liveEnded": "The live has ended. Prepare the next one to keep selling."
   },
   "untitled": "Untitled live"
 }
